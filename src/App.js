@@ -42,7 +42,6 @@ const About = Loadable({
 
 class App extends Component {
   render() {
-    const route = "home";
     return (
       <div className="app">
         <Switch>
