@@ -1,0 +1,90 @@
+@media only screen and (min-height: 350px) {
+  .signinfull {
+    height: 100vh;
+  }
+}
+
+.signinfull {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #464646;
+  background-image: url(../../images/bg.jpg);
+}
+
+.signin-login {
+  width: 100%;
+}
+
+.signin-forgot {
+  opacity: 0.8;
+  padding-top: 3px;
+  float: right;
+  font-size: 14px;
+  color: white;
+}
+
+.signin-forgot:hover {
+  color: white;
+  opacity: 1;
+  text-shadow: 0 0 5px silver;
+  transition: opacity 0.25s linear, text-shadow 0.25s linear;
+}
+
+.signin-notuser {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.signin-notuser-register {
+  color: white;
+  opacity: 0.8;
+}
+
+.signin-notuser-register:hover {
+  color: white;
+  opacity: 1;
+  text-shadow: 0 0 5px silver;
+  transition: opacity 0.25s linear, text-shadow 0.25s linear;
+}
+
+.signin-remember {
+  color: white;
+}
+
+.signin {
+  padding-top: 50px;
+  max-width: 300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.signin-box {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid #fff;
+  padding: 10px;
+  color: white;
+  font-size: 18px;
+}
+
+.signin-title {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  align-self: flex-start;
+  text-shadow: 0 0 5px black;
+}
+
+@media (pointer: coarse) {
+  .aboutfull {
+    background-attachment: initial !important;
+  }
+}
