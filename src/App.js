@@ -40,6 +40,11 @@ const About = Loadable({
   loading: Loading
 });
 
+const Forgot = Loadable({
+  loader: () => import("./components/Forgot/Forgot"),
+  loading: Loading
+});
+
 class App extends Component {
   render() {
     return (
@@ -49,6 +54,7 @@ class App extends Component {
           <Route exact path="/signin" component={Signin} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/forgot" component={Forgot} />
           <Route component={NoMatch} />
         </Switch>
       </div>

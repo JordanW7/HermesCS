@@ -14,7 +14,7 @@ class Signin extends Component {
             <Icon type="lock" /> Signin
           </span>
           <div className="signin-box">
-            <label>Company:</label>
+            <label>Account:</label>
             <br />
             <Input
               prefix={
