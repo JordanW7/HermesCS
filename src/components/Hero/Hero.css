@@ -1,0 +1,49 @@
+@media only screen and (min-height: 350px) {
+  .herofull {
+    height: 100vh;
+  }
+}
+
+.herofull {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #464646;
+  background-image: url(../../images/bg.jpg);
+}
+
+@media (pointer: coarse) {
+  .herofull {
+    background-attachment: initial !important;
+  }
+}
+
+.hero-subtitle {
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: 300;
+  color: white;
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.hero-info {
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 50px;
+  color: white;
+  opacity: 0.8;
+  text-shadow: 0 0 5px silver;
+}
+
+.hero-info:hover {
+  opacity: 1;
+  color: white;
+  text-shadow: 0 0 5px silver;
+  transition: opacity 0.25s linear, text-shadow 0.25s linear;
+}

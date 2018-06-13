@@ -1,0 +1,33 @@
+.hero-navfull {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-nav {
+  font-size: 15px;
+  font-weight: 300;
+  color: white;
+}
+
+.hero-nav-link {
+  color: white;
+  opacity: 0.8;
+  text-shadow: 0 0 5px silver;
+}
+
+.hero-title {
+  font-size: 50px;
+  font-weight: 300;
+  margin-top: 10px;
+  color: white;
+  text-shadow: 0 0 5px silver;
+}
+
+.hero-nav-link:hover {
+  opacity: 1;
+  color: white;
+  text-shadow: 0 0 5px silver;
+  transition: opacity 0.25s linear, text-shadow 0.25s linear;
+}

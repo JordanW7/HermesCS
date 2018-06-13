@@ -1,0 +1,48 @@
+@media only screen and (min-height: 1000px) {
+  .aboutfull {
+    height: 100vh;
+  }
+}
+
+.aboutfull {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #464646;
+  background-image: url(../../images/bg.jpg);
+}
+
+.about {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.about-box {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #fff;
+  padding: 0 10px;
+  color: white;
+  text-align: justify;
+  font-size: 18px;
+}
+
+.about-title {
+  color: white;
+  font-size: 30px;
+  align-self: flex-start;
+  text-shadow: 0 0 5px black;
+}
+
+@media (pointer: coarse) {
+  .aboutfull {
+    background-attachment: initial !important;
+  }
+}

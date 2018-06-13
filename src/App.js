@@ -1,18 +1,57 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import { Route, Switch } from "react-router-dom";
+import Loadable from "react-loadable";
 import "./App.css";
+
+import NoMatch from "./components/NoMatch/NoMatch";
+import LoadingPage from "./components/Loading/Loading";
+
+function Loading(props) {
+  if (props.error) {
+    return (
+      <div>
+        Error! <button onClick={props.retry}>Retry</button>
+      </div>
+    );
+    // } else if (props.pastDelay) {
+    //   return <LoadingPage />;
+  } else {
+    return <LoadingPage />;
+  }
+}
+
+const Hero = Loadable({
+  loader: () => import("./components/Hero/Hero"),
+  loading: Loading
+});
+
+const Signin = Loadable({
+  loader: () => import("./components/Signin/Signin"),
+  loading: Loading
+});
+
+const Register = Loadable({
+  loader: () => import("./components/Register/Register"),
+  loading: Loading
+});
+
+const About = Loadable({
+  loader: () => import("./components/About/About"),
+  loading: Loading
+});
 
 class App extends Component {
   render() {
+    const route = "home";
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="app">
+        <Switch>
+          <Route exact path="/" component={Hero} />
+          <Route exact path="/signin" component={Signin} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/about" component={About} />
+          <Route component={NoMatch} />
+        </Switch>
       </div>
     );
   }
