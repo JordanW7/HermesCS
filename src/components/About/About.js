@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import "./About.css";
-import { Link } from "react-router-dom";
 import HeroNav from "../HeroNav/HeroNav";
 import { Icon } from "antd";
 

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const Signin = () => {
   return <h1>Signin Box</h1>;
