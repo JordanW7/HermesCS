@@ -7,7 +7,7 @@ import HeroNav from "../HeroNav/HeroNav";
 const Hero = () => {
   return (
     <div className="herofull">
-      <HeroNav />
+      <HeroNav color="white" />
       <p className="hero-subtitle">
         Assisting Contact Centres to provide excellent customer service.
       </p>

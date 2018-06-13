@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import "./About.css";
 import { Link } from "react-router-dom";
 import HeroNav from "../HeroNav/HeroNav";
+import { Icon } from "antd";
 
 const About = () => {
   return (
     <div className="aboutfull">
-      <HeroNav />
+      <HeroNav color="black" />
       <div className="about">
-        <span className="about-title">About HermesCS</span>
+        <span className="about-title">
+          <Icon type="info-circle-o" /> About
+        </span>
         <div className="about-box">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam

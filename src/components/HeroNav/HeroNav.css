@@ -5,29 +5,66 @@
   align-items: center;
 }
 
-.hero-nav {
-  font-size: 15px;
+.hero-nav-black {
+  font-size: 20px;
   font-weight: 300;
+  text-shadow: 0 0 5px silver;
+  color: black;
+}
+
+.hero-nav-white {
+  font-size: 20px;
+  font-weight: 300;
+  text-shadow: 0 0 5px black;
+  color: black;
+}
+
+.hero-nav-link-white {
+  opacity: 0.8;
+  text-shadow: 0 0 5px black;
   color: white;
 }
 
-.hero-nav-link {
-  color: white;
+.hero-nav-link-black {
   opacity: 0.8;
   text-shadow: 0 0 5px silver;
+  color: black;
 }
 
-.hero-title {
+.hero-title-white {
   font-size: 50px;
   font-weight: 300;
   margin-top: 10px;
+  text-shadow: 0 0 5px black;
   color: white;
-  text-shadow: 0 0 5px silver;
 }
 
-.hero-nav-link:hover {
+.hero-title-black {
+  font-size: 50px;
+  font-weight: 300;
+  margin-top: 10px;
+  text-shadow: 0 0 5px silver;
+  color: black;
+}
+
+.hero-nav-link-white:hover {
   opacity: 1;
-  color: white;
   text-shadow: 0 0 5px silver;
   transition: opacity 0.25s linear, text-shadow 0.25s linear;
+  color: white;
+}
+
+.hero-nav-link-black:hover {
+  opacity: 1;
+  text-shadow: 0 0 5px white;
+  transition: opacity 0.25s linear, text-shadow 0.25s linear;
+  color: black;
+}
+
+.hero-dot-white {
+  color: white;
+}
+
+.hero-dot-black {
+  color: black;
 }
