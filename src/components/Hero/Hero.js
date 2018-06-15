@@ -2,18 +2,21 @@ import React from "react";
 import "./Hero.css";
 import { Icon } from "antd";
 import { Link } from "react-router-dom";
-import HeroNav from "../HeroNav/HeroNav";
+import MainNav from "../MainNav/MainNav";
 
 const Hero = () => {
   return (
     <div className="herofull">
-      <HeroNav color="white" />
-      <p className="hero-subtitle">
-        Assisting Contact Centres to provide excellent customer service.
-      </p>
-      <Link to="/about" className="hero-info">
-        <Icon type="info-circle-o" /> Find out more
-      </Link>
+      <MainNav />
+      <div className="hero-contents">
+        <span className="hero-title">Hermes CS</span>
+        <p className="hero-subtitle">
+          Assisting Contact Centres to provide excellent customer service.
+        </p>
+        <Link to="/about" className="hero-info">
+          Find out more
+        </Link>
+      </div>
     </div>
   );
 };

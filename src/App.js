@@ -45,6 +45,11 @@ const Forgot = Loadable({
   loading: Loading
 });
 
+const Dashboard = Loadable({
+  loader: () => import("./components/Dashboard/Dashboard"),
+  loading: Loading
+});
+
 class App extends Component {
   render() {
     return (
@@ -55,6 +60,7 @@ class App extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/about" component={About} />
           <Route exact path="/forgot" component={Forgot} />
+          <Route exact path="/dashboard" component={Dashboard} />
           <Route component={NoMatch} />
         </Switch>
       </div>

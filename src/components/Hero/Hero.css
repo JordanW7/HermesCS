@@ -7,7 +7,7 @@
 .herofull {
   display: flex;
   flex-direction: column;
-  justify-content: top;
+  justify-content: center;
   align-items: center;
   background-size: cover;
   background-position: center center;
@@ -23,8 +23,23 @@
   }
 }
 
+.hero-contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 50px;
+  font-weight: 500;
+  margin-top: 80px;
+  text-shadow: 0 0 5px black;
+  color: white;
+}
+
 .hero-subtitle {
-  margin-top: 50px;
+  margin-top: 10px;
   font-size: 30px;
   font-weight: 300;
   color: white;
@@ -35,15 +50,15 @@
 .hero-info {
   font-size: 30px;
   font-weight: 300;
+  padding: 10px 20px;
   margin-bottom: 50px;
   color: white;
-  opacity: 0.8;
-  text-shadow: 0 0 5px silver;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .hero-info:hover {
-  opacity: 1;
   color: white;
-  text-shadow: 0 0 5px silver;
-  transition: opacity 0.25s linear, text-shadow 0.25s linear;
+  padding: 9px 19px;
+  border: 1px solid #fff;
+  transition: border 0.25s linear, padding 0.25s linear;
 }

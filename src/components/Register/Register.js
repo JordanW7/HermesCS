@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Register.css";
-import HeroNav from "../HeroNav/HeroNav";
+import MainNav from "../MainNav/MainNav";
 import { Icon, Input, Button, Checkbox, Tooltip } from "antd";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ class Register extends Component {
   render() {
     return (
       <div className="registerfull">
-        <HeroNav color="white" />
+        <MainNav color="white" />
         <div className="register">
           <span className="register-title">
             <Icon type="rocket" /> Register
@@ -31,12 +31,12 @@ class Register extends Component {
               }
               type="text"
             />
-            <label>Your First Name</label>
+            <label>First Name:</label>
             <Input
               prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
               type="text"
             />
-            <label>Your Last Name</label>
+            <label>Last Name:</label>
             <Input
               prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
               type="text"

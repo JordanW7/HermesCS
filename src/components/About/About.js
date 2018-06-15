@@ -1,12 +1,12 @@
 import React from "react";
 import "./About.css";
-import HeroNav from "../HeroNav/HeroNav";
+import MainNav from "../MainNav/MainNav";
 import { Icon } from "antd";
 
 const About = () => {
   return (
     <div className="aboutfull">
-      <HeroNav color="black" />
+      <MainNav color="black" />
       <div className="about">
         <span className="about-title">
           <Icon type="info-circle-o" /> About

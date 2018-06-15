@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Signin.css";
-import HeroNav from "../HeroNav/HeroNav";
+import MainNav from "../MainNav/MainNav";
 import { Icon, Input, Button, Checkbox } from "antd";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ class Signin extends Component {
   render() {
     return (
       <div className="signinfull">
-        <HeroNav color="white" />
+        <MainNav color="white" />
         <div className="signin">
           <span className="signin-title">
             <Icon type="lock" /> Signin
