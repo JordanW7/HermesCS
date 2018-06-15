@@ -1,12 +1,27 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Loadable from "react-loadable";
-import "./App.css";
+
+import { connect } from "react-redux";
+import { setLoginStatus } from "./actions/loginActions";
 
 import NoMatch from "./components/NoMatch/NoMatch";
 import LoadingPage from "./components/Loading/Loading";
 
-function Loading(props) {
+const mapStateToProps = state => {
+  return {
+    loginStatus: state.loginState
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignin: event => dispatch(setLoginStatus(true)),
+    onSignout: event => dispatch(setLoginStatus(false))
+  };
+};
+
+const Loading = props => {
   if (props.error) {
     return (
       <div>
@@ -18,7 +33,7 @@ function Loading(props) {
   } else {
     return <LoadingPage />;
   }
-}
+};
 
 const Hero = Loadable({
   loader: () => import("./components/Hero/Hero"),
@@ -63,21 +78,22 @@ const Dashboard = Loadable({
 class App extends Component {
   render() {
     return (
-      <div className="app">
-        <Switch>
-          <Route exact path="/" component={Hero} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/features" component={Features} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/signin" component={Signin} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/forgot" component={Forgot} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route component={NoMatch} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/" render={() => <Hero {...this.props} />} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/features" component={Features} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/signin" component={Signin} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/forgot" component={Forgot} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route component={NoMatch} />
+      </Switch>
     );
   }
 }
 
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
