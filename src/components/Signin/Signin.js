@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 class Signin extends Component {
   render() {
     return (
-      <div className="signinfull">
+      <div className="signin-full">
         <NavHeader />
         <div className="signin">
           <span className="signin-title">

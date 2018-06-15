@@ -1,11 +1,11 @@
 import React from "react";
 import "./Dashboard.css";
-import MainNav from "../MainNav/MainNav";
+import NavHeader from "../NavHeader/NavHeader";
 
 const Dashboard = () => {
   return (
-    <div className="dashboardfull">
-      <MainNav />
+    <div className="dashboard-full">
+      <NavHeader />
     </div>
   );
 };

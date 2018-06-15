@@ -1,10 +1,10 @@
 @media only screen and (min-height: 350px) {
-  .registerfull {
+  .register-full {
     height: 100vh;
   }
 }
 
-.registerfull {
+.register-full {
   display: flex;
   flex-direction: column;
   justify-content: center;

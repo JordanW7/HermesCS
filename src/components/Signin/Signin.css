@@ -1,10 +1,10 @@
 @media only screen and (min-height: 350px) {
-  .signinfull {
+  .signin-full {
     height: 100vh;
   }
 }
 
-.signinfull {
+.signin-full {
   display: flex;
   flex-direction: column;
   justify-content: center;

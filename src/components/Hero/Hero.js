@@ -12,7 +12,7 @@ const Hero = () => {
         <p className="hero-subtitle">
           Assisting Contact Centres to provide excellent customer service.
         </p>
-        <Link to="/about" className="hero-info">
+        <Link to="/about" className="hero-infobutton">
           FIND OUT MORE
         </Link>
       </div>

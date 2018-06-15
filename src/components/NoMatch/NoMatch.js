@@ -3,7 +3,7 @@ import "./NoMatch.css";
 
 const NoMatch = () => {
   return (
-    <div className="nomatchfull">
+    <div className="nomatch-full">
       <span className="nomatch-text">Oops!</span>
     </div>
   );

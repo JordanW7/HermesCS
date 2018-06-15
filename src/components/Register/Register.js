@@ -6,7 +6,7 @@ import { Icon, Input, Button, Tooltip } from "antd";
 class Register extends Component {
   render() {
     return (
-      <div className="registerfull">
+      <div className="register-full">
         <NavHeader />
         <div className="register">
           <span className="register-title">
