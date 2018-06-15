@@ -1,7 +1,7 @@
 import React from "react";
 import "./NavHeader.css";
 import { Link } from "react-router-dom";
-import { Avatar, Badge, Menu, Dropdown } from "antd";
+import { Avatar, Badge, Menu, Dropdown, Icon } from "antd";
 
 // Need to add Mobile-Friendly NavBar Options
 
@@ -41,13 +41,23 @@ const notificationsDropDownMenu = (
 
 const NavHeader = props => {
   const { onSignin, onSignout, loginStatus } = props;
+  const mobileDropDownMenu = (
+    <Menu>
+      {
+        // Add if statements in here for what menu items to include
+      }
+      <Menu.Item>
+        <Link to="/">Item 1</Link>
+      </Menu.Item>
+    </Menu>
+  );
   return (
     <nav className="navheader-full">
       <Link to="/" className="navheader-title">
         HERMES CS
       </Link>
       {loginStatus.loginStatus ? (
-        <div className="navheader-links">
+        <div className="navheader-links navheader-desktoplinks">
           <span className="navheader-companyaccount">(COMPANY)</span>
           <Link to="/dashboard" className="navheader-link">
             DASHBOARD
@@ -60,7 +70,7 @@ const NavHeader = props => {
           </Link>
         </div>
       ) : (
-        <div className="navheader-links">
+        <div className="navheader-links navheader-desktoplinks">
           <Link to="/" className="navheader-link">
             HOME
           </Link>
@@ -84,25 +94,48 @@ const NavHeader = props => {
               <span className="navheader-notifications">NOTIFICATIONS</span>
             </Badge>
           </Dropdown>
-          <Dropdown overlay={userDropDownMenu} placement="bottomRight">
-            <Avatar
-              style={{ backgroundColor: "#4291F7" }}
-              className="navheader-avatar"
+          <div className="navheader-mobilelinks">
+            <Dropdown
+              overlay={mobileDropDownMenu}
+              trigger={["click"]}
+              placement="bottomRight"
             >
-              J
-            </Avatar>
-          </Dropdown>
+              <Icon type="menu-unfold" style={{ fontSize: 20 }} />
+            </Dropdown>
+          </div>
+          <div className="navheader-desktoplinks">
+            <Dropdown overlay={userDropDownMenu} placement="bottomRight">
+              <Avatar
+                style={{ backgroundColor: "#4291F7" }}
+                className="navheader-avatar"
+              >
+                J
+              </Avatar>
+            </Dropdown>
+          </div>
         </div>
       ) : (
         <div className="navheader-links">
-          <Link to="/signin" className="navheader-link">
-            SIGN IN
-          </Link>
-          <Link to="/register" className="navheader-link">
-            REGISTER
-          </Link>
           <button onClick={onSignin}>IN</button>
           <button onClick={onSignout}>OUT</button>
+          <Link to="/signin" className="navheader-link navheader-desktoplinks">
+            SIGN IN
+          </Link>
+          <Link
+            to="/register"
+            className="navheader-link navheader-desktoplinks"
+          >
+            REGISTER
+          </Link>
+          <div className="navheader-mobilelinks">
+            <Dropdown
+              overlay={mobileDropDownMenu}
+              trigger={["click"]}
+              placement="bottomRight"
+            >
+              <Icon type="menu-unfold" style={{ fontSize: 20 }} />
+            </Dropdown>
+          </div>
         </div>
       )}
     </nav>

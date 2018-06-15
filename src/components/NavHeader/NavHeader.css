@@ -22,7 +22,10 @@
 }
 
 .navheader-avatar {
-  margin: 5px 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  margin-right: 5px;
   cursor: pointer;
 }
 
@@ -63,4 +66,26 @@
   align-items: center;
   justify-content: space-between;
   align-content: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .navheader-avatar {
+    margin-left: 5px;
+  }
+  .navheader-desktoplinks {
+    display: none;
+  }
+  .navheader-mobilelinks {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .navheader-mobilelinks {
+    display: none;
+  }
 }
