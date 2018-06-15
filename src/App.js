@@ -76,6 +76,16 @@ const Dashboard = Loadable({
   loading: Loading
 });
 
+const NewRequest = Loadable({
+  loader: () => import("./components/NewRequest/NewRequest"),
+  loading: Loading
+});
+
+const Requests = Loadable({
+  loader: () => import("./components/Requests/Requests"),
+  loading: Loading
+});
+
 class App extends Component {
   render() {
     return (
@@ -103,6 +113,22 @@ class App extends Component {
           exact
           path="/dashboard"
           render={() => <Dashboard {...this.props} />}
+        />
+        <Route
+          exact
+          path="/newrequest"
+          render={() => <NewRequest {...this.props} />}
+        />
+        <Route
+          exact
+          path="/requests"
+          render={() => <Requests {...this.props} />}
+        />
+        <Route
+          path="/requests/:id"
+          render={props => (
+            <Requests id={props.match.params.id} {...this.props} />
+          )}
         />
         <Route component={NoMatch} />
       </Switch>

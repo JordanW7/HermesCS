@@ -21,8 +21,28 @@
   color: white;
 }
 
+.navheader-avatar {
+  margin: 5px 20px;
+  cursor: pointer;
+}
+
 .navheader-title:hover {
   color: white;
+}
+
+.navheader-companyaccount {
+  color: white;
+  margin: 0 10px;
+}
+
+.navheader-notifications {
+  color: white;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.navheader-notifications-badge {
+  cursor: pointer;
 }
 
 .navheader-link {
