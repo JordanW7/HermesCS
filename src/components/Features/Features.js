@@ -3,10 +3,10 @@ import "./Features.css";
 import NavHeader from "../NavHeader/NavHeader";
 import { Icon } from "antd";
 
-const Features = () => {
+const Features = props => {
   return (
     <div className="features-full">
-      <NavHeader />
+      <NavHeader {...props} />
       <div className="features">
         <div className="features-contents">
           <span className="features-company-title">Hermes CS</span>

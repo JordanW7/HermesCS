@@ -3,10 +3,10 @@ import "./Contact.css";
 import NavHeader from "../NavHeader/NavHeader";
 import { Icon } from "antd";
 
-const Contact = () => {
+const Contact = props => {
   return (
     <div className="contact-full">
-      <NavHeader />
+      <NavHeader {...props} />
       <div className="contact">
         <div className="contact-contents">
           <span className="contact-company-title">Hermes CS</span>

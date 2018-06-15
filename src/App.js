@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
+import { withRouter } from "react-router";
 import Loadable from "react-loadable";
 
 import { connect } from "react-redux";
@@ -80,20 +81,38 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" render={() => <Hero {...this.props} />} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/features" component={Features} />
-        <Route exact path="/contact" component={Contact} />
-        <Route exact path="/signin" component={Signin} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/forgot" component={Forgot} />
-        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/about" render={() => <About {...this.props} />} />
+        <Route
+          exact
+          path="/features"
+          render={() => <Features {...this.props} />}
+        />
+        <Route
+          exact
+          path="/contact"
+          render={() => <Contact {...this.props} />}
+        />
+        <Route exact path="/signin" render={() => <Signin {...this.props} />} />
+        <Route
+          exact
+          path="/register"
+          render={() => <Register {...this.props} />}
+        />
+        <Route exact path="/forgot" render={() => <Forgot {...this.props} />} />
+        <Route
+          exact
+          path="/dashboard"
+          render={() => <Dashboard {...this.props} />}
+        />
         <Route component={NoMatch} />
       </Switch>
     );
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

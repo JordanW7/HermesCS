@@ -7,7 +7,7 @@ class Register extends Component {
   render() {
     return (
       <div className="register-full">
-        <NavHeader />
+        <NavHeader {...this.props} />
         <div className="register">
           <span className="register-title">
             <Icon type="rocket" /> Register

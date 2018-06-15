@@ -8,7 +8,7 @@ class Signin extends Component {
   render() {
     return (
       <div className="signin-full">
-        <NavHeader />
+        <NavHeader {...this.props} />
         <div className="signin">
           <span className="signin-title">
             <Icon type="lock" /> Signin

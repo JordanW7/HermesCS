@@ -9,7 +9,14 @@ const NavHeader = props => {
       <Link to="/" className="navheader-title">
         HERMES CS
       </Link>
-      {!loginStatus.loginStatus ? (
+      {loginStatus.loginStatus ? (
+        <div className="navheader-links">
+          <span className="navheader-link">(SIGNED INTO: COMPANY)</span>
+          <Link to="/dashboard" className="navheader-link">
+            DASHBOARD
+          </Link>
+        </div>
+      ) : (
         <div className="navheader-links">
           <Link to="/" className="navheader-link">
             HOME
@@ -24,15 +31,14 @@ const NavHeader = props => {
             CONTACT
           </Link>
         </div>
-      ) : (
-        <div className="navheader-links">
-          <span className="navheader-link">(ACCOUNT: COMPANY)</span>
-          <Link to="/dashboard" className="navheader-link">
-            DASHBOARD
-          </Link>
-        </div>
       )}
-      {!loginStatus.loginStatus ? (
+      {loginStatus.loginStatus ? (
+        <div className="navheader-links">
+          <span className="navheader-link">Hey there Jordan :)</span>
+          <button onClick={onSignin}>IN</button>
+          <button onClick={onSignout}>OUT</button>
+        </div>
+      ) : (
         <div className="navheader-links">
           <Link to="/signin" className="navheader-link">
             SIGN IN
@@ -40,12 +46,6 @@ const NavHeader = props => {
           <Link to="/register" className="navheader-link">
             REGISTER
           </Link>
-          <button onClick={onSignin}>IN</button>
-          <button onClick={onSignout}>OUT</button>
-        </div>
-      ) : (
-        <div className="navheader-links">
-          <span className="navheader-link">Hey there Jordan :)</span>
           <button onClick={onSignin}>IN</button>
           <button onClick={onSignout}>OUT</button>
         </div>
