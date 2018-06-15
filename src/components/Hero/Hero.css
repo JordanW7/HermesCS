@@ -45,6 +45,7 @@
   color: white;
   font-style: italic;
   flex-grow: 1;
+  text-align: center;
 }
 
 .hero-infobutton {

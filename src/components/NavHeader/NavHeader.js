@@ -3,6 +3,8 @@ import "./NavHeader.css";
 import { Link } from "react-router-dom";
 import { Avatar, Badge, Menu, Dropdown } from "antd";
 
+// Need to add Mobile-Friendly NavBar Options
+
 const userDropDownMenu = (
   <Menu>
     <Menu.Item>

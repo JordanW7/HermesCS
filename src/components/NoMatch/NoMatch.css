@@ -1,0 +1,43 @@
+.nomatch-full {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #464646;
+  background-image: url(../../images/bg.jpg);
+}
+
+@media (pointer: coarse) {
+  .nomatch-full {
+    background-attachment: initial !important;
+  }
+}
+
+.nomatch-text {
+  font-size: 30px;
+  font-weight: 300;
+  color: white;
+  font-style: italic;
+  text-align: center;
+}
+
+.nomatch-return {
+  font-weight: 300;
+  padding: 12px 20px 10px;
+  font-size: 13px;
+  margin-bottom: 50px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nomatch-return:hover {
+  color: white;
+  padding: 11px 19px 9px;
+  border: 1px solid #fff;
+  transition: border 0.25s linear, padding 0.25s linear;
+}

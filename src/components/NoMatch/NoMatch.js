@@ -1,12 +1,14 @@
 import React from "react";
-import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 import "./NoMatch.css";
 
 const NoMatch = () => {
   return (
     <div className="nomatch-full">
-      <span className="nomatch-text">Oops!</span>
-      <Redirect to="/" />
+      <p className="nomatch-text">Oops! This page doesn't exist.</p>
+      <Link className="nomatch-return" to="/">
+        BACK TO HOMEPAGE
+      </Link>
     </div>
   );
 };
