@@ -13,7 +13,7 @@ const Hero = () => {
           Assisting Contact Centres to provide excellent customer service.
         </p>
         <Link to="/about" className="hero-info">
-          Find out more
+          FIND OUT MORE
         </Link>
       </div>
     </div>

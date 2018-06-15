@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./Register.css";
 import NavHeader from "../NavHeader/NavHeader";
-import { Icon, Input, Button, Checkbox, Tooltip } from "antd";
-import { Link } from "react-router-dom";
+import { Icon, Input, Button, Tooltip } from "antd";
 
 class Register extends Component {
   render() {
