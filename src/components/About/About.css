@@ -1,13 +1,7 @@
-@media only screen and (min-height: 1000px) {
-  .aboutfull {
-    height: 100vh;
-  }
-}
-
-.aboutfull {
+.about-full {
   display: flex;
   flex-direction: column;
-  justify-content: top;
+  justify-content: center;
   align-items: center;
   background-size: cover;
   background-position: center center;
@@ -21,6 +15,21 @@
   max-width: 900px;
   margin: 0 auto;
   width: 100%;
+}
+
+.about-contents {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-company-title {
+  font-size: 50px;
+  font-weight: 500;
+  text-shadow: 0 0 5px black;
+  color: white;
 }
 
 .about-box {
@@ -37,11 +46,12 @@
 .about-title {
   font-size: 30px;
   align-self: flex-start;
-  text-shadow: 0 0 5px silver;
+  text-shadow: 0 0 5px black;
+  color: white;
 }
 
 @media (pointer: coarse) {
-  .aboutfull {
+  .about-full {
     background-attachment: initial !important;
   }
 }

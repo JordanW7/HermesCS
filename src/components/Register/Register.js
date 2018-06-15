@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Register.css";
-import MainNav from "../MainNav/MainNav";
+import NavHeader from "../NavHeader/NavHeader";
 import { Icon, Input, Button, Checkbox, Tooltip } from "antd";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ class Register extends Component {
   render() {
     return (
       <div className="registerfull">
-        <MainNav color="white" />
+        <NavHeader />
         <div className="register">
           <span className="register-title">
             <Icon type="rocket" /> Register
@@ -21,7 +21,7 @@ class Register extends Component {
             </p>
             <label>
               Company's Account Name:{" "}
-              <Tooltip title="This is what your team will sign into HermesCS with">
+              <Tooltip title="This is what your team will sign into Hermes CS with">
                 <Icon type="info-circle-o" />
               </Tooltip>
             </label>

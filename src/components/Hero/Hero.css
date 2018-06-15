@@ -1,10 +1,10 @@
 @media only screen and (min-height: 350px) {
-  .herofull {
+  .hero-full {
     height: 100vh;
   }
 }
 
-.herofull {
+.hero-full {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +18,7 @@
 }
 
 @media (pointer: coarse) {
-  .herofull {
+  .hero-full {
     background-attachment: initial !important;
   }
 }

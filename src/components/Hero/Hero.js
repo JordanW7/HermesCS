@@ -5,7 +5,7 @@ import NavHeader from "../NavHeader/NavHeader";
 
 const Hero = () => {
   return (
-    <div className="herofull">
+    <div className="hero-full">
       <NavHeader />
       <div className="hero-contents">
         <span className="hero-title">Hermes CS</span>

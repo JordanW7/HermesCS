@@ -18,7 +18,7 @@ const NavHeader = () => {
         <Link to="/features" className="navheader-link">
           FEATURES
         </Link>
-        <Link to="/features" className="navheader-link">
+        <Link to="/contact" className="navheader-link">
           CONTACT
         </Link>
       </div>
