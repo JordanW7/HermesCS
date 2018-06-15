@@ -1,13 +1,12 @@
 import React from "react";
 import "./Hero.css";
-import { Icon } from "antd";
 import { Link } from "react-router-dom";
-import MainNav from "../MainNav/MainNav";
+import NavHeader from "../NavHeader/NavHeader";
 
 const Hero = () => {
   return (
     <div className="herofull">
-      <MainNav />
+      <NavHeader />
       <div className="hero-contents">
         <span className="hero-title">Hermes CS</span>
         <p className="hero-subtitle">

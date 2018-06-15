@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,500");
 
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
+  text-decoration: none;
+}
+
 * {
   box-sizing: border-box;
   font-display: swap;
