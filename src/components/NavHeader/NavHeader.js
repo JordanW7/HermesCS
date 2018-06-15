@@ -8,22 +8,10 @@ import { Avatar, Badge, Menu, Dropdown } from "antd";
 const userDropDownMenu = (
   <Menu>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.alipay.com/"
-      >
-        Settings
-      </a>
+      <Link to="/">Settings</Link>
     </Menu.Item>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        Signout
-      </a>
+      <Link to="/">Signout</Link>
     </Menu.Item>
   </Menu>
 );
@@ -31,58 +19,22 @@ const userDropDownMenu = (
 const notificationsDropDownMenu = (
   <Menu>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.alipay.com/"
-      >
-        Item 1
-      </a>
+      <Link to="/">Item 1</Link>
     </Menu.Item>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        Item 2
-      </a>
+      <Link to="/">Item 2</Link>
     </Menu.Item>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        Item 3
-      </a>
+      <Link to="/">Item 3</Link>
     </Menu.Item>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        Item 4
-      </a>
+      <Link to="/">Item 4</Link>
     </Menu.Item>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        Item 5
-      </a>
+      <Link to="/">Item 5</Link>
     </Menu.Item>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        More
-      </a>
+      <Link to="/">More</Link>
     </Menu.Item>
   </Menu>
 );
