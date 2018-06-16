@@ -5,20 +5,23 @@ import Loadable from "react-loadable";
 
 import { connect } from "react-redux";
 import { setLoginStatus } from "./actions/loginActions";
+import { setMobileNavStatus } from "./actions/navActions";
 
 import NoMatch from "./components/NoMatch/NoMatch";
 import LoadingPage from "./components/Loading/Loading";
 
 const mapStateToProps = state => {
   return {
-    loginStatus: state.loginState
+    loginStatus: state.loginState,
+    mobileDropDownOpen: state.mobileNavState
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onSignin: event => dispatch(setLoginStatus(true)),
-    onSignout: event => dispatch(setLoginStatus(false))
+    onSignout: event => dispatch(setLoginStatus(false)),
+    onMobileNavClick: event => dispatch(setMobileNavStatus())
   };
 };
 

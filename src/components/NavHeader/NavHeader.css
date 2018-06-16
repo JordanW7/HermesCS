@@ -17,6 +17,7 @@
 .navheader-title {
   font-size: 20px;
   font-weight: 500;
+  margin-left: 30px;
   text-shadow: 0 0 5px black;
   color: white;
 }
@@ -66,6 +67,14 @@
   align-items: center;
   justify-content: space-between;
   align-content: center;
+}
+
+.navheader-mobile-icon {
+  margin: 5px;
+}
+.navheader-mobile-company {
+  cursor: default !important;
+  text-align: center;
 }
 
 @media only screen and (max-width: 767px) {

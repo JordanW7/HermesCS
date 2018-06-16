@@ -1,5 +1,6 @@
 const initialState = {
-  loginStatus: false
+  loginStatus: false,
+  mobileDropDownOpen: false
 };
 
 export default initialState;
