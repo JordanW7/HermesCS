@@ -1,14 +1,66 @@
-@media only screen and (min-height: 350px) {
-  .dashboard-full {
-    height: 100vh;
-  }
-}
-
 .dashboard-full {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: #464646;
-  background-image: url(../../images/more.jpg);
+  background-color: rgb(245, 245, 245);
+  background-image: url(../../images/crow.jpg);
+}
+
+.dashboard {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dashboard-contents {
+  margin-top: 50px;
+}
+
+.dashboard-greeting {
+  font-size: 50px;
+  font-weight: 500;
+  text-shadow: 0 0 5px black;
+  color: white;
+  text-align: center;
+}
+
+.dashboard-box-type {
+  font-weight: 500;
+  color: #5692f0;
+}
+
+.dashboard-box-selector {
+  text-align: right;
+}
+
+.dashboard-box-title {
+  text-align: center;
+  border-bottom: 1px solid silver;
+  font-weight: 500;
+}
+
+.dashboard-box-data {
+  text-align: center;
+  border-bottom: 1px solid silver;
+  font-size: 13px;
+}
+
+.dashboard-box-more {
+  text-align: center;
+}
+
+.dashboard-box {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid silver;
+  padding: 0 10px;
+  color: black;
+  text-align: justify;
+  font-size: 18px;
 }
