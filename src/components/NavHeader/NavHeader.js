@@ -1,30 +1,9 @@
 import React from "react";
 import "./NavHeader.css";
 import { Link } from "react-router-dom";
-import { Avatar, Menu, Dropdown, Icon } from "antd";
 import Notifications from "./Notifications/Notifications";
 import MobileNavMenu from "./MobileNavMenu/MobileNavMenu";
-
-const userDropDownMenu = (
-  <Menu>
-    <Menu.Item>
-      <Link to="/">
-        <Icon type="setting" className="navheader-mobile-icon" />Settings
-      </Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to="/">
-        <Icon type="logout" className="navheader-mobile-icon" />Signout
-      </Link>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item>
-      <Link to="/support">
-        <Icon type="question-circle-o" className="navheader-mobile-icon" />Support
-      </Link>
-    </Menu.Item>
-  </Menu>
-);
+import AvatarMenu from "./AvatarMenu/AvatarMenu";
 
 const NavHeader = ({
   onSignin,
@@ -33,7 +12,6 @@ const NavHeader = ({
   onMobileNavClick,
   mobileDropDownOpen
 }) => {
-  // Should outsource this to another component
   return (
     <nav className="navheader-full">
       <Link to="/" className="navheader-title">
@@ -81,14 +59,7 @@ const NavHeader = ({
             />
           </div>
           <div className="navheader-desktoplinks">
-            <Dropdown overlay={userDropDownMenu} placement="bottomRight">
-              <Avatar
-                style={{ backgroundColor: "#4291F7" }}
-                className="navheader-avatar"
-              >
-                J
-              </Avatar>
-            </Dropdown>
+            <AvatarMenu />
           </div>
         </div>
       ) : (

@@ -89,6 +89,11 @@ const Requests = Loadable({
   loading: Loading
 });
 
+const Support = Loadable({
+  loader: () => import("./components/Support/Support"),
+  loading: Loading
+});
+
 class App extends Component {
   render() {
     return (
@@ -132,6 +137,11 @@ class App extends Component {
           render={props => (
             <Requests id={props.match.params.id} {...this.props} />
           )}
+        />
+        <Route
+          exact
+          path="/support"
+          render={() => <Support {...this.props} />}
         />
         <Route component={NoMatch} />
       </Switch>

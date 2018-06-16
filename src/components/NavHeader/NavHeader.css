@@ -22,14 +22,6 @@
   color: white;
 }
 
-.navheader-avatar {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 20px;
-  margin-right: 5px;
-  cursor: pointer;
-}
-
 .navheader-title:hover {
   color: white;
 }
@@ -60,9 +52,6 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .navheader-avatar {
-    margin-left: 5px;
-  }
   .navheader-desktoplinks {
     display: none;
   }

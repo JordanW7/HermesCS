@@ -1,0 +1,11 @@
+.avatarmenu {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.avatarmenu-icon {
+  margin: 5px;
+}
