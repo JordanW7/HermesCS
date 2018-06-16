@@ -1,9 +1,9 @@
 import React from "react";
 import "./NavHeader.css";
 import { Link } from "react-router-dom";
-import { Avatar, Badge, Menu, Dropdown, Icon } from "antd";
-
-// Need to add mobile click drop down icon change on click
+import { Avatar, Menu, Dropdown, Icon } from "antd";
+import Notifications from "./Notifications/Notifications";
+import MobileNavMenu from "./MobileNavMenu/MobileNavMenu";
 
 const userDropDownMenu = (
   <Menu>
@@ -34,90 +34,6 @@ const NavHeader = ({
   mobileDropDownOpen
 }) => {
   // Should outsource this to another component
-  const notificationsDropDownMenu = (
-    <Menu>
-      <Menu.Item>
-        <Link to="/">Item 1</Link>
-      </Menu.Item>
-    </Menu>
-  );
-  // Should outsource this to another component
-  const mobileDropDownMenu = loginStatus.loginStatus ? (
-    <Menu>
-      <Menu.Item>
-        <Link to="/dashboard">
-          <Icon type="appstore-o" className="navheader-mobile-icon" />Dashboard
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/newrequest">
-          <Icon type="plus-circle-o" className="navheader-mobile-icon" />New CS
-          Request
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/requests">
-          <Icon type="search" className="navheader-mobile-icon" />Search CS
-          Requests
-        </Link>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item>
-        <Link to="/">
-          <Icon type="setting" className="navheader-mobile-icon" />Settings
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/">
-          <Icon type="logout" className="navheader-mobile-icon" />Signout
-        </Link>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item>
-        <Link to="/support">
-          <Icon type="question-circle-o" className="navheader-mobile-icon" />Support
-        </Link>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item disabled className="navheader-mobile-company">
-        <span>(Logged into: COMPANY)</span>
-      </Menu.Item>
-    </Menu>
-  ) : (
-    <Menu>
-      <Menu.Item>
-        <Link to="/">
-          <Icon type="home" className="navheader-mobile-icon" />Home
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/about">
-          <Icon type="info-circle-o" className="navheader-mobile-icon" />About
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/features">
-          <Icon type="star-o" className="navheader-mobile-icon" />Features
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/contact">
-          <Icon type="mail" className="navheader-mobile-icon" />Contact
-        </Link>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item>
-        <Link to="/signin">
-          <Icon type="login" className="navheader-mobile-icon" />Signin
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/register">
-          <Icon type="user-add" className="navheader-mobile-icon" />Register
-        </Link>
-      </Menu.Item>
-    </Menu>
-  );
   return (
     <nav className="navheader-full">
       <Link to="/" className="navheader-title">
@@ -156,27 +72,13 @@ const NavHeader = ({
         <div className="navheader-links">
           <button onClick={onSignin}>IN</button>
           <button onClick={onSignout}>OUT</button>
-          <Dropdown overlay={notificationsDropDownMenu} placement="bottomRight">
-            <Badge count={1} className="navheader-notifications-badge">
-              <span className="navheader-notifications">NOTIFICATIONS</span>
-            </Badge>
-          </Dropdown>
+          <Notifications />
           <div className="navheader-mobilelinks">
-            <Dropdown
-              overlay={mobileDropDownMenu}
-              trigger={["click"]}
-              placement="bottomRight"
-              onVisibleChange={visible => onMobileNavClick()}
-            >
-              <Icon
-                type={
-                  mobileDropDownOpen.mobileDropDownOpen
-                    ? "menu-fold"
-                    : "menu-unfold"
-                }
-                style={{ fontSize: 20 }}
-              />
-            </Dropdown>
+            <MobileNavMenu
+              loginStatus={loginStatus}
+              onMobileNavClick={onMobileNavClick}
+              mobileDropDownOpen={mobileDropDownOpen}
+            />
           </div>
           <div className="navheader-desktoplinks">
             <Dropdown overlay={userDropDownMenu} placement="bottomRight">
@@ -203,21 +105,11 @@ const NavHeader = ({
             REGISTER
           </Link>
           <div className="navheader-mobilelinks">
-            <Dropdown
-              overlay={mobileDropDownMenu}
-              trigger={["click"]}
-              placement="bottomRight"
-              onVisibleChange={visible => onMobileNavClick()}
-            >
-              <Icon
-                type={
-                  mobileDropDownOpen.mobileDropDownOpen
-                    ? "menu-fold"
-                    : "menu-unfold"
-                }
-                style={{ fontSize: 20 }}
-              />
-            </Dropdown>
+            <MobileNavMenu
+              loginStatus={loginStatus}
+              onMobileNavClick={onMobileNavClick}
+              mobileDropDownOpen={mobileDropDownOpen}
+            />
           </div>
         </div>
       )}
