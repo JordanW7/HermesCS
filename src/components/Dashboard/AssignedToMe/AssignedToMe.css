@@ -1,0 +1,32 @@
+.assignedtome-title {
+  font-weight: 500;
+  color: #5692f0;
+}
+
+.assignedtome-selector {
+  text-align: right;
+}
+
+.assignedtome-label {
+  text-align: center;
+  border-bottom: 1px solid silver;
+  font-weight: 500;
+}
+
+.assignedtome-data {
+  text-align: center;
+  border-bottom: 1px solid silver;
+  font-size: 13px;
+}
+
+.assignedtome-more {
+  text-align: center;
+}
+
+.assignedtome {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid silver;
+  padding: 5px 10px;
+  color: black;
+}
