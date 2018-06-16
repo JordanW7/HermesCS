@@ -4,6 +4,7 @@ import NavHeader from "../NavHeader/NavHeader";
 import AssignedToMe from "./AssignedToMe/AssignedToMe";
 import AssignedToTeam from "./AssignedToTeam/AssignedToTeam";
 import MyRequests from "./MyRequests/MyRequests";
+import CheckAuth from "../CheckAuth/CheckAuth";
 
 const dashboardGreeting = () => {
   let today = new Date();
@@ -20,6 +21,10 @@ const dashboardGreeting = () => {
 // Need to make a mobile friendly option that shows less info and a Quick Look button
 
 const Dashboard = props => {
+  let auth = CheckAuth({ ...props });
+  if (auth !== true) {
+    return auth;
+  }
   return (
     <div className="dashboard-full">
       <NavHeader {...props} />

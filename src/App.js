@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
 import Loadable from "react-loadable";
 
@@ -96,25 +96,6 @@ const Support = Loadable({
 
 class App extends Component {
   render() {
-    const PrivateRoute = ({ component: Component, ...rest }) => {
-      return (
-        <Route
-          {...rest}
-          render={props =>
-            this.props.loginStatus.loginStatus ? (
-              <Component {...this.props} />
-            ) : (
-              <Redirect
-                to={{
-                  pathname: "/signin",
-                  state: "redirected"
-                }}
-              />
-            )
-          }
-        />
-      );
-    };
     return (
       <Switch>
         <Route exact path="/" render={() => <Hero {...this.props} />} />
@@ -136,28 +117,28 @@ class App extends Component {
           render={() => <Register {...this.props} />}
         />
         <Route exact path="/forgot" render={() => <Forgot {...this.props} />} />
-        <PrivateRoute
+        <Route
           exact
           path="/dashboard"
           render={() => <Dashboard {...this.props} />}
         />
-        <PrivateRoute
+        <Route
           exact
           path="/newrequest"
           render={() => <NewRequest {...this.props} />}
         />
-        <PrivateRoute
+        <Route
           exact
           path="/requests"
           render={() => <Requests {...this.props} />}
         />
-        <PrivateRoute
+        <Route
           path="/requests/:id"
           render={props => (
             <Requests id={props.match.params.id} {...this.props} />
           )}
         />
-        <PrivateRoute
+        <Route
           exact
           path="/support"
           render={() => <Support {...this.props} />}

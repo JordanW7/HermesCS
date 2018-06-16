@@ -2,9 +2,14 @@ import React from "react";
 import "./NewRequest.css";
 import NavHeader from "../NavHeader/NavHeader";
 import { Form, Row, Col, Input } from "antd";
+import CheckAuth from "../CheckAuth/CheckAuth";
 const FormItem = Form.Item;
 
 const NewRequest = props => {
+  let auth = CheckAuth({ ...props });
+  if (auth !== true) {
+    return auth;
+  }
   return (
     <div className="newrequest-full">
       <NavHeader {...props} />
