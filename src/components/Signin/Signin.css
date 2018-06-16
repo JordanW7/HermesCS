@@ -78,6 +78,14 @@
   text-shadow: 0 0 5px black;
 }
 
+.signin-redirected {
+  display: block;
+  font-size: 20px;
+  text-align: center;
+  color: red;
+  text-shadow: 0 0 1px black;
+}
+
 @media (pointer: coarse) {
   .aboutfull {
     background-attachment: initial !important;

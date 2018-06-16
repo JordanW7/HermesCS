@@ -10,6 +10,11 @@ class Signin extends Component {
       <div className="signin-full">
         <NavHeader {...this.props} />
         <div className="signin">
+          {this.props.location.state && (
+            <span className="signin-redirected">
+              Oops! You're not signed in.
+            </span>
+          )}
           <span className="signin-title">
             <Icon type="lock" /> Signin
           </span>

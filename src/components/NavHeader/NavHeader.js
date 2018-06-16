@@ -5,19 +5,33 @@ import Notifications from "./Notifications/Notifications";
 import MobileNavMenu from "./MobileNavMenu/MobileNavMenu";
 import AvatarMenu from "./AvatarMenu/AvatarMenu";
 
+// Need to change this to check react router content and sent to "GO TO APP" if logged in but not on the app page.
+
+const publicPageList = [
+  "/",
+  "/about",
+  "/features",
+  "/contact",
+  "/signin",
+  "/forgot",
+  "/register"
+];
+
 const NavHeader = ({
   onSignin,
   onSignout,
   loginStatus,
   onMobileNavClick,
-  mobileDropDownOpen
+  mobileDropDownOpen,
+  location
 }) => {
   return (
     <nav className="navheader-full">
       <Link to="/" className="navheader-title">
         HERMES CS
       </Link>
-      {loginStatus.loginStatus ? (
+      {loginStatus.loginStatus &&
+      !publicPageList.includes(location.pathname) ? (
         <div className="navheader-links navheader-desktoplinks">
           <Link to="/dashboard" className="navheader-link">
             DASHBOARD
@@ -45,7 +59,8 @@ const NavHeader = ({
           </Link>
         </div>
       )}
-      {loginStatus.loginStatus ? (
+      {loginStatus.loginStatus &&
+      !publicPageList.includes(location.pathname) ? (
         <div className="navheader-links">
           <button onClick={onSignin}>IN</button>
           <button onClick={onSignout}>OUT</button>
@@ -60,6 +75,17 @@ const NavHeader = ({
           <div className="navheader-desktoplinks">
             <AvatarMenu />
           </div>
+        </div>
+      ) : loginStatus.loginStatus ? (
+        <div className="navheader-links">
+          <button onClick={onSignin}>IN</button>
+          <button onClick={onSignout}>OUT</button>
+          <Link
+            to="/dashboard"
+            className="navheader-link navheader-desktoplinks"
+          >
+            GO TO APP
+          </Link>
         </div>
       ) : (
         <div className="navheader-links">
