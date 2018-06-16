@@ -19,7 +19,6 @@ const NavHeader = ({
       </Link>
       {loginStatus.loginStatus ? (
         <div className="navheader-links navheader-desktoplinks">
-          <span className="navheader-companyaccount">(COMPANY)</span>
           <Link to="/dashboard" className="navheader-link">
             DASHBOARD
           </Link>

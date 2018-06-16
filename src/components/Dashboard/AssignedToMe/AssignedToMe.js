@@ -46,34 +46,38 @@ const AssignedToMe = () => {
         <Col span={3} className="assignedtome-label">
           Last Update:
         </Col>
-        <Col span={3} className="assignedtome-data">
-          10000
-        </Col>
-        <Col span={3} className="assignedtome-data">
-          10:46 Mon 06/07/16
-        </Col>
-        <Col span={3} className="assignedtome-data">
-          Jordan Wilson
-        </Col>
-        <Col span={3} className="assignedtome-data">
-          Food
-        </Col>
-        <Col span={3} className="assignedtome-data">
-          Transport
-        </Col>
-        <Col span={3} className="assignedtome-data">
-          Bob Builder
-        </Col>
-        <Col span={3} className="assignedtome-data">
-          Current
-        </Col>
-        <Col span={3} className="assignedtome-data">
-          11:45 Tue 07/08/16
-        </Col>
-        <Col span={24} className="assignedtome-more">
-          Load more...
-        </Col>
       </Row>
+      <div className="assignedtome-databox">
+        <Row>
+          <Col span={3} className="assignedtome-data">
+            10000
+          </Col>
+          <Col span={3} className="assignedtome-data">
+            10:46 Mon 06/07/16
+          </Col>
+          <Col span={3} className="assignedtome-data">
+            Jordan Wilson
+          </Col>
+          <Col span={3} className="assignedtome-data">
+            Food
+          </Col>
+          <Col span={3} className="assignedtome-data">
+            Transport
+          </Col>
+          <Col span={3} className="assignedtome-data">
+            Bob Builder
+          </Col>
+          <Col span={3} className="assignedtome-data">
+            Current
+          </Col>
+          <Col span={3} className="assignedtome-data">
+            11:45 Tue 07/08/16
+          </Col>
+          <Col span={24} className="assignedtome-more">
+            Scroll over for more...
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 };

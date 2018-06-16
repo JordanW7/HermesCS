@@ -13,6 +13,11 @@
   font-weight: 500;
 }
 
+.assignedtome-databox {
+  height: 75px;
+  overflow: scroll;
+}
+
 .assignedtome-data {
   text-align: center;
   border-bottom: 1px solid silver;
