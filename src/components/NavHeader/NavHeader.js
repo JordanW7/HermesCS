@@ -5,8 +5,6 @@ import Notifications from "./Notifications/Notifications";
 import MobileNavMenu from "./MobileNavMenu/MobileNavMenu";
 import AvatarMenu from "./AvatarMenu/AvatarMenu";
 
-// Need to change this to check react router content and sent to "GO TO APP" if logged in but not on the app page.
-
 const publicPageList = [
   "/",
   "/about",
@@ -37,10 +35,10 @@ const NavHeader = ({
             DASHBOARD
           </Link>
           <Link to="/newrequest" className="navheader-link">
-            NEW CS REQUEST
+            NEW REQUEST
           </Link>
           <Link to="/requests" className="navheader-link">
-            SEARCH CS REQUESTS
+            SEARCH REQUESTS
           </Link>
         </div>
       ) : (

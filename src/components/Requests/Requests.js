@@ -30,10 +30,10 @@ const SearchRequests = Loadable({
 });
 
 const Requests = props => {
-  // let auth = CheckAuth({ ...props });
-  // if (auth !== true) {
-  //   return auth;
-  // }
+  let auth = CheckAuth({ ...props });
+  if (auth !== true) {
+    return auth;
+  }
   return (
     <div className="requests-full">
       <NavHeader {...props} />

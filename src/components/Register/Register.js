@@ -3,8 +3,6 @@ import "./Register.css";
 import NavHeader from "../NavHeader/NavHeader";
 import { Icon, Input, Button, Tooltip } from "antd";
 
-//Need to update register form to being an line form.
-
 class Register extends Component {
   render() {
     return (
