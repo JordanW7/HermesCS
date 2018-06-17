@@ -1,6 +1,5 @@
 import React from "react";
 import Loadable from "react-loadable";
-import LoadingPage from "../Loading/Loading";
 import NavHeader from "../NavHeader/NavHeader";
 import CheckAuth from "../CheckAuth/CheckAuth";
 import "./Requests.css";
