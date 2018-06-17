@@ -1,6 +1,8 @@
 import React from "react";
 import NavHeader from "../NavHeader/NavHeader";
 import CheckAuth from "../CheckAuth/CheckAuth";
+import RequestViewer from "./RequestViewer/RequestViewer";
+import SearchRequests from "./SearchRequests/SearchRequests";
 import "./Requests.css";
 
 const Requests = props => {
@@ -11,17 +13,7 @@ const Requests = props => {
   return (
     <div className="requests-full">
       <NavHeader {...props} />
-      <div className="requests">
-        <div className="requests-contents">
-          <div className="requests-title">
-            {props.id ? (
-              <span>Request ID: {props.id}</span>
-            ) : (
-              <span>Searching</span>
-            )}
-          </div>
-        </div>
-      </div>
+      {props.id ? <RequestViewer {...props} /> : <SearchRequests {...props} />}
     </div>
   );
 };

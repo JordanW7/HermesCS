@@ -1,7 +1,17 @@
 import React from "react";
 import "./NewRequest.css";
 import NavHeader from "../NavHeader/NavHeader";
-import { Form, Row, Col, Input, Select, Icon, Upload, message } from "antd";
+import {
+  Form,
+  Row,
+  Col,
+  Input,
+  Select,
+  Icon,
+  Upload,
+  message,
+  Button
+} from "antd";
 import CheckAuth from "../CheckAuth/CheckAuth";
 const { TextArea } = Input;
 const FormItem = Form.Item;
@@ -33,10 +43,10 @@ const uploadProps = {
 };
 
 const NewRequest = props => {
-  // let auth = CheckAuth({ ...props });
-  // if (auth !== true) {
-  //   return auth;
-  // }
+  let auth = CheckAuth({ ...props });
+  if (auth !== true) {
+    return auth;
+  }
   return (
     <div className="newrequest-full">
       <NavHeader {...props} />
@@ -46,8 +56,11 @@ const NewRequest = props => {
           <div className="newrequest-box">
             <Form layout="inline" className="newrequest-form">
               <Row style={{ textAlign: "right" }}>
-                <Col span={24} style={{ textAlign: "left" }}>
+                <Col span={18} style={{ textAlign: "left" }}>
                   Person Details:
+                </Col>
+                <Col span={6} style={{ textAlign: "right", paddingRight: 15 }}>
+                  <Button type="primary">Save</Button>
                 </Col>
                 <Col span={6}>
                   <FormItem label="Request ID">

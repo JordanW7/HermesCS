@@ -10,6 +10,8 @@ import { setMobileNavStatus } from "./actions/navActions";
 import NoMatch from "./components/NoMatch/NoMatch";
 import LoadingPage from "./components/Loading/Loading";
 
+//Need to add routing for each account/company - i.e. HermesCS.com/Company/Dashboard and HermesCS.com/Company/Requests/123
+
 const mapStateToProps = state => {
   return {
     loginStatus: state.loginState,
