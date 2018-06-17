@@ -1,9 +1,33 @@
 import React from "react";
+import Loadable from "react-loadable";
+import LoadingPage from "../Loading/Loading";
 import NavHeader from "../NavHeader/NavHeader";
 import CheckAuth from "../CheckAuth/CheckAuth";
-import RequestViewer from "./RequestViewer/RequestViewer";
-import SearchRequests from "./SearchRequests/SearchRequests";
 import "./Requests.css";
+
+const Loading = props => {
+  if (props.error) {
+    return (
+      <div>
+        Error! <button onClick={props.retry}>Retry</button>
+      </div>
+    );
+  } else if (props.pastDelay) {
+    return <div>Loading...</div>;
+  } else {
+    return null;
+  }
+};
+
+const RequestViewer = Loadable({
+  loader: () => import("./RequestViewer/RequestViewer"),
+  loading: Loading
+});
+
+const SearchRequests = Loadable({
+  loader: () => import("./SearchRequests/SearchRequests"),
+  loading: Loading
+});
 
 const Requests = props => {
   let auth = CheckAuth({ ...props });

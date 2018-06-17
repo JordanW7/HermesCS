@@ -37,7 +37,7 @@ const Loading = props => {
   } else if (props.pastDelay) {
     return <LoadingPage />;
   } else {
-    return <LoadingPage />;
+    return null;
   }
 };
 
