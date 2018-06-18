@@ -7,11 +7,9 @@ import { connect } from "react-redux";
 import { setLoginStatus, loadUser } from "./actions/loginActions";
 import { setMobileNavStatus } from "./actions/navActions";
 
+import apiBackEnd from "./api/api";
 import NoMatch from "./components/NoMatch/NoMatch";
 import LoadingPage from "./components/Loading/Loading";
-import Signout from "./components/Signout/Signout";
-
-//Need to add routing for each account/company - i.e. HermesCS.com/Company/Dashboard and HermesCS.com/Company/Requests/123
 
 const mapStateToProps = state => {
   return {
@@ -69,10 +67,10 @@ const Signin = Loadable({
   loading: Loading
 });
 
-// const Signout = Loadable({
-//   loader: () => import("./components/Signout/Signout"),
-//   loading: Loading
-// });
+const Signout = Loadable({
+  loader: () => import("./components/Signout/Signout"),
+  loading: Loading
+});
 
 const Forgot = Loadable({
   loader: () => import("./components/Forgot/Forgot"),
@@ -104,7 +102,48 @@ const Support = Loadable({
   loading: Loading
 });
 
+//Running this is breaking the server
+
+const checkForTokens = async () => {
+  const sessionToken = window.sessionStorage.getItem("token");
+  const rememberToken = window.localStorage.getItem("token");
+  if (rememberToken || sessionToken) {
+    const response = await apiBackEnd(
+      "signin",
+      "POST",
+      false,
+      rememberToken ? rememberToken : sessionToken
+    );
+    return response;
+  }
+};
+
+// Need to add delete token on signout //
+
 class App extends Component {
+  async componentDidMount() {
+    const response = await checkForTokens();
+    console.log(response);
+  }
+  // .then(data => {
+  //   if (data && data.id) {
+  //     fetch(`http://localhost:3000/profile/${data.id}`, {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': token
+  //       }
+  //     })
+  //     .then(response => response.json())
+  //     .then(user => {
+  //       if (user && user.email) {
+  //         this.loadUser(user)
+  //         this.onRouteChange('home');
+  //       }
+  //     })
+  //   }
+  // })
+  // .catch(console.log)
   render() {
     return (
       <Switch>

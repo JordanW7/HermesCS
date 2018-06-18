@@ -14,6 +14,7 @@ class Signin extends Component {
       signInAccount: "",
       signInEmail: "",
       signInPassword: "",
+      signInRememberMe: false,
       signInFailed: false
     };
   }
@@ -25,6 +26,14 @@ class Signin extends Component {
   };
   onAccountChange = event => {
     this.setState({ signInAccount: event.target.value });
+  };
+  onRememberMeChange = () => {
+    this.setState({ signInRememberMe: !this.state.signInRememberMe });
+  };
+  saveAuthToken = (rememberme, token) => {
+    rememberme
+      ? window.localStorage.setItem("token", token)
+      : window.sessionStorage.setItem("token", token);
   };
   onSubmitSignIn = async () => {
     const { signInAccount, signInEmail, signInPassword } = this.state;
@@ -47,6 +56,7 @@ class Signin extends Component {
         this.setState({ signInFailed: true });
       } else {
         this.setState({ signInFailed: false });
+        this.saveAuthToken(this.state.signInRememberMe, data.token);
         this.props.onLoadUser(userdata);
         this.props.onSignin();
       }
@@ -99,7 +109,12 @@ class Signin extends Component {
               onChange={this.onPasswordChange}
             />
             <div>
-              <Checkbox className="signin-remember">Remember me</Checkbox>
+              <Checkbox
+                onChange={this.onRememberMeChange}
+                className="signin-remember"
+              >
+                Remember me
+              </Checkbox>
               <Link to="/forgot" className="signin-forgot">
                 Forgot Password
               </Link>
