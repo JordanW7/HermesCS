@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 import NavHeader from "../NavHeader/NavHeader";
 
 class Hero extends Component {
+  componentDidMount() {
+    if (this.props.location.state) {
+      this.props.onSignout();
+    }
+  }
   render() {
     return (
       <div className="hero-full">

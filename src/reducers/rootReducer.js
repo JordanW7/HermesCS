@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import loginState from "./loginReducer";
+import { loginState, userState } from "./loginReducer";
 import mobileNavState from "./navReducer";
 
 const rootReducer = combineReducers({
   loginState,
+  userState,
   mobileNavState
 });
 

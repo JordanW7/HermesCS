@@ -21,7 +21,8 @@ const NavHeader = ({
   loginStatus,
   onMobileNavClick,
   mobileDropDownOpen,
-  location
+  location,
+  user
 }) => {
   return (
     <nav className="navheader-full">
@@ -60,24 +61,21 @@ const NavHeader = ({
       {loginStatus.loginStatus &&
       !publicPageList.includes(location.pathname) ? (
         <div className="navheader-links">
-          <button onClick={onSignin}>IN</button>
-          <button onClick={onSignout}>OUT</button>
           <Notifications />
           <div className="navheader-mobilelinks">
             <MobileNavMenu
               loginStatus={loginStatus}
               onMobileNavClick={onMobileNavClick}
               mobileDropDownOpen={mobileDropDownOpen}
+              onSignout={onSignout}
             />
           </div>
           <div className="navheader-desktoplinks">
-            <AvatarMenu />
+            <AvatarMenu user={user} onSignout={onSignout} />
           </div>
         </div>
       ) : loginStatus.loginStatus ? (
         <div className="navheader-links">
-          <button onClick={onSignin}>IN</button>
-          <button onClick={onSignout}>OUT</button>
           <Link
             to="/dashboard"
             className="navheader-link navheader-desktoplinks"
@@ -87,8 +85,6 @@ const NavHeader = ({
         </div>
       ) : (
         <div className="navheader-links">
-          <button onClick={onSignin}>IN</button>
-          <button onClick={onSignout}>OUT</button>
           <Link to="/signin" className="navheader-link navheader-desktoplinks">
             SIGN IN
           </Link>

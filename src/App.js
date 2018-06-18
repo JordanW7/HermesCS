@@ -4,18 +4,20 @@ import { withRouter } from "react-router";
 import Loadable from "react-loadable";
 
 import { connect } from "react-redux";
-import { setLoginStatus } from "./actions/loginActions";
+import { setLoginStatus, loadUser } from "./actions/loginActions";
 import { setMobileNavStatus } from "./actions/navActions";
 
 import NoMatch from "./components/NoMatch/NoMatch";
 import LoadingPage from "./components/Loading/Loading";
+import Signout from "./components/Signout/Signout";
 
 //Need to add routing for each account/company - i.e. HermesCS.com/Company/Dashboard and HermesCS.com/Company/Requests/123
 
 const mapStateToProps = state => {
   return {
     loginStatus: state.loginState,
-    mobileDropDownOpen: state.mobileNavState
+    mobileDropDownOpen: state.mobileNavState,
+    user: state.userState
   };
 };
 
@@ -23,6 +25,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onSignin: event => dispatch(setLoginStatus(true)),
     onSignout: event => dispatch(setLoginStatus(false)),
+    onLoadUser: user => dispatch(loadUser(user)),
     onMobileNavClick: event => dispatch(setMobileNavStatus())
   };
 };
@@ -65,6 +68,11 @@ const Signin = Loadable({
   loader: () => import("./components/Signin/Signin"),
   loading: Loading
 });
+
+// const Signout = Loadable({
+//   loader: () => import("./components/Signout/Signout"),
+//   loading: Loading
+// });
 
 const Forgot = Loadable({
   loader: () => import("./components/Forgot/Forgot"),
@@ -113,6 +121,11 @@ class App extends Component {
           render={() => <Contact {...this.props} />}
         />
         <Route exact path="/signin" render={() => <Signin {...this.props} />} />
+        <Route
+          exact
+          path="/signout"
+          render={() => <Signout {...this.props} />}
+        />
         <Route
           exact
           path="/register"

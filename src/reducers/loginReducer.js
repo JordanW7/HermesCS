@@ -1,7 +1,7 @@
 import initialState from "./initialState";
-import { CHANGE_LOGIN_STATUS } from "../actions/actionTypes";
+import { CHANGE_LOGIN_STATUS, LOAD_USER } from "../actions/actionTypes";
 
-const loginState = (state = initialState.loginStatus, action) => {
+export const loginState = (state = initialState.loginStatus, action) => {
   let newState;
   switch (action.type) {
     case CHANGE_LOGIN_STATUS:
@@ -12,4 +12,13 @@ const loginState = (state = initialState.loginStatus, action) => {
   }
 };
 
-export default loginState;
+export const userState = (state = { user: initialState.user }, action) => {
+  let newState;
+  switch (action.type) {
+    case LOAD_USER:
+      newState = action.payload;
+      return Object.assign({}, state, { user: newState });
+    default:
+      return state;
+  }
+};

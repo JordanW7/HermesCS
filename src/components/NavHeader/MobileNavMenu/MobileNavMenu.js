@@ -29,12 +29,12 @@ const MobileNavMenu = ({
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item>
-        <Link to="/">
+        <Link to="/settings">
           <Icon type="setting" className="mobilenavmenu-icon" />Settings
         </Link>
       </Menu.Item>
       <Menu.Item>
-        <Link to="/">
+        <Link to="/signout">
           <Icon type="logout" className="mobilenavmenu-icon" />Signout
         </Link>
       </Menu.Item>

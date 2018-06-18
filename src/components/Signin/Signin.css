@@ -38,6 +38,14 @@
   text-align: justify;
 }
 
+.signin-failed {
+  color: orange;
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
 .signin-notuser-register {
   color: white;
   opacity: 0.8;

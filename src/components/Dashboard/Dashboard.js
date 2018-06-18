@@ -31,7 +31,8 @@ const Dashboard = props => {
       <div className="dashboard">
         <div className="dashboard-contents">
           <div className="dashboard-greeting">
-            {dashboardGreeting()} Jordan @ Company! :)
+            {dashboardGreeting()} {props.user.user.firstname} @{" "}
+            {props.user.user.displayname}! :)
           </div>
           <AssignedToMe />
           <AssignedToTeam />

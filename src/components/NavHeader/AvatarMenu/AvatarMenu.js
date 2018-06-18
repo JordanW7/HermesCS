@@ -6,12 +6,12 @@ import { Avatar, Menu, Dropdown, Icon } from "antd";
 const userDropDownMenu = (
   <Menu>
     <Menu.Item>
-      <Link to="/">
+      <Link to="/settings">
         <Icon type="setting" className="avatarmenu-icon" />Settings
       </Link>
     </Menu.Item>
     <Menu.Item>
-      <Link to="/">
+      <Link to="/signout">
         <Icon type="logout" className="avatarmenu-icon" />Signout
       </Link>
     </Menu.Item>
@@ -24,11 +24,11 @@ const userDropDownMenu = (
   </Menu>
 );
 
-const AvatarMenu = () => {
+const AvatarMenu = ({ user }) => {
   return (
     <Dropdown overlay={userDropDownMenu} placement="bottomRight">
       <Avatar style={{ backgroundColor: "#4291F7" }} className="avatarmenu">
-        J
+        {user.user.firstname.charAt(0).toUpperCase()}
       </Avatar>
     </Dropdown>
   );

@@ -16,7 +16,7 @@ const requestAssignToType = (
   </Select>
 );
 
-// Need to make this more mobile friendly
+// Need to make this more mobile friendly and add a Created_By field for Search and RequestView types.
 
 const RequestForm = props => {
   const path = props.location.pathname;
