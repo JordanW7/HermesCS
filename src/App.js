@@ -102,8 +102,6 @@ const Support = Loadable({
   loading: Loading
 });
 
-//Running this is breaking the server
-
 const checkForTokens = async () => {
   const sessionToken = window.sessionStorage.getItem("token");
   const rememberToken = window.localStorage.getItem("token");
@@ -122,28 +120,17 @@ const checkForTokens = async () => {
 
 class App extends Component {
   async componentDidMount() {
-    const response = await checkForTokens();
-    console.log(response);
+    const data = await checkForTokens();
+    const userdata = await apiBackEnd(
+      `profile/${data.account}/${data.id}`,
+      "get"
+    );
+    if (userdata.id) {
+      this.props.onLoadUser(userdata);
+      this.props.onSignin();
+    }
   }
-  // .then(data => {
-  //   if (data && data.id) {
-  //     fetch(`http://localhost:3000/profile/${data.id}`, {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': token
-  //       }
-  //     })
-  //     .then(response => response.json())
-  //     .then(user => {
-  //       if (user && user.email) {
-  //         this.loadUser(user)
-  //         this.onRouteChange('home');
-  //       }
-  //     })
-  //   }
-  // })
-  // .catch(console.log)
+
   render() {
     return (
       <Switch>

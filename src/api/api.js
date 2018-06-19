@@ -15,7 +15,6 @@ const apiBackEnd = async (
       body: bodyObject && JSON.stringify(bodyObject)
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (err) {
     return "error";
