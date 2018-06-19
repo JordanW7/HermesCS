@@ -102,25 +102,22 @@ const Support = Loadable({
   loading: Loading
 });
 
-const checkForTokens = async () => {
+const getTokenData = async () => {
   const sessionToken = window.sessionStorage.getItem("token");
   const rememberToken = window.localStorage.getItem("token");
   if (rememberToken || sessionToken) {
-    const response = await apiBackEnd(
-      "signin",
-      "POST",
-      false,
-      rememberToken ? rememberToken : sessionToken
-    );
+    const response = await apiBackEnd("signin", "POST", false);
     return response;
   }
+  return "no token";
 };
-
-// Need to add delete token on signout //
 
 class App extends Component {
   async componentDidMount() {
-    const data = await checkForTokens();
+    const data = await getTokenData();
+    if (!data.account) {
+      return;
+    }
     const userdata = await apiBackEnd(
       `profile/${data.account}/${data.id}`,
       "get"
@@ -130,7 +127,6 @@ class App extends Component {
       this.props.onSignin();
     }
   }
-
   render() {
     return (
       <Switch>

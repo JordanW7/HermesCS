@@ -1,12 +1,14 @@
 const linkBackEnd = "http://localhost:3000";
 
-const apiBackEnd = async (
-  request,
-  method,
-  bodyObject = false,
-  token = false
-) => {
+const apiBackEnd = async (request, method, bodyObject = false) => {
   try {
+    const sessionToken = window.sessionStorage.getItem("token");
+    const rememberToken = window.localStorage.getItem("token");
+    const token = rememberToken
+      ? rememberToken
+      : sessionToken
+        ? sessionToken
+        : false;
     const response = await fetch(`${linkBackEnd}/${request}`, {
       method: method,
       headers: token
