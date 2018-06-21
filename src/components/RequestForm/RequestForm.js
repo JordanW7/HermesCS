@@ -9,17 +9,41 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const { RangePicker } = DatePicker;
 
-const requestAssignToType = (
-  <Select defaultValue="Team" style={{ width: 90 }}>
-    <Option value="team">Team</Option>
-    <Option value="person">Person</Option>
-  </Select>
-);
-
 // Need to make this more mobile friendly.
 
 const RequestForm = props => {
   const path = props.location.pathname;
+  const {
+    id,
+    firstname,
+    lastname,
+    account,
+    mobile,
+    home,
+    twitter,
+    facebook,
+    email,
+    address,
+    type,
+    topic,
+    assign_person,
+    assign_team,
+    priority,
+    details,
+    attachments,
+    status,
+    created_by,
+    created_at
+  } = props;
+  const requestAssignToType = (
+    <Select
+      defaultValue={assign_person ? "person" : "team"}
+      style={{ width: 90 }}
+    >
+      <Option value="team">Team</Option>
+      <Option value="person">Person</Option>
+    </Select>
+  );
   return (
     <div>
       <div className="requestform-box">
@@ -31,8 +55,8 @@ const RequestForm = props => {
                 <FormItem label="Date/Time:">
                   <DatePicker
                     showTime
-                    format="DD-MM-YYYY HH:mm:ss"
-                    placeholder=""
+                    format="DD-MM-YYYY HH:mm"
+                    defaultValue={moment(created_at)}
                   />
                 </FormItem>
               </Col>
@@ -66,7 +90,6 @@ const RequestForm = props => {
                     }}
                     showTime={{ format: "HH:mm" }}
                     format="DD-MM-YYYY HH:mm"
-                    placeholder={["Start", "End"]}
                   />
                 </FormItem>
               </Col>
@@ -78,7 +101,7 @@ const RequestForm = props => {
                     prefix={
                       <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                     }
-                    placeholder=""
+                    defaultValue={created_by}
                   />
                 </FormItem>
               </Col>
@@ -86,7 +109,7 @@ const RequestForm = props => {
             {path !== "/newrequest" && (
               <Col span={4}>
                 <FormItem label="Status:">
-                  <Select defaultValue="all" style={{ width: 100 }}>
+                  <Select defaultValue={status} style={{ width: 100 }}>
                     <Option value="all">All</Option>
                     <Option value="complete">Complete</Option>
                     <Option value="current">Current</Option>
@@ -120,7 +143,7 @@ const RequestForm = props => {
                   prefix={
                     <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                   }
-                  placeholder=""
+                  defaultValue={firstname}
                 />
               </FormItem>
             </Col>
@@ -130,7 +153,7 @@ const RequestForm = props => {
                   prefix={
                     <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                   }
-                  placeholder=""
+                  defaultValue={lastname}
                 />
               </FormItem>
             </Col>
@@ -140,7 +163,7 @@ const RequestForm = props => {
                   prefix={
                     <Icon type="idcard" style={{ color: "rgba(0,0,0,.25)" }} />
                   }
-                  placeholder=""
+                  defaultValue={account}
                 />
               </FormItem>
             </Col>
@@ -153,7 +176,7 @@ const RequestForm = props => {
                       style={{ color: "rgba(0,0,0,.25)" }}
                     />
                   }
-                  placeholder=""
+                  defaultValue={id}
                   disabled
                 />
               </FormItem>
@@ -164,7 +187,7 @@ const RequestForm = props => {
                   prefix={
                     <Icon type="mobile" style={{ color: "rgba(0,0,0,.25)" }} />
                   }
-                  placeholder=""
+                  defaultValue={mobile}
                 />
               </FormItem>
             </Col>
@@ -174,7 +197,7 @@ const RequestForm = props => {
                   prefix={
                     <Icon type="phone" style={{ color: "rgba(0,0,0,.25)" }} />
                   }
-                  placeholder=""
+                  defaultValue={home}
                 />
               </FormItem>
             </Col>
@@ -184,7 +207,7 @@ const RequestForm = props => {
                   prefix={
                     <Icon type="twitter" style={{ color: "rgba(0,0,0,.25)" }} />
                   }
-                  placeholder=""
+                  defaultValue={twitter}
                 />
               </FormItem>
             </Col>
@@ -197,7 +220,7 @@ const RequestForm = props => {
                       style={{ color: "rgba(0,0,0,.25)" }}
                     />
                   }
-                  placeholder=""
+                  defaultValue={facebook}
                 />
               </FormItem>
             </Col>
@@ -207,7 +230,7 @@ const RequestForm = props => {
                   prefix={
                     <Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />
                   }
-                  placeholder=""
+                  defaultValue={email}
                   style={{ width: 485 }}
                 />
               </FormItem>
@@ -221,7 +244,7 @@ const RequestForm = props => {
                       style={{ color: "rgba(0,0,0,.25)" }}
                     />
                   }
-                  placeholder=""
+                  defaultValue={address}
                   style={{ width: 485 }}
                 />
               </FormItem>
@@ -232,7 +255,9 @@ const RequestForm = props => {
             <Col span={6}>
               <FormItem label="Type">
                 <Select
-                  defaultValue={path === "/requests" ? "all" : "misc"}
+                  defaultValue={
+                    type ? type : path === "/requests" ? "all" : "misc"
+                  }
                   style={{ width: 190 }}
                 >
                   <Option value="misc">Misc</Option>
@@ -243,7 +268,7 @@ const RequestForm = props => {
             </Col>
             <Col span={6}>
               <FormItem label="Topic">
-                <Input placeholder="" style={{ width: 190 }} />
+                <Input defaultValue={topic} style={{ width: 190 }} />
               </FormItem>
             </Col>
             <Col span={8}>
@@ -252,7 +277,11 @@ const RequestForm = props => {
               >
                 <Input
                   addonBefore={requestAssignToType}
-                  placeholder=""
+                  defaultValue={
+                    assign_person
+                      ? `${assign_person} (${assign_team})`
+                      : assign_team && assign_team
+                  }
                   style={{ width: 290 }}
                 />
               </FormItem>
@@ -260,7 +289,9 @@ const RequestForm = props => {
             <Col span={4}>
               <FormItem label="Priority">
                 <Select
-                  defaultValue={path === "/requests" ? "all" : "low"}
+                  defaultValue={
+                    priority ? priority : path === "/requests" ? "all" : "low"
+                  }
                   style={{ width: 100 }}
                 >
                   <Option value="extreme">Extreme</Option>
@@ -279,6 +310,7 @@ const RequestForm = props => {
             {path !== "/requests" && (
               <Col span={24} style={{ textAlign: "left" }}>
                 <TextArea
+                  defaultValue={details}
                   placeholder="Request Details"
                   autosize={{ minRows: 4, maxRows: 8 }}
                 />
@@ -293,6 +325,11 @@ const RequestForm = props => {
             {!["/newrequest", "/requests"].includes(path) && (
               <Col span={24} style={{ textAlign: "left" }}>
                 Attachments:
+              </Col>
+            )}
+            {!["/newrequest", "/requests"].includes(path) && (
+              <Col span={24} style={{ textAlign: "left" }}>
+                {attachments}
               </Col>
             )}
           </Row>

@@ -1,40 +1,42 @@
-import React from "react";
+import React, { Component } from "react";
 import RequestForm from "../../RequestForm/RequestForm";
+import apiBackEnd from "../../../api/api";
+import RequestCommentList from "./RequestCommentList";
 import "./RequestViewer.css";
-import { Form, Row, Col, Input, Button } from "antd";
-const FormItem = Form.Item;
 
-const RequestViewer = props => {
-  return (
-    <div className="requestviewer">
-      <div className="requestviewer-contents">
-        <div className="requestviewer-title">Request: {props.id}</div>
-        <RequestForm {...props} />
-        <div className="requestviewer-box">
-          Comments/Actions:
-          <Row>
-            <Col span={3} className="requestviewer-comments-label">
-              Time/Date:
-            </Col>
-            <Col span={3} className="requestviewer-comments-label">
-              User:
-            </Col>
-            <Col span={18} className="requestviewer-comments-label">
-              Comments:
-            </Col>
-            <Col span={24}>
-              <Form>
-                <FormItem label="Comment:">
-                  <Input />
-                  <Button>Add Comment</Button>
-                </FormItem>
-              </Form>
-            </Col>
-          </Row>
+class RequestViewer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      requestdata: {}
+    };
+  }
+  async componentDidMount() {
+    const { account } = this.props.user.user;
+    const requestdata = await apiBackEnd(
+      `requests/${account}/${this.props.id}`,
+      "get"
+    );
+    this.setState({ requestdata });
+  }
+  render() {
+    const { id } = this.state.requestdata;
+    if (!id) {
+      return <h1>Oops! This request doesn't exist</h1>;
+    }
+    return (
+      <div className="requestviewer">
+        <div className="requestviewer-contents">
+          <div className="requestviewer-title">Request: {this.props.id}</div>
+          <RequestForm {...this.props} {...this.state.requestdata} />
+          <div className="requestviewer-box">
+            Comments/Actions:
+            <RequestCommentList {...this.props} {...this.state.requestdata} />
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default RequestViewer;
