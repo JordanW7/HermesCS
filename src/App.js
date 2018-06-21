@@ -116,6 +116,8 @@ class App extends Component {
   async componentDidMount() {
     const data = await getTokenData();
     if (!data.account) {
+      window.sessionStorage.removeItem("token");
+      window.localStorage.removeItem("token");
       return;
     }
     const userdata = await apiBackEnd(

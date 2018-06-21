@@ -17,7 +17,10 @@ const apiBackEnd = async (request, method, bodyObject = false) => {
       body: bodyObject && JSON.stringify(bodyObject)
     });
     const data = await response.json();
-    return data;
+    if (data) {
+      return data;
+    }
+    return "error";
   } catch (err) {
     return "error";
   }

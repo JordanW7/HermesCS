@@ -48,6 +48,7 @@ class Signin extends Component {
     if (data === "error" || !data.id) {
       this.setState({ signInFailed: true });
     } else {
+      this.saveAuthToken(this.state.signInRememberMe, data.token);
       const userdata = await apiBackEnd(
         `profile/${data.account}/${data.id}`,
         "get"
@@ -56,7 +57,6 @@ class Signin extends Component {
         this.setState({ signInFailed: true });
       } else {
         this.setState({ signInFailed: false });
-        this.saveAuthToken(this.state.signInRememberMe, data.token);
         this.props.onLoadUser(userdata);
         this.props.onSignin();
       }
