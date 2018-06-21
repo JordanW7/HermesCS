@@ -16,7 +16,7 @@ const requestAssignToType = (
   </Select>
 );
 
-// Need to make this more mobile friendly and add a Created_By field for Search and RequestView types.
+// Need to make this more mobile friendly.
 
 const RequestForm = props => {
   const path = props.location.pathname;
@@ -25,7 +25,7 @@ const RequestForm = props => {
       <div className="requestform-box">
         <Form layout="inline">
           <Row style={{ textAlign: "right" }}>
-            {path !== "/newrequest" && <Col span={8} />}
+            {path !== "/newrequest" && <Col span={2} />}
             {!["/newrequest", "/requests"].includes(path) && (
               <Col span={12}>
                 <FormItem label="Date/Time:">
@@ -67,6 +67,18 @@ const RequestForm = props => {
                     showTime={{ format: "HH:mm" }}
                     format="DD-MM-YYYY HH:mm"
                     placeholder={["Start", "End"]}
+                  />
+                </FormItem>
+              </Col>
+            )}
+            {path !== "/newrequest" && (
+              <Col span={6}>
+                <FormItem label="Created by:">
+                  <Input
+                    prefix={
+                      <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                    }
+                    placeholder=""
                   />
                 </FormItem>
               </Col>
