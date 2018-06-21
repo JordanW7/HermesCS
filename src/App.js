@@ -115,9 +115,13 @@ const getTokenData = async () => {
 class App extends Component {
   async componentDidMount() {
     const data = await getTokenData();
+    const { onLoadUser, onSignin, onSignout, loginStatus } = this.props;
     if (!data.account) {
       window.sessionStorage.removeItem("token");
       window.localStorage.removeItem("token");
+      if (loginStatus.loginStatus) {
+        onSignout();
+      }
       return;
     }
     const userdata = await apiBackEnd(
@@ -125,8 +129,14 @@ class App extends Component {
       "get"
     );
     if (userdata.id) {
-      this.props.onLoadUser(userdata);
-      this.props.onSignin();
+      onLoadUser(userdata);
+      onSignin();
+    } else {
+      window.sessionStorage.removeItem("token");
+      window.localStorage.removeItem("token");
+      if (loginStatus.loginStatus) {
+        onSignout();
+      }
     }
   }
   render() {
