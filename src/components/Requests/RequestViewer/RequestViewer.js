@@ -8,7 +8,8 @@ class RequestViewer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      requestdata: {}
+      requestdata: {},
+      requestFailed: false
     };
   }
   async componentDidMount() {
@@ -17,12 +18,18 @@ class RequestViewer extends Component {
       `requests/${account}/${this.props.id}`,
       "get"
     );
+    if (!requestdata.id) {
+      return this.setState({ requestFailed: true });
+    }
     this.setState({ requestdata });
   }
   render() {
+    if (this.state.requestFailed === true) {
+      return <h1>Oops! This request doesn't exist</h1>;
+    }
     const { id } = this.state.requestdata;
     if (!id) {
-      return <h1>Oops! This request doesn't exist</h1>;
+      return null;
     }
     return (
       <div className="requestviewer">

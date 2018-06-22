@@ -51,7 +51,7 @@ const RequestForm = props => {
           <Row style={{ textAlign: "right" }}>
             {path !== "/newrequest" && <Col span={2} />}
             {!["/newrequest", "/requests"].includes(path) && (
-              <Col span={12}>
+              <Col span={10}>
                 <FormItem label="Date/Time:">
                   <DatePicker
                     showTime
@@ -118,9 +118,11 @@ const RequestForm = props => {
                 </FormItem>
               </Col>
             )}
-            {path === "/requests" && (
+            {path !== "/newrequest" && (
               <Col span={2}>
-                <Button type="primary">Search</Button>
+                <Button type="primary">
+                  {path === "/requests" ? "Search" : "Update"}
+                </Button>
               </Col>
             )}
             {path === "/newrequest" ? (
