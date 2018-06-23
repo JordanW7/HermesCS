@@ -47,6 +47,7 @@ class RequestViewer extends Component {
     if (response === "error") {
       return console.log("Error Submitting Comment");
     }
+    ///need to advise user that this was successful.
     console.log("SUCCESS", response);
     return this.loadRequestData();
   };
