@@ -505,16 +505,17 @@ class RequestForm extends Component {
                   <FileUploader />
                 </Col>
               )}
-              {!["/newrequest", "/requests"].includes(path) && (
-                <Col span={24} style={{ textAlign: "left" }}>
-                  Attachments:
-                </Col>
-              )}
-              {!["/newrequest", "/requests"].includes(path) && (
-                <Col span={24} style={{ textAlign: "left" }}>
-                  {attachments}
-                </Col>
-              )}
+              {
+                // !["/newrequest", "/requests"].includes(path) && (
+                // <Col span={24} style={{ textAlign: "left" }}>
+                //   Attachments:
+                // </Col>)
+                // !["/newrequest", "/requests"].includes(path) && (
+                //   <Col span={24} style={{ textAlign: "left" }}>
+                //     {attachments}
+                //   </Col>
+                // )
+              }
             </Row>
           </Form>
         </div>
