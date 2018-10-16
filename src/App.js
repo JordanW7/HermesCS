@@ -52,11 +52,6 @@ const About = Loadable({
   loading: Loading
 });
 
-const Features = Loadable({
-  loader: () => import("./components/Features/Features"),
-  loading: Loading
-});
-
 const Contact = Loadable({
   loader: () => import("./components/Contact/Contact"),
   loading: Loading
@@ -144,11 +139,6 @@ class App extends Component {
       <Switch>
         <Route exact path="/" render={() => <Hero {...this.props} />} />
         <Route exact path="/about" render={() => <About {...this.props} />} />
-        <Route
-          exact
-          path="/features"
-          render={() => <Features {...this.props} />}
-        />
         <Route
           exact
           path="/contact"

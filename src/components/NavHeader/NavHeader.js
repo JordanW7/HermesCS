@@ -8,7 +8,6 @@ import AvatarMenu from "./AvatarMenu/AvatarMenu";
 const publicPageList = [
   "/",
   "/about",
-  "/features",
   "/contact",
   "/signin",
   "/forgot",
@@ -49,9 +48,6 @@ const NavHeader = ({
           </Link>
           <Link to="/about" className="navheader-link">
             ABOUT
-          </Link>
-          <Link to="/features" className="navheader-link">
-            FEATURES
           </Link>
           <Link to="/contact" className="navheader-link">
             CONTACT
