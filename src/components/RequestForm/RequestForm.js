@@ -3,7 +3,6 @@ import moment from "moment";
 import "./RequestForm.css";
 import apiBackEnd from "../../api/api";
 import { Form, Row, Col, Input, Select, Icon, Button, DatePicker } from "antd";
-import FileUploader from "./FileUploader/FileUploader";
 
 const { TextArea } = Input;
 const FormItem = Form.Item;
@@ -498,23 +497,6 @@ class RequestForm extends Component {
                   />
                 </Col>
               )}
-              {path === "/newrequest" && <Col span={4} />}
-              {path === "/newrequest" && (
-                <Col span={16} style={{ marginTop: 10 }}>
-                  <FileUploader />
-                </Col>
-              )}
-              {
-                // !["/newrequest", "/requests"].includes(path) && (
-                // <Col span={24} style={{ textAlign: "left" }}>
-                //   Attachments:
-                // </Col>)
-                // !["/newrequest", "/requests"].includes(path) && (
-                //   <Col span={24} style={{ textAlign: "left" }}>
-                //     {attachments}
-                //   </Col>
-                // )
-              }
             </Row>
           </Form>
         </div>

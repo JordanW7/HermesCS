@@ -14,7 +14,7 @@ const apiBackEnd = async (request, method, bodyObject = false) => {
       headers: token
         ? { "Content-Type": "application/json", Authorization: token }
         : { "Content-Type": "application/json" },
-      body: bodyObject && JSON.stringify(bodyObject)
+      body: bodyObject ? JSON.stringify(bodyObject) : undefined
     });
     const data = await response.json();
     if (data) {
