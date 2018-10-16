@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 const store = configureStore();
 
 it("Placeholder", () => {
-  return true;
+  return promise.resolve(true);
 });
 
 // it("renders without crashing", () => {
