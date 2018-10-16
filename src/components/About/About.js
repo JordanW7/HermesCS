@@ -14,68 +14,47 @@ const About = props => {
             <Icon type="info-circle-o" /> About
           </span>
           <div className="about-box">
+            <p>HermesCS</p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              fermentum ut lectus quis lacinia. Sed quis venenatis sem. Orci
-              varius natoque penatibus et magnis dis parturient montes, nascetur
-              ridiculus mus. Vestibulum semper tempor magna non convallis. Duis
-              tincidunt purus nulla, quis suscipit dui accumsan et. Nunc nec
-              risus nisl. Aliquam in arcu risus. Mauris vulputate mattis
-              ultricies. Praesent porta enim ut ex lobortis tincidunt. Cras non
-              mi et ex tempor maximus at vitae ipsum. Phasellus lorem elit,
-              facilisis vel fermentum a, feugiat imperdiet lorem. Sed ultricies
-              mi nulla, ac mattis sem congue et. Praesent dolor quam, vehicula
-              eget scelerisque et, feugiat id enim. Etiam tristique sagittis
-              arcu quis egestas. Sed vitae dolor pulvinar, laoreet mi vel,
-              auctor odio. Phasellus erat metus, pellentesque ut sagittis a,
-              facilisis eu enim.
+              A Web App built for first-class Customer Service by
+              JordanFWilson.com
             </p>
+            <p>Creating New Requests</p>
             <p>
-              Nullam a volutpat nulla. Donec bibendum nisl ligula, euismod
-              luctus purus malesuada et. Morbi commodo diam a odio suscipit
-              faucibus. Donec dignissim pharetra eros. Donec vel tincidunt
-              velit, in lacinia metus. Quisque et ultrices purus. Quisque
-              ultrices, lectus nec tincidunt lacinia, massa sapien consequat mi,
-              eu blandit dolor velit quis risus. Praesent ultrices ligula vel mi
-              bibendum, in egestas ligula faucibus. Quisque in tortor nisi.
-              Donec nibh felis, malesuada vitae lorem ac, varius dignissim eros.
-              Donec sodales vehicula erat, a pretium metus tincidunt ac.
-              Vestibulum vehicula, urna nec dictum aliquet, metus leo vehicula
-              tellus, non malesuada arcu nunc sit amet urna. Mauris sem nibh,
-              condimentum sit amet facilisis ac, ornare blandit ex.
+              When a customer contacts the company, details of this interaction
+              can be recorded by filling out a "New Request". If this
+              interaction has something that needs to be actioned further by
+              another team or person (i.e. updating information, requesting
+              something to be fixed, requesting a callback from another team
+              with some information), this new request form can be allocated to
+              the relevant person.
             </p>
+            <p>Using the Dashboard</p>
             <p>
-              Aenean laoreet, neque eu ultricies tempus, metus ipsum elementum
-              diam, ac maximus purus diam eu sapien. Phasellus ornare lobortis
-              velit sed vulputate. Morbi finibus erat interdum fermentum
-              tincidunt. Suspendisse quam lectus, tristique ultricies vehicula
-              et, maximus a augue. Phasellus felis arcu, ornare et elit eu,
-              feugiat ornare arcu. Cras sagittis blandit diam, ac faucibus erat
-              ultrices a. Phasellus posuere volutpat consectetur. Fusce suscipit
-              odio nec sollicitudin rutrum. In tempor metus ex, id lobortis mi
-              aliquam vel. Nulla facilisi. Nulla facilisi. Ut molestie, elit sed
-              semper sagittis, mi dolor bibendum turpis, a auctor eros neque sit
-              amet ipsum. Proin id velit tortor. Curabitur pharetra rutrum
-              magna. Quisque consequat eu urna dictum cursus.
+              The dashboard shows all of the outstanding customer requests that
+              have been allocated to you and/or your team. From here, you can
+              view the details of the customer requests, complete any required
+              actions, leave notes on the request and update their status to
+              being completed.
             </p>
+            <p>Searching for Requests</p>
             <p>
-              Vestibulum dictum, lectus vitae vehicula porta, velit mi sagittis
-              orci, sed tincidunt nisl augue nec ligula. Ut sit amet rutrum
-              lectus. Praesent varius, ex eget eleifend sollicitudin, quam leo
-              hendrerit nisl, in sodales lorem odio vitae erat. Nullam in arcu
-              justo. In ultrices, enim in sollicitudin ultricies, tellus lacus
-              lacinia risus, id consequat purus quam vel tellus. Fusce vitae
-              lacus malesuada, auctor quam lacinia, laoreet augue. Vestibulum
-              convallis interdum leo at iaculis. Curabitur sit amet mattis est.
+              Requests that are in the system can be searched via their
+              reference number, or any of the customer's details that might have
+              been added to the request (phone number, account number, etc). By
+              looking up the request, you can check all the information that was
+              added at the time of submitting and any comments and progress
+              since. If searching with a customer detail, the request search
+              will show all matches, showing all of the requests in the system
+              for that customer; this shows a clear customer history.
             </p>
+            <p>Use the Web App anywhere</p>
             <p>
-              Phasellus non quam ut velit rhoncus convallis at at tellus. Nam
-              leo urna, ullamcorper eu mauris sed, maximus vestibulum est. Class
-              aptent taciti sociosqu ad litora torquent per conubia nostra, per
-              inceptos himenaeos. Morbi commodo blandit turpis, sit amet blandit
-              sem eleifend eu. Donec quis urna feugiat, aliquet ante eleifend,
-              eleifend arcu. Aliquam eget faucibus nibh, quis faucibus lectus.
-              Nullam porttitor rutrum massa at faucibus"
+              Unlike traditional "desktop" contact centre applications, this app
+              can be used on any device in the office or in the field.
+              Therefore, a person in the contact centre can lodge a request and
+              someone in the field can receive it and action it immediately on
+              their phone or tablet.
             </p>
           </div>
         </div>
