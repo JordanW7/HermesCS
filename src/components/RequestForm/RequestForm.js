@@ -2,7 +2,17 @@ import React, { Component } from "react";
 import moment from "moment";
 import "./RequestForm.css";
 import apiBackEnd from "../../api/api";
-import { Form, Row, Col, Input, Select, Icon, Button, DatePicker } from "antd";
+import {
+  Form,
+  Row,
+  Col,
+  Input,
+  Select,
+  Icon,
+  Button,
+  DatePicker,
+  message
+} from "antd";
 
 const { TextArea } = Input;
 const FormItem = Form.Item;
@@ -14,6 +24,7 @@ class RequestForm extends Component {
     super();
     this.state = {
       requestStatus: "",
+      requestPriority: "",
       requestAssignment: "",
       requestAssignmentTeam: ""
     };
@@ -21,55 +32,57 @@ class RequestForm extends Component {
   onRequestStatusChange = value => {
     this.setState({ requestStatus: value });
   };
+  onRequestPriorityChange = value => {
+    this.setState({ requestPriority: value });
+  };
   onRequestAssignmentPersonChange = event => {
     this.setState({ requestAssignment: event.target.value });
   };
   onRequestAssignmentTeamChange = value => {
     this.setState({ requestAssignmentTeam: value });
   };
-  onRequestUpdateSubmit = () => {
-    const { assign_team, assign_person, status } = this.props;
+  onRequestUpdateSubmit = async () => {
+    const { assign_team, assign_person, status, priority } = this.props;
     const {
       requestStatus,
-      requestAssignment,
-      requestAssignmentType
-    } = this.state;
-    if (!requestStatus && !requestAssignment) {
-      return console.log("NO CHANGES OR EMPTY");
-    }
-    if (!assign_person) {
-      if (
-        requestAssignmentType !== "team" ||
-        requestAssignment !== assign_team ||
-        requestStatus !== status
-      ) {
-        this.updateRequestInfo();
-      }
-    } else {
-      if (
-        requestAssignmentType !== "person" ||
-        requestAssignment !== assign_person ||
-        requestStatus !== status
-      ) {
-        this.updateRequestInfo();
-      }
-    }
-  };
-  updateRequestInfo = async () => {
-    const { user } = this.props.user;
-    console.log(this.props);
-    const {
-      requestStatus,
+      requestPriority,
       requestAssignment,
       requestAssignmentTeam
     } = this.state;
-    const response = await apiBackEnd("updaterequest", "POST", {
-      requestStatus,
-      requestAssignment,
-      requestAssignmentTeam,
-      user
-    });
-    console.log(response);
+    if (
+      !requestStatus &&
+      !requestAssignment &&
+      !requestAssignmentTeam &&
+      !requestPriority
+    ) {
+      return;
+    }
+    if (
+      (requestStatus === status || !requestStatus) &&
+      (requestPriority === priority || !requestPriority) &&
+      (assign_person === requestAssignment || !requestAssignment) &&
+      (assign_team === requestAssignmentTeam || !requestAssignmentTeam)
+    ) {
+      return;
+    }
+    const { id } = this.props;
+    const { user } = this.props.user;
+    try {
+      const response = await apiBackEnd("updaterequest", "POST", {
+        status: requestStatus,
+        priority: requestPriority,
+        assign_person: requestAssignment,
+        assign_team: requestAssignmentTeam,
+        user,
+        id
+      });
+      if (response === "Request Updated") {
+        return message.success("Updated successfully.");
+      }
+      message.error("Update failed.");
+    } catch (err) {
+      message.error("Update failed.");
+    }
   };
   render() {
     const path = this.props.location.pathname;
@@ -157,11 +170,7 @@ class RequestForm extends Component {
                             ? "all"
                             : "low"
                       }
-                      disabled={
-                        !["/newrequest", "/requests"].includes(path)
-                          ? true
-                          : false
-                      }
+                      onChange={this.onRequestPriorityChange}
                     >
                       <Option value="extreme">Extreme</Option>
                       <Option value="high">High</Option>
@@ -226,11 +235,7 @@ class RequestForm extends Component {
                             ? "all"
                             : "low"
                       }
-                      disabled={
-                        !["/newrequest", "/requests"].includes(path)
-                          ? true
-                          : false
-                      }
+                      onChange={this.onRequestPriorityChange}
                     >
                       <Option value="extreme">Extreme</Option>
                       <Option value="high">High</Option>
