@@ -7,6 +7,10 @@ import { Provider } from "react-redux";
 
 const store = configureStore();
 
+it("Placeholder", () => {
+  return true;
+});
+
 // it("renders without crashing", () => {
 //   const div = document.createElement("div");
 //   ReactDOM.render(
