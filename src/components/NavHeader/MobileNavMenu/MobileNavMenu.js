@@ -62,11 +62,6 @@ const MobileNavMenu = ({
         </Link>
       </Menu.Item>
       <Menu.Item>
-        <Link to="/features">
-          <Icon type="star-o" className="mobilenavmenu-icon" />Features
-        </Link>
-      </Menu.Item>
-      <Menu.Item>
         <Link to="/contact">
           <Icon type="mail" className="mobilenavmenu-icon" />Contact
         </Link>

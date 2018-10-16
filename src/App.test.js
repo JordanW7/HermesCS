@@ -7,15 +7,15 @@ import { Provider } from "react-redux";
 
 const store = configureStore();
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>,
-    div
-  );
-  ReactDOM.unmountComponentAtNode(div);
-});
+// it("renders without crashing", () => {
+//   const div = document.createElement("div");
+//   ReactDOM.render(
+//     <Provider store={store}>
+//       <BrowserRouter>
+//         <App />
+//       </BrowserRouter>
+//     </Provider>,
+//     div
+//   );
+//   ReactDOM.unmountComponentAtNode(div);
+// });

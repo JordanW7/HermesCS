@@ -9,8 +9,6 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const { RangePicker } = DatePicker;
 
-// Need to make this more mobile friendly.
-
 class RequestForm extends Component {
   constructor() {
     super();

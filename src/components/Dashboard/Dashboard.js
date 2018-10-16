@@ -18,8 +18,6 @@ const dashboardGreeting = () => {
   }
 };
 
-// Need to make a mobile friendly option that shows less info and a Quick Look button
-
 const Dashboard = props => {
   let auth = CheckAuth({ ...props });
   if (auth !== true) {
