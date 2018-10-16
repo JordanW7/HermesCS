@@ -44,6 +44,37 @@
   font-size: 18px;
 }
 
+.about-box-title {
+  font-size: 25px;
+  font-weight: 500;
+  text-shadow: 0 0 5px black;
+  color: white;
+}
+
+.about-box-headerphrase {
+  font-size: 25px;
+  font-weight: 500;
+  text-shadow: 0 0 5px black;
+  color: white;
+  text-align: center;
+}
+
+.about-box-headerlink {
+  font-size: 25px;
+  font-weight: 500;
+  text-shadow: 0 0 5px black;
+  color: white;
+  text-align: center;
+  opacity: 1;
+}
+
+.about-box-headerlink:hover {
+  opacity: 0.7;
+  color: white;
+  text-shadow: 0 0 5px black;
+  transition: opacity 0.25s linear;
+}
+
 .about-title {
   font-size: 30px;
   align-self: flex-start;

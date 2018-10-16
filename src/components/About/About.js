@@ -14,12 +14,18 @@ const About = props => {
             <Icon type="info-circle-o" /> About
           </span>
           <div className="about-box">
-            <p>HermesCS</p>
-            <p>
-              A Web App built for first-class Customer Service by
-              JordanFWilson.com
+            <p className="about-box-headerphrase">
+              A Web App built for first-class Customer Service by{" "}
+              <a
+                href="https://jordanfwilson.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="about-box-headerlink"
+              >
+                JordanFWilson.com
+              </a>
             </p>
-            <p>Creating New Requests</p>
+            <span className="about-box-title">Creating New Requests</span>
             <p>
               When a customer contacts the company, details of this interaction
               can be recorded by filling out a "New Request". If this
@@ -29,7 +35,7 @@ const About = props => {
               with some information), this new request form can be allocated to
               the relevant person.
             </p>
-            <p>Using the Dashboard</p>
+            <span className="about-box-title">Using the Dashboard</span>
             <p>
               The dashboard shows all of the outstanding customer requests that
               have been allocated to you and/or your team. From here, you can
@@ -37,7 +43,7 @@ const About = props => {
               actions, leave notes on the request and update their status to
               being completed.
             </p>
-            <p>Searching for Requests</p>
+            <span className="about-box-title">Searching for Requests</span>
             <p>
               Requests that are in the system can be searched via their
               reference number, or any of the customer's details that might have
@@ -48,7 +54,7 @@ const About = props => {
               will show all matches, showing all of the requests in the system
               for that customer; this shows a clear customer history.
             </p>
-            <p>Use the Web App anywhere</p>
+            <span className="about-box-title">Use the Web App anywhere</span>
             <p>
               Unlike traditional "desktop" contact centre applications, this app
               can be used on any device in the office or in the field.
