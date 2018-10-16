@@ -93,7 +93,6 @@ class RequestForm extends Component {
       assign_team,
       priority,
       details,
-      attachments,
       status,
       created_by,
       created_at
