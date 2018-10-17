@@ -23,6 +23,18 @@ class RequestForm extends Component {
   constructor() {
     super();
     this.state = {
+      requestFirstName: "",
+      requestLastName: "",
+      requestAccount: "",
+      requestMobile: "",
+      requestHome: "",
+      requestTwitter: "",
+      requestFacebook: "",
+      requestEmail: "",
+      requestAddress: "",
+      requestType: "",
+      requestTopic: "",
+      requestDetails: "",
       requestStatus: "",
       requestPriority: "",
       requestAssignment: "",
@@ -52,6 +64,42 @@ class RequestForm extends Component {
     this.setState({ requestTeamList });
     this.setState({ requestTeamUserLists });
     this.setState({ requestUserSelection: requestTeamUserLists[assign_team] });
+  };
+  onRequestFirstNameChange = event => {
+    this.setState({ requestFirstName: event.target.value });
+  };
+  onRequestLastNameChange = event => {
+    this.setState({ requestLastName: event.target.value });
+  };
+  onRequestAccountChange = event => {
+    this.setState({ requestAccount: event.target.value });
+  };
+  onRequestMobileChange = event => {
+    this.setState({ requestMobile: event.target.value });
+  };
+  onRequestHomeChange = event => {
+    this.setState({ requestHome: event.target.value });
+  };
+  onRequestTwitterChange = event => {
+    this.setState({ requestTwitter: event.target.value });
+  };
+  onRequestFacebookChange = event => {
+    this.setState({ requestFacebook: event.target.value });
+  };
+  onRequestEmailChange = event => {
+    this.setState({ requestEmail: event.target.value });
+  };
+  onRequestAddressChange = event => {
+    this.setState({ requestAddress: event.target.value });
+  };
+  onRequestTypeChange = value => {
+    this.setState({ requestType: value });
+  };
+  onRequestTopicChange = event => {
+    this.setState({ requestTopic: event.target.value });
+  };
+  onRequestDetailsChange = event => {
+    this.setState({ requestDetails: event.target.value });
   };
   onRequestStatusChange = value => {
     this.setState({ requestStatus: value });
@@ -176,7 +224,7 @@ class RequestForm extends Component {
               )}
               {path === "/requests" && (
                 <Col span={2}>
-                  <Button type="primary" onClick={this.onRequestUpdateSubmit}>
+                  <Button type="primary" onClick={this.onRequestSearchSubmit}>
                     Search
                   </Button>
                 </Col>
@@ -212,7 +260,7 @@ class RequestForm extends Component {
               )}
               {path === "/newrequest" && (
                 <Col span={2}>
-                  <Button type="primary" onClick={this.onRequestUpdateSubmit}>
+                  <Button type="primary" onClick={this.onRequestSaveSubmit}>
                     Save
                   </Button>
                 </Col>
@@ -299,6 +347,7 @@ class RequestForm extends Component {
                     prefix={
                       <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                     }
+                    onChange={this.onRequestFirstNameChange}
                     defaultValue={firstname}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
