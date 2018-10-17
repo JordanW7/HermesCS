@@ -26,20 +26,47 @@ class RequestForm extends Component {
       requestStatus: "",
       requestPriority: "",
       requestAssignment: "",
-      requestAssignmentTeam: ""
+      requestAssignmentTeam: "",
+      requestTeamList: [],
+      requestUserSelection: [],
+      requestTeamUserLists: {}
     };
   }
+  componentDidMount() {
+    this.loadRequestTeamData();
+  }
+  loadRequestTeamData = async () => {
+    const { account } = this.props.user.user;
+    const { assign_team } = this.props;
+    const request = await apiBackEnd(`teams/${account}`, "get");
+    if (!request) {
+      return;
+    }
+    let requestTeamList = [];
+    let requestTeamUserLists = {};
+    for (let i = 0; i < request.length; i++) {
+      let { team, members } = request[i];
+      requestTeamList.push([team]);
+      requestTeamUserLists[team] = members;
+    }
+    this.setState({ requestTeamList });
+    this.setState({ requestTeamUserLists });
+    this.setState({ requestUserSelection: requestTeamUserLists[assign_team] });
+  };
   onRequestStatusChange = value => {
     this.setState({ requestStatus: value });
   };
   onRequestPriorityChange = value => {
     this.setState({ requestPriority: value });
   };
-  onRequestAssignmentPersonChange = event => {
-    this.setState({ requestAssignment: event.target.value });
+  onRequestAssignmentPersonChange = value => {
+    this.setState({ requestAssignment: value });
   };
   onRequestAssignmentTeamChange = value => {
     this.setState({ requestAssignmentTeam: value });
+    this.setState({
+      requestUserSelection: this.state.requestTeamUserLists[value]
+    });
   };
   onRequestUpdateSubmit = async () => {
     const { assign_team, assign_person, status, priority } = this.props;
@@ -69,10 +96,12 @@ class RequestForm extends Component {
     const { user } = this.props.user;
     try {
       const response = await apiBackEnd("updaterequest", "POST", {
-        status: requestStatus,
-        priority: requestPriority,
-        assign_person: requestAssignment,
-        assign_team: requestAssignmentTeam,
+        status: requestStatus ? requestStatus : status,
+        priority: requestPriority ? requestPriority : priority,
+        assign_person: requestAssignment ? requestAssignment : assign_person,
+        assign_team: requestAssignmentTeam
+          ? requestAssignmentTeam
+          : assign_team,
         user,
         id
       });
@@ -446,8 +475,10 @@ class RequestForm extends Component {
                         : false
                     }
                   >
+                    <Option value="info">Request for Info</Option>
+                    <Option value="service">Request for Service</Option>
+                    <Option value="noaction">No Further Action</Option>
                     <Option value="misc">Misc</Option>
-                    <Option value="personal">Personal Message</Option>
                     {path === "/requests" && <Option value="all">All</Option>}
                   </Select>
                 </FormItem>
@@ -467,18 +498,40 @@ class RequestForm extends Component {
               </Col>
               <Col span={6}>
                 <FormItem label="For Team">
-                  <Input
-                    defaultValue={assign_team}
+                  <Select
+                    defaultValue={assign_team ? assign_team : ""}
                     onChange={this.onRequestAssignmentTeamChange}
-                  />
+                  >
+                    {["/newrequest", "/requests"].includes(path) && (
+                      <Option value="">*Unassigned*</Option>
+                    )}
+                    {this.state.requestTeamList &&
+                      this.state.requestTeamList.map((team, i) => {
+                        return (
+                          <Option key={`${i}_team`} value={`${team}`}>
+                            {team}
+                          </Option>
+                        );
+                      })}
+                  </Select>
                 </FormItem>
               </Col>
               <Col span={6}>
                 <FormItem label="For Person">
-                  <Input
-                    defaultValue={assign_person}
-                    onChange={this.onRequestAssignmentChange}
-                  />
+                  <Select
+                    defaultValue={assign_person ? assign_person : ""}
+                    onChange={this.onRequestAssignmentPersonChange}
+                  >
+                    <Option value="">*Unassigned*</Option>
+                    {this.state.requestUserSelection &&
+                      this.state.requestUserSelection.map((person, i) => {
+                        return (
+                          <Option key={`${i}_person`} value={`${person[0]}`}>
+                            {person[0]}
+                          </Option>
+                        );
+                      })}
+                  </Select>
                 </FormItem>
               </Col>
               {path === "/newrequest" && (
