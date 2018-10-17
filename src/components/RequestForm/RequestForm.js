@@ -363,6 +363,7 @@ class RequestForm extends Component {
                     prefix={
                       <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                     }
+                    onChange={this.onRequestLastNameChange}
                     defaultValue={lastname}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
@@ -381,6 +382,7 @@ class RequestForm extends Component {
                         style={{ color: "rgba(0,0,0,.25)" }}
                       />
                     }
+                    onChange={this.onRequestAccountChange}
                     defaultValue={account}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
@@ -413,6 +415,7 @@ class RequestForm extends Component {
                         style={{ color: "rgba(0,0,0,.25)" }}
                       />
                     }
+                    onChange={this.onRequestMobileChange}
                     defaultValue={mobile}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
@@ -428,6 +431,7 @@ class RequestForm extends Component {
                     prefix={
                       <Icon type="phone" style={{ color: "rgba(0,0,0,.25)" }} />
                     }
+                    onChange={this.onRequestHomeChange}
                     defaultValue={home}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
@@ -446,6 +450,7 @@ class RequestForm extends Component {
                         style={{ color: "rgba(0,0,0,.25)" }}
                       />
                     }
+                    onChange={this.onRequestTwitterChange}
                     defaultValue={twitter}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
@@ -464,6 +469,7 @@ class RequestForm extends Component {
                         style={{ color: "rgba(0,0,0,.25)" }}
                       />
                     }
+                    onChange={this.onRequestFacebookChange}
                     defaultValue={facebook}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
@@ -479,6 +485,7 @@ class RequestForm extends Component {
                     prefix={
                       <Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />
                     }
+                    onChange={this.onRequestEmailChange}
                     defaultValue={email}
                     style={{ width: 485 }}
                     disabled={
@@ -498,6 +505,7 @@ class RequestForm extends Component {
                         style={{ color: "rgba(0,0,0,.25)" }}
                       />
                     }
+                    onChange={this.onRequestAddressChange}
                     defaultValue={address}
                     style={{ width: 485 }}
                     disabled={
@@ -518,6 +526,7 @@ class RequestForm extends Component {
                       type ? type : path === "/requests" ? "all" : "misc"
                     }
                     style={{ width: 190 }}
+                    onChange={this.onRequestTypeChange}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
                         ? true
@@ -537,6 +546,7 @@ class RequestForm extends Component {
                   <Input
                     defaultValue={topic}
                     style={{ width: 190 }}
+                    onChange={this.onRequestTopicChange}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
                         ? true
@@ -592,6 +602,7 @@ class RequestForm extends Component {
                 <Col span={24} style={{ textAlign: "left" }}>
                   <TextArea
                     defaultValue={details}
+                    onChange={this.onRequestDetailsChange}
                     placeholder="Request Details"
                     autosize={{ minRows: 4, maxRows: 8 }}
                     disabled={
