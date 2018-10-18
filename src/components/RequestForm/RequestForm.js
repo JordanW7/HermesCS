@@ -116,6 +116,57 @@ class RequestForm extends Component {
       requestUserSelection: this.state.requestTeamUserLists[value]
     });
   };
+  onRequestSaveSubmit = async () => {
+    const {
+      requestFirstName,
+      requestLastName,
+      requestAccount,
+      requestMobile,
+      requestHome,
+      requestTwitter,
+      requestFacebook,
+      requestEmail,
+      requestAddress,
+      requestType,
+      requestTopic,
+      requestAssignment,
+      requestAssignmentTeam,
+      requestPriority,
+      requestDetails,
+      requestStatus
+    } = this.state;
+    if (!requestDetails || !requestTopic || !requestAssignmentTeam) {
+      return message.error(
+        "The Request Topic, Details and which Team to assign the request to must be completed."
+      );
+    }
+    const { firstname, lastname, account } = this.props.user.user;
+    //set the form status depening on if assign_person exists (current, otherwise unassigned) and if the type is no action, assign complete.
+    const response = await apiBackEnd("addrequestcomments", "post", {
+      account: account,
+      firstname: requestFirstName,
+      lastname: requestLastName,
+      customer_account: requestAccount,
+      mobile: requestMobile,
+      home: requestHome,
+      twitter: requestTwitter,
+      facebook: requestFacebook,
+      email: requestEmail,
+      address: requestAddress,
+      type: requestType ? requestType : "misc",
+      topic: requestTopic,
+      assign_person: requestAssignment ? requestAssignment : "",
+      assign_team: requestAssignmentTeam,
+      priority: requestPriority ? requestPriority : "low",
+      details: requestDetails,
+      status: requestStatus,
+      created_by: `${firstname} ${lastname}`
+    });
+    if (response === "error") {
+      return;
+    }
+    return this.loadRequestData();
+  };
   onRequestUpdateSubmit = async () => {
     const { assign_team, assign_person, status, priority } = this.props;
     const {
