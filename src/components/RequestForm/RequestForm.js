@@ -141,7 +141,9 @@ class RequestForm extends Component {
       );
     }
     const { firstname, lastname, account } = this.props.user.user;
-    //set the form status depening on if assign_person exists (current, otherwise unassigned) and if the type is no action, assign complete.
+    if (!requestStatus) {
+      const requestStatus = assign_person ? "current" : "unassigned";
+    }
     const response = await apiBackEnd("addrequestcomments", "post", {
       account: account,
       firstname: requestFirstName,
