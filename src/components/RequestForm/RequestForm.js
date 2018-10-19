@@ -142,7 +142,7 @@ class RequestForm extends Component {
     }
     const { firstname, lastname, account } = this.props.user.user;
     if (!requestStatus) {
-      const requestStatus = assign_person ? "current" : "unassigned";
+      const requestStatus = requestAssignment ? "current" : "unassigned";
     }
     const response = await apiBackEnd("addrequestcomments", "post", {
       account: account,
