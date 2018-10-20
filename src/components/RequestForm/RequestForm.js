@@ -165,10 +165,14 @@ class RequestForm extends Component {
       created_by: `${firstname} ${lastname}`
     });
     if (response === "error") {
-      return;
+      return message.error(
+        "Oops! Something went wrong and the request was not submitted."
+      );
     }
     console.log("response:", response);
-    return this.loadRequestData();
+    this.loadRequestData();
+    // Provide success message and load the request/:id page
+    return;
   };
   onRequestUpdateSubmit = async () => {
     const { assign_team, assign_person, status, priority } = this.props;
