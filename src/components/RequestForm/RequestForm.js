@@ -167,6 +167,7 @@ class RequestForm extends Component {
     if (response === "error") {
       return;
     }
+    console.log("response:", response);
     return this.loadRequestData();
   };
   onRequestUpdateSubmit = async () => {
