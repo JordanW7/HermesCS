@@ -8,6 +8,18 @@
   margin-top: 50px;
 }
 
+.searchrequests-requestidbox {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 0 auto;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.searchrequests-box {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
 .searchrequests-title {
   font-size: 50px;
   font-weight: 500;
