@@ -141,9 +141,7 @@ class RequestForm extends Component {
       );
     }
     const { firstname, lastname, account } = this.props.user.user;
-    if (!requestStatus) {
-      const requestStatus = requestAssignment ? "current" : "unassigned";
-    }
+    const requestStatusAlt = requestAssignment ? "current" : "unassigned";
     const response = await apiBackEnd("addrequestcomments", "post", {
       account: account,
       firstname: requestFirstName,
@@ -161,7 +159,7 @@ class RequestForm extends Component {
       assign_team: requestAssignmentTeam,
       priority: requestPriority ? requestPriority : "low",
       details: requestDetails,
-      status: requestStatus,
+      status: requestStatus ? requestStatus : requestStatusAlt,
       created_by: `${firstname} ${lastname}`
     });
     if (response === "error") {
