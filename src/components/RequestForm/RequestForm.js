@@ -44,7 +44,9 @@ class RequestForm extends Component {
       requestTeamList: [],
       requestUserSelection: [],
       requestTeamUserLists: {},
-      newRequestAdded: ""
+      newRequestAdded: "",
+      requestSearchDateRange: "",
+      requestSearchCreatedBy: ""
     };
   }
   componentDidMount() {
@@ -118,6 +120,35 @@ class RequestForm extends Component {
     this.setState({
       requestUserSelection: this.state.requestTeamUserLists[value]
     });
+  };
+  onRequestSearchDateChange = value => {
+    this.setState({ requestSearchDateRange: value });
+    console.log(value);
+  };
+  onRequestSearchCreatedByChange = event => {
+    this.setState({ requestSearchCreatedBy: event.target.value });
+  };
+  onRequestSearchSubmit = async () => {
+    const {
+      requestSearchDateRange,
+      requestSearchCreatedBy,
+      requestFirstName,
+      requestLastName,
+      requestAccount,
+      requestMobile,
+      requestHome,
+      requestTwitter,
+      requestFacebook,
+      requestEmail,
+      requestAddress,
+      requestType,
+      requestTopic,
+      requestAssignment,
+      requestAssignmentTeam,
+      requestPriority
+    } = this.state;
+    // Send API Request for results. Allow wildcard searching and limit to 50 results?
+    // Show/enable the results table, or message error if no results. requestSearchStatus = resultsfound, false, or error
   };
   onRequestSaveSubmit = async () => {
     const {
@@ -285,6 +316,7 @@ class RequestForm extends Component {
                       }}
                       showTime={{ format: "HH:mm" }}
                       format="DD-MM-YYYY HH:mm"
+                      onChange={this.onRequestSearchDateChange}
                     />
                   </FormItem>
                 </Col>
@@ -344,6 +376,7 @@ class RequestForm extends Component {
                           style={{ color: "rgba(0,0,0,.25)" }}
                         />
                       }
+                      onChange={this.onRequestSearchCreatedByChange}
                       defaultValue={created_by}
                       disabled={
                         !["/newrequest", "/requests"].includes(path)
