@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
+import { Redirect } from "react-router-dom";
 import "./RequestForm.css";
 import apiBackEnd from "../../api/api";
 import {
@@ -41,7 +42,8 @@ class RequestForm extends Component {
       requestAssignmentTeam: "",
       requestTeamList: [],
       requestUserSelection: [],
-      requestTeamUserLists: {}
+      requestTeamUserLists: {},
+      newRequestAdded: ""
     };
   }
   componentDidMount() {
@@ -166,9 +168,8 @@ class RequestForm extends Component {
         "Oops! Something went wrong and the request was not submitted."
       );
     }
-    console.log("response:", response);
-    // Provide success message and load the request/:id page
-    return;
+    message.success("Request successfully added.");
+    this.setState({ newRequestAdded: response });
   };
   onRequestUpdateSubmit = async () => {
     const { assign_team, assign_person, status, priority } = this.props;
@@ -238,6 +239,17 @@ class RequestForm extends Component {
       created_by,
       created_at
     } = this.props;
+    if (this.state.newRequestAdded) {
+      const reqID = this.state.newRequestAdded;
+      return (
+        <Redirect
+          to={{
+            pathname: `/requests/${reqID}`,
+            state: "redirected"
+          }}
+        />
+      );
+    }
     return (
       <div>
         <div className="requestform-box">
