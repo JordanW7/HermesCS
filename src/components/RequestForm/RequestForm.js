@@ -167,7 +167,6 @@ class RequestForm extends Component {
       );
     }
     console.log("response:", response);
-    this.loadRequestData();
     // Provide success message and load the request/:id page
     return;
   };
