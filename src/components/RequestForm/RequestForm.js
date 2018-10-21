@@ -3,6 +3,7 @@ import moment from "moment";
 import { Redirect } from "react-router-dom";
 import "./RequestForm.css";
 import apiBackEnd from "../../api/api";
+import SearchRequestResults from "../Requests/SearchRequestResults/SearchRequestResults";
 import {
   Form,
   Row,
@@ -682,6 +683,7 @@ class RequestForm extends Component {
             </Row>
           </Form>
         </div>
+        {path === "/requests" && <SearchRequestResults {...this.props} />}
       </div>
     );
   }
