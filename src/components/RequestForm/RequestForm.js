@@ -145,8 +145,31 @@ class RequestForm extends Component {
       requestTopic,
       requestAssignment,
       requestAssignmentTeam,
-      requestPriority
+      requestPriority,
+      requestStatus
     } = this.state;
+    const { account } = this.props.user.user;
+    const results = await apiBackEnd("searchrequests", "post", {
+      account: account,
+      firstname: requestFirstName,
+      lastname: requestLastName,
+      customer_account: requestAccount,
+      mobile: requestMobile,
+      home: requestHome,
+      twitter: requestTwitter,
+      facebook: requestFacebook,
+      email: requestEmail,
+      address: requestAddress,
+      type: requestType,
+      topic: requestTopic,
+      assign_person: requestAssignment,
+      assign_team: requestAssignmentTeam,
+      priority: requestPriority,
+      status: requestStatus,
+      created_by: requestSearchCreatedBy,
+      date_range: requestSearchDateRange
+    });
+    console.log("RESULTS", results);
     // Send API Request for results. Allow wildcard searching and limit to 50 results?
     // Show/enable the results table, or message error if no results. requestSearchStatus = resultsfound, false, or error
   };
