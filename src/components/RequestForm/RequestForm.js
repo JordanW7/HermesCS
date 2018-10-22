@@ -3,7 +3,6 @@ import moment from "moment";
 import { Redirect } from "react-router-dom";
 import "./RequestForm.css";
 import apiBackEnd from "../../api/api";
-import SearchRequestResults from "../Requests/SearchRequestResults/SearchRequestResults";
 import {
   Form,
   Row,
@@ -46,7 +45,8 @@ class RequestForm extends Component {
       requestTeamUserLists: {},
       newRequestAdded: "",
       requestSearchDateRange: "",
-      requestSearchCreatedBy: ""
+      requestSearchCreatedBy: "",
+      requestSearchResults: false
     };
   }
   componentDidMount() {
@@ -123,7 +123,6 @@ class RequestForm extends Component {
   };
   onRequestSearchDateChange = value => {
     this.setState({ requestSearchDateRange: value });
-    console.log(value);
   };
   onRequestSearchCreatedByChange = event => {
     this.setState({ requestSearchCreatedBy: event.target.value });
@@ -169,9 +168,19 @@ class RequestForm extends Component {
       created_by: requestSearchCreatedBy,
       date_range: requestSearchDateRange
     });
-    console.log("RESULTS", results);
-    // Send API Request for results. Allow wildcard searching and limit to 50 results?
-    // Show/enable the results table, or message error if no results. requestSearchStatus = resultsfound, false, or error
+    if (results === "search failed") {
+      return message.error(
+        "Oops, something went wrong. Please try to search again"
+      );
+    }
+    if (results.length < 1) {
+      this.setState({ requestSearchResults: false });
+      return message.error(
+        "No results were found for the search. Maybe try again with a broader criteria or use wildcards (%) "
+      );
+    }
+    message.success(`${results.length} Results Found!`);
+    this.setState({ requestSearchResults: true });
   };
   onRequestSaveSubmit = async () => {
     const {
@@ -739,7 +748,41 @@ class RequestForm extends Component {
             </Row>
           </Form>
         </div>
-        {path === "/requests" && <SearchRequestResults {...this.props} />}
+        {path === "/requests" && (
+          <div className="searchrequests-box">
+            {this.state.requestSearchResults && (
+              <Row>
+                <Col span={24} className="searchrequests-results-label">
+                  Results
+                </Col>
+                <Col span={3} className="searchrequests-results-label">
+                  Request#:
+                </Col>
+                <Col span={3} className="searchrequests-results-label">
+                  Date:
+                </Col>
+                <Col span={3} className="searchrequests-results-label">
+                  Created by:
+                </Col>
+                <Col span={3} className="searchrequests-results-label">
+                  Topic
+                </Col>
+                <Col span={3} className="searchrequests-results-label">
+                  For Team:
+                </Col>
+                <Col span={3} className="searchrequests-results-label">
+                  Assigned to:
+                </Col>
+                <Col span={3} className="searchrequests-results-label">
+                  Status:
+                </Col>
+                <Col span={3} className="searchrequests-results-label">
+                  Last Update:
+                </Col>
+              </Row>
+            )}
+          </div>
+        )}
       </div>
     );
   }
