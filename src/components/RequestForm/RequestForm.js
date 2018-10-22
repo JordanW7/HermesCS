@@ -46,7 +46,8 @@ class RequestForm extends Component {
       newRequestAdded: "",
       requestSearchDateRange: "",
       requestSearchCreatedBy: "",
-      requestSearchResults: false
+      requestSearchResults: false,
+      requestSearchResultsData: []
     };
   }
   componentDidMount() {
@@ -181,6 +182,7 @@ class RequestForm extends Component {
     }
     message.success(`${results.length} Results Found!`);
     this.setState({ requestSearchResults: true });
+    this.setState({ requestSearchResultsData: results });
   };
   onRequestSaveSubmit = async () => {
     const {
@@ -372,11 +374,7 @@ class RequestForm extends Component {
                   <FormItem label="Priority">
                     <Select
                       defaultValue={
-                        priority
-                          ? priority
-                          : path === "/requests"
-                            ? "all"
-                            : "low"
+                        priority ? priority : path === "/requests" ? "" : "low"
                       }
                       onChange={this.onRequestPriorityChange}
                     >
@@ -384,7 +382,7 @@ class RequestForm extends Component {
                       <Option value="high">High</Option>
                       <Option value="medium">Medium</Option>
                       <Option value="low">Low</Option>
-                      {path === "/requests" && <Option value="all">All</Option>}
+                      {path === "/requests" && <Option value="">All</Option>}
                     </Select>
                   </FormItem>
                 </Col>
@@ -438,11 +436,7 @@ class RequestForm extends Component {
                   <FormItem label="Priority">
                     <Select
                       defaultValue={
-                        priority
-                          ? priority
-                          : path === "/requests"
-                            ? "all"
-                            : "low"
+                        priority ? priority : path === "/requests" ? "" : "low"
                       }
                       onChange={this.onRequestPriorityChange}
                     >
@@ -450,7 +444,7 @@ class RequestForm extends Component {
                       <Option value="high">High</Option>
                       <Option value="medium">Medium</Option>
                       <Option value="low">Low</Option>
-                      {path === "/requests" && <Option value="all">All</Option>}
+                      {path === "/requests" && <Option value="">All</Option>}
                     </Select>
                   </FormItem>
                 </Col>
@@ -459,10 +453,10 @@ class RequestForm extends Component {
                 <Col span={6}>
                   <FormItem label="Status:">
                     <Select
-                      defaultValue={status ? status : "all"}
+                      defaultValue={status ? status : ""}
                       onChange={this.onRequestStatusChange}
                     >
-                      {path === "/requests" && <Option value="all">All</Option>}
+                      {path === "/requests" && <Option value="">All</Option>}
                       <Option value="complete">Complete</Option>
                       <Option value="current">Current</Option>
                       <Option value="unassigned">Unassigned</Option>
@@ -693,8 +687,11 @@ class RequestForm extends Component {
                     defaultValue={assign_team ? assign_team : ""}
                     onChange={this.onRequestAssignmentTeamChange}
                   >
-                    {["/newrequest", "/requests"].includes(path) && (
+                    {["/newrequest"].includes(path) && (
                       <Option value="">*Unassigned*</Option>
+                    )}
+                    {["/requests"].includes(path) && (
+                      <Option value="">Any</Option>
                     )}
                     {this.state.requestTeamList &&
                       this.state.requestTeamList.map((team, i) => {
@@ -710,9 +707,18 @@ class RequestForm extends Component {
               <Col span={6}>
                 <FormItem label="For Person">
                   <Select
-                    defaultValue={assign_person ? assign_person : ""}
+                    defaultValue={
+                      assign_person
+                        ? assign_person
+                        : ["/requests"].includes(path)
+                          ? "%"
+                          : ""
+                    }
                     onChange={this.onRequestAssignmentPersonChange}
                   >
+                    {["/requests"].includes(path) && (
+                      <Option value="%">All</Option>
+                    )}
                     <Option value="">*Unassigned*</Option>
                     {this.state.requestUserSelection &&
                       this.state.requestUserSelection.map((person, i) => {
@@ -751,35 +757,106 @@ class RequestForm extends Component {
         {path === "/requests" && (
           <div className="searchrequests-box">
             {this.state.requestSearchResults && (
-              <Row>
-                <Col span={24} className="searchrequests-results-label">
-                  Results
-                </Col>
-                <Col span={3} className="searchrequests-results-label">
-                  Request#:
-                </Col>
-                <Col span={3} className="searchrequests-results-label">
-                  Date:
-                </Col>
-                <Col span={3} className="searchrequests-results-label">
-                  Created by:
-                </Col>
-                <Col span={3} className="searchrequests-results-label">
-                  Topic
-                </Col>
-                <Col span={3} className="searchrequests-results-label">
-                  For Team:
-                </Col>
-                <Col span={3} className="searchrequests-results-label">
-                  Assigned to:
-                </Col>
-                <Col span={3} className="searchrequests-results-label">
-                  Status:
-                </Col>
-                <Col span={3} className="searchrequests-results-label">
-                  Last Update:
-                </Col>
-              </Row>
+              <div>
+                <Row>
+                  <Col span={24} className="searchrequests-results-label">
+                    Results
+                  </Col>
+                  <Col span={2} className="searchrequests-results-label">
+                    Request#:
+                  </Col>
+                  <Col span={4} className="searchrequests-results-label">
+                    Date:
+                  </Col>
+                  <Col span={3} className="searchrequests-results-label">
+                    Created by:
+                  </Col>
+                  <Col span={3} className="searchrequests-results-label">
+                    Customer Name:
+                  </Col>
+                  <Col span={3} className="searchrequests-results-label">
+                    Topic:
+                  </Col>
+                  <Col span={3} className="searchrequests-results-label">
+                    For Team:
+                  </Col>
+                  <Col span={3} className="searchrequests-results-label">
+                    Assigned to:
+                  </Col>
+                  <Col span={3} className="searchrequests-results-label">
+                    Status:
+                  </Col>
+                </Row>
+                {this.state.requestSearchResultsData.map((result, i) => {
+                  return (
+                    <Row>
+                      <Col
+                        span={2}
+                        key={`${i}_resultsID`}
+                        className="searchrequests-results-entry"
+                      >
+                        <a
+                          href={`/requests/${result["id"]}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="searchrequests-results-link"
+                        >
+                          {result["id"]}
+                        </a>
+                      </Col>
+                      <Col
+                        span={4}
+                        key={`${i}_resultsDate`}
+                        className="searchrequests-results-entry"
+                      >
+                        {result["created_at"]}
+                      </Col>
+                      <Col
+                        span={3}
+                        key={`${i}_resultsAuthor`}
+                        className="searchrequests-results-entry"
+                      >
+                        {result["created_by"]}
+                      </Col>
+                      <Col
+                        span={3}
+                        key={`${i}_resultsName`}
+                        className="searchrequests-results-entry"
+                      >
+                        {`${result["firstname"]} ${result["lastname"]}`}
+                      </Col>
+                      <Col
+                        span={3}
+                        key={`${i}_resultsTopic`}
+                        className="searchrequests-results-entry"
+                      >
+                        {result["topic"]}
+                      </Col>
+                      <Col
+                        span={3}
+                        key={`${i}_resultsAssignTeam`}
+                        className="searchrequests-results-entry"
+                      >
+                        {result["assign_team"]}
+                      </Col>
+                      <Col
+                        span={3}
+                        key={`${i}_resultsAssignPerson`}
+                        className="searchrequests-results-entry"
+                      >
+                        {result["assign_person"]}
+                      </Col>
+                      <Col
+                        span={3}
+                        key={`${i}_resultsStatus`}
+                        className="searchrequests-results-entry"
+                      >
+                        {result["status"]}
+                      </Col>
+                    </Row>
+                  );
+                })}
+              </div>
             )}
           </div>
         )}
