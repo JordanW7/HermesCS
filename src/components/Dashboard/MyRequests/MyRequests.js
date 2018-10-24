@@ -25,14 +25,15 @@ class MyRequests extends Component {
     const results = await apiBackEnd("searchrequests", "post", {
       account: account,
       status:
-        search === "current" ? search : search === "unassigned" ? search : "",
+        search === "current" ? search : search === "unassigned" ? search : "%",
       created_by: `${firstname} ${lastname}`,
+      assign_person: "%",
       date_range:
         search === "today"
           ? [yesterday, today]
           : search === "last7"
             ? [week, today]
-            : ""
+            : []
     });
     if (results === "search failed") {
       this.setState({ dashboardMyRequestsData: [] });

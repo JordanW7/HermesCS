@@ -52,6 +52,9 @@ class RequestForm extends Component {
   }
   componentDidMount() {
     this.loadRequestTeamData();
+    if (this.props.location.pathname === "/requests") {
+      this.setState({ requestAssignment: "%" });
+    }
   }
   loadRequestTeamData = async () => {
     const { account } = this.props.user.user;

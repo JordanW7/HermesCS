@@ -10,7 +10,7 @@ class AssignedToMe extends Component {
     super();
     this.state = {
       dashboardMyAssignmentData: [],
-      dashboardMyAssignmentSearch: "unassigned"
+      dashboardMyAssignmentSearch: "current"
     };
   }
   componentDidMount() {
@@ -24,7 +24,7 @@ class AssignedToMe extends Component {
     const week = moment().subtract(7, "day");
     const results = await apiBackEnd("searchrequests", "post", {
       account: account,
-      status: search === "current" ? search : "",
+      status: search === "current" ? search : "%",
       assign_person: `${firstname} ${lastname}`,
       date_range:
         search === "today"
@@ -41,10 +41,10 @@ class AssignedToMe extends Component {
     }
     this.setState({ dashboardMyAssignmentData: results });
   };
-  onTeamAssignmentSelectorChange = value => {
+  onMyAssignmentSelectorChange = value => {
     this.setState(
       { dashboardMyAssignmentSearch: value },
-      this.loadTeamAssignmentData
+      this.loadMyAssignmentData
     );
   };
   render() {
@@ -96,10 +96,10 @@ class AssignedToMe extends Component {
         <div className="assignedtome-databox">
           {this.state.dashboardMyAssignmentData.map((result, i) => {
             return (
-              <Row key={`${i}_MyRequest`}>
+              <Row key={`${i}_assignedtome`}>
                 <Col
                   span={2}
-                  key={`${i}_MyRequestID`}
+                  key={`${i}_assignedtomeID`}
                   className="assignedtome-data"
                 >
                   <a
@@ -113,35 +113,35 @@ class AssignedToMe extends Component {
                 </Col>
                 <Col
                   span={4}
-                  key={`${i}_MyRequestDate`}
+                  key={`${i}_assignedtomeDate`}
                   className="assignedtome-data"
                 >
                   {result["created_at"]}
                 </Col>
                 <Col
                   span={3}
-                  key={`${i}_MyRequestAuthor`}
+                  key={`${i}_assignedtomeAuthor`}
                   className="assignedtome-data"
                 >
                   {result["created_by"]}
                 </Col>
                 <Col
                   span={3}
-                  key={`${i}_MyRequestName`}
+                  key={`${i}_assignedtomeName`}
                   className="assignedtome-data"
                 >
                   {`${result["firstname"]} ${result["lastname"]}`}
                 </Col>
                 <Col
                   span={3}
-                  key={`${i}_MyRequestTopic`}
+                  key={`${i}_assignedtomeTopic`}
                   className="assignedtome-data"
                 >
                   {result["topic"]}
                 </Col>
                 <Col
                   span={3}
-                  key={`${i}_MyRequestTeam`}
+                  key={`${i}_assignedtomeTeam`}
                   className="assignedtome-data"
                 >
                   {result["assign_team"]}

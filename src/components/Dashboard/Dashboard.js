@@ -29,8 +29,8 @@ const Dashboard = props => {
       <div className="dashboard">
         <div className="dashboard-contents">
           <div className="dashboard-greeting">
-            {dashboardGreeting()} {props.user.user.firstname} @{" "}
-            {props.user.user.displayname}! :)
+            {dashboardGreeting()}{" "}
+            {`${props.user.user.firstname} (${props.user.user.displayname})`}
           </div>
           <AssignedToMe {...props} />
           <AssignedToTeam {...props} />

@@ -25,14 +25,15 @@ class AssignedToTeam extends Component {
     const results = await apiBackEnd("searchrequests", "post", {
       account: account,
       status:
-        search === "current" ? search : search === "unassigned" ? search : "",
+        search === "current" ? search : search === "unassigned" ? search : "%",
+      assign_person: "%",
       assign_team: team,
       date_range:
         search === "today"
           ? [yesterday, today]
           : search === "last7"
             ? [week, today]
-            : ""
+            : []
     });
     if (results === "search failed") {
       this.setState({ dashboardTeamAssignmentData: [] });
