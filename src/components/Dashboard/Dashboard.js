@@ -32,9 +32,9 @@ const Dashboard = props => {
             {dashboardGreeting()} {props.user.user.firstname} @{" "}
             {props.user.user.displayname}! :)
           </div>
-          <AssignedToMe />
-          <AssignedToTeam />
-          <MyRequests />
+          <AssignedToMe {...props} />
+          <AssignedToTeam {...props} />
+          <MyRequests {...props} />
         </div>
       </div>
     </div>
