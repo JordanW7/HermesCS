@@ -266,9 +266,26 @@ class RequestForm extends Component {
     }
     const { id } = this.props;
     const { user } = this.props.user;
+    //Has the assignment changed to unassigned? Change status to unassigned
+    //Has the assignment changed from unassigned to something else? check for a new status and use status if so, otherwise change to current
+    const newStatus =
+      requestAssignment === "unassigned"
+        ? "unassigned"
+        : assign_person === "unassigned" &&
+          !requestAssignment &&
+          requestAssignment !== "unassigned"
+          ? "current"
+          : requestStatus
+            ? requestStatus === "unassigned"
+              ? "current"
+              : requestStatus
+            : status === "unassigned"
+              ? "current"
+              : status;
+    console.log(newStatus);
     try {
       const response = await apiBackEnd("updaterequest", "POST", {
-        status: requestStatus ? requestStatus : status,
+        status: newStatus,
         priority: requestPriority ? requestPriority : priority,
         assign_person: requestAssignment ? requestAssignment : assign_person,
         assign_team: requestAssignmentTeam
@@ -460,9 +477,29 @@ class RequestForm extends Component {
                       onChange={this.onRequestStatusChange}
                     >
                       {path === "/requests" && <Option value="">All</Option>}
-                      <Option value="complete">Complete</Option>
-                      <Option value="current">Current</Option>
-                      <Option value="unassigned">Unassigned</Option>
+                      {(this.state.requestAssignment !== "unassigned" &&
+                        this.state.requestAssignment !== "") ||
+                      (status !== "unassigned" &&
+                        this.state.requestAssignment !== "unassigned") ? (
+                        <Option value="complete">Complete</Option>
+                      ) : (
+                        ""
+                      )}
+                      {(this.state.requestAssignment !== "unassigned" &&
+                        this.state.requestAssignment !== "") ||
+                      (status !== "unassigned" &&
+                        this.state.requestAssignment !== "unassigned") ? (
+                        <Option value="current">Current</Option>
+                      ) : (
+                        ""
+                      )}
+                      {this.state.requestAssignment === "unassigned" ||
+                      (!this.state.requestAssignment &&
+                        assign_person === "unassigned") ? (
+                        <Option value="unassigned">Unassigned</Option>
+                      ) : (
+                        ""
+                      )}
                     </Select>
                   </FormItem>
                 </Col>
@@ -715,14 +752,14 @@ class RequestForm extends Component {
                         ? assign_person
                         : ["/requests"].includes(path)
                           ? "%"
-                          : ""
+                          : "unassigned"
                     }
                     onChange={this.onRequestAssignmentPersonChange}
                   >
                     {["/requests"].includes(path) && (
                       <Option value="%">All</Option>
                     )}
-                    <Option value="">*Unassigned*</Option>
+                    <Option value="unassigned">*Unassigned*</Option>
                     {this.state.requestUserSelection &&
                       this.state.requestUserSelection.map((person, i) => {
                         return (
