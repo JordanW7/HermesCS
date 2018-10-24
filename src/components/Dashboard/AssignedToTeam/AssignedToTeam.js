@@ -49,11 +49,13 @@ class AssignedToTeam extends Component {
     );
   };
   render() {
+    const totalresults = this.state.dashboardTeamAssignmentData.length;
     return (
       <div className="assignedtoteam">
         <Row>
           <Col span={20} className="assignedtoteam-title">
-            ASSIGNED TO TEAM:
+            ASSIGNED TO TEAM: ({totalresults}{" "}
+            {totalresults === 1 ? "result" : "results"})
           </Col>
           <Col span={4} className="assignedtoteam-selector">
             <Select
@@ -93,75 +95,77 @@ class AssignedToTeam extends Component {
             Priority:
           </Col>
         </Row>
-        {this.state.dashboardTeamAssignmentData.map((result, i) => {
-          return (
-            <Row key={`${i}_MyRequest`}>
-              <Col
-                span={2}
-                key={`${i}_MyRequestID`}
-                className="assignedtoteam-data"
-              >
-                <a
-                  href={`/requests/${result["id"]}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="searchrequests-results-link"
+        <div className="assignedtoteam-databox">
+          {this.state.dashboardTeamAssignmentData.map((result, i) => {
+            return (
+              <Row key={`${i}_MyRequest`}>
+                <Col
+                  span={2}
+                  key={`${i}_MyRequestID`}
+                  className="assignedtoteam-data"
                 >
-                  {result["id"]}
-                </a>
-              </Col>
-              <Col
-                span={4}
-                key={`${i}_MyRequestDate`}
-                className="assignedtoteam-data"
-              >
-                {result["created_at"]}
-              </Col>
-              <Col
-                span={3}
-                key={`${i}_MyRequestAuthor`}
-                className="assignedtoteam-data"
-              >
-                {result["created_by"]}
-              </Col>
-              <Col
-                span={3}
-                key={`${i}_MyRequestName`}
-                className="assignedtoteam-data"
-              >
-                {`${result["firstname"]} ${result["lastname"]}`}
-              </Col>
-              <Col
-                span={3}
-                key={`${i}_MyRequestTopic`}
-                className="assignedtoteam-data"
-              >
-                {result["topic"]}
-              </Col>
-              <Col
-                span={3}
-                key={`${i}_MyRequestTeam`}
-                className="assignedtoteam-data"
-              >
-                {result["assign_team"]}
-              </Col>
-              <Col
-                span={3}
-                key={`${i}_assignedtoteamtatus`}
-                className="assignedtoteam-data"
-              >
-                {result["status"]}
-              </Col>
-              <Col
-                span={3}
-                key={`${i}_MyRequestPriority`}
-                className="assignedtoteam-data"
-              >
-                {result["priority"]}
-              </Col>
-            </Row>
-          );
-        })}
+                  <a
+                    href={`/requests/${result["id"]}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="searchrequests-results-link"
+                  >
+                    {result["id"]}
+                  </a>
+                </Col>
+                <Col
+                  span={4}
+                  key={`${i}_MyRequestDate`}
+                  className="assignedtoteam-data"
+                >
+                  {result["created_at"]}
+                </Col>
+                <Col
+                  span={3}
+                  key={`${i}_MyRequestAuthor`}
+                  className="assignedtoteam-data"
+                >
+                  {result["created_by"]}
+                </Col>
+                <Col
+                  span={3}
+                  key={`${i}_MyRequestName`}
+                  className="assignedtoteam-data"
+                >
+                  {`${result["firstname"]} ${result["lastname"]}`}
+                </Col>
+                <Col
+                  span={3}
+                  key={`${i}_MyRequestTopic`}
+                  className="assignedtoteam-data"
+                >
+                  {result["topic"]}
+                </Col>
+                <Col
+                  span={3}
+                  key={`${i}_MyRequestTeam`}
+                  className="assignedtoteam-data"
+                >
+                  {result["assign_team"]}
+                </Col>
+                <Col
+                  span={3}
+                  key={`${i}_assignedtoteamtatus`}
+                  className="assignedtoteam-data"
+                >
+                  {result["status"]}
+                </Col>
+                <Col
+                  span={3}
+                  key={`${i}_MyRequestPriority`}
+                  className="assignedtoteam-data"
+                >
+                  {result["priority"]}
+                </Col>
+              </Row>
+            );
+          })}
+        </div>
       </div>
     );
   }
