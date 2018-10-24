@@ -13,11 +13,6 @@
   font-weight: 500;
 }
 
-.assignedtome-databox {
-  height: 75px;
-  overflow: scroll;
-}
-
 .assignedtome-data {
   text-align: center;
   border-bottom: 1px solid silver;
@@ -34,4 +29,9 @@
   border: 1px solid silver;
   padding: 5px 10px;
   color: black;
+}
+
+.assignedtome-databox {
+  max-height: 100px;
+  overflow: scroll;
 }

@@ -157,7 +157,7 @@ class AssignedToTeam extends Component {
                 </Col>
                 <Col
                   span={3}
-                  key={`${i}_MyRequestPriority`}
+                  key={`${i}_assignedtoteamPriority`}
                   className="assignedtoteam-data"
                 >
                   {result["priority"]}
