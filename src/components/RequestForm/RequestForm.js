@@ -63,8 +63,8 @@ class RequestForm extends Component {
     if (!request) {
       return;
     }
-    let requestTeamList = [];
-    let requestTeamUserLists = {};
+    const requestTeamList = [];
+    const requestTeamUserLists = {};
     for (let i = 0; i < request.length; i++) {
       let { team, members } = request[i];
       requestTeamList.push([team]);
@@ -282,7 +282,6 @@ class RequestForm extends Component {
             : status === "unassigned"
               ? "current"
               : status;
-    console.log(newStatus);
     try {
       const response = await apiBackEnd("updaterequest", "POST", {
         status: newStatus,
@@ -763,8 +762,8 @@ class RequestForm extends Component {
                     {this.state.requestUserSelection &&
                       this.state.requestUserSelection.map((person, i) => {
                         return (
-                          <Option key={`${i}_person`} value={`${person[0]}`}>
-                            {person[0]}
+                          <Option key={`${i}_person`} value={`${person}`}>
+                            {person}
                           </Option>
                         );
                       })}
