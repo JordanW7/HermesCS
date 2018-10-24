@@ -22,7 +22,6 @@ class MyRequests extends Component {
     const today = new Date();
     const yesterday = moment().subtract(1, "day");
     const week = moment().subtract(7, "day");
-    console.log("SEARCH", search);
     const results = await apiBackEnd("searchrequests", "post", {
       account: account,
       status:
@@ -36,22 +35,15 @@ class MyRequests extends Component {
             : ""
     });
     if (results === "search failed") {
+      this.setState({ dashboardMyRequestsData: [] });
       return message.error(
         "Oops, something went wrong with the dashboard results"
       );
     }
-    if (results.length < 1) {
-      return message.error(
-        "No results were found for the search. Maybe try again with a broader criteria or use wildcards (%) "
-      );
-    }
-    message.success(`${results.length} Results Found!`);
     this.setState({ dashboardMyRequestsData: results });
   };
   onMyRequestsSelectorChange = value => {
-    this.setState({ dashboardMyRequestsData: [] });
     this.setState({ dashboardMyRequestsSearch: value }, this.loadMyRequestData);
-    console.log("VALUE", value);
   };
   render() {
     return (
@@ -62,7 +54,7 @@ class MyRequests extends Component {
           </Col>
           <Col span={4} className="myrequests-selector">
             <Select
-              defaultValue="Today"
+              defaultValue="today"
               style={{ width: 120 }}
               size="small"
               onChange={this.onMyRequestsSelectorChange}
