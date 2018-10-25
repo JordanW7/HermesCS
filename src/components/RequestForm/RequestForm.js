@@ -232,7 +232,10 @@ class RequestForm extends Component {
       status: requestStatus,
       created_by: `${firstname} ${lastname}`
     });
-    if (response === "error") {
+    if (
+      response === "unable to add" ||
+      response === "incorrect form submission"
+    ) {
       return message.error(
         "Oops! Something went wrong and the request was not submitted."
       );
