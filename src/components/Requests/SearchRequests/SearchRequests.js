@@ -17,6 +17,9 @@ class SearchRequests extends Component {
     this.setState({ searchRequestID: event.target.value });
   };
   onSearchRequestIDSubmit = event => {
+    if (!this.state.searchRequestID) {
+      return;
+    }
     this.setState({ searchRequestSubmit: true });
   };
   render() {

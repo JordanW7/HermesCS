@@ -244,12 +244,13 @@ class RequestForm extends Component {
     this.setState({ newRequestAdded: response });
   };
   onRequestUpdateSubmit = async () => {
-    const { assign_team, assign_person, status, priority } = this.props;
+    const { id, assign_team, assign_person, status, priority } = this.props;
     const {
       requestStatus,
       requestPriority,
       requestAssignment,
-      requestAssignmentTeam
+      requestAssignmentTeam,
+      requestTeamUserLists
     } = this.state;
     if (
       !requestStatus &&
@@ -267,8 +268,28 @@ class RequestForm extends Component {
     ) {
       return;
     }
-    const { id } = this.props;
     const { user } = this.props.user;
+    const teamMembers = requestTeamUserLists[requestAssignmentTeam];
+    if (requestAssignmentTeam) {
+      if (
+        requestAssignment &&
+        requestAssignment !== "unassigned" &&
+        !teamMembers.includes(requestAssignment)
+      ) {
+        return message.error(
+          "Oops! The person the request is assigned to does not belong to the new team assignment."
+        );
+      }
+      if (
+        !requestAssignment &&
+        assign_person !== "unassigned" &&
+        !teamMembers.includes(assign_person)
+      ) {
+        return message.error(
+          "Oops! The person the request is assigned to does not belong to the new team assignment."
+        );
+      }
+    }
     //Has the assignment changed to unassigned? Change status to unassigned
     //Has the assignment changed from unassigned to something else? check for a new status and use status if so, otherwise change to current
     const newStatus =
