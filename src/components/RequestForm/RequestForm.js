@@ -872,7 +872,9 @@ class RequestForm extends Component {
                         key={`${i}_resultsDate`}
                         className="searchrequests-results-entry"
                       >
-                        {result["created_at"]}
+                        {moment(result["created_at"]).format(
+                          "MM/DD/YY h:mm:ss a"
+                        )}
                       </Col>
                       <Col
                         span={3}

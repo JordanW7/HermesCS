@@ -116,7 +116,7 @@ class AssignedToMe extends Component {
                   key={`${i}_assignedtomeDate`}
                   className="assignedtome-data"
                 >
-                  {result["created_at"]}
+                  {moment(result["created_at"]).format("MM/DD/YY h:mm:ss a")}
                 </Col>
                 <Col
                   span={3}

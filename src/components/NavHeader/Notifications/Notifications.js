@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 import "./Notifications.css";
 import { Link } from "react-router-dom";
 import { Badge, Menu, Dropdown, Button } from "antd";
@@ -49,7 +50,7 @@ class Notifications extends Component {
           notifications.map((alert, i) => {
             return (
               <Menu.Item key={`${i}_alert`} className="alert-info">
-                {alert.alert_time}:
+                {moment(alert.alert_time).format("MM/DD/YY h:mm:ss a")}:
                 <Link to={`/requests/${alert.reference}`}>
                   New Assignment | Request:{" "}
                   <span className="alert-highlight">{alert.reference}</span> |

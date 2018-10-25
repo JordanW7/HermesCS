@@ -119,7 +119,7 @@ class AssignedToTeam extends Component {
                   key={`${i}_MyRequestDate`}
                   className="assignedtoteam-data"
                 >
-                  {result["created_at"]}
+                  {moment(result["created_at"]).format("MM/DD/YY h:mm:ss a")}
                 </Col>
                 <Col
                   span={3}

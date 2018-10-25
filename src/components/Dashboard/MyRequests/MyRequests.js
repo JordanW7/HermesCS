@@ -116,7 +116,7 @@ class MyRequests extends Component {
                   key={`${i}_MyRequestDate`}
                   className="myrequests-data"
                 >
-                  {result["created_at"]}
+                  {moment(result["created_at"]).format("MM/DD/YY h:mm:ss a")}
                 </Col>
                 <Col
                   span={3}
