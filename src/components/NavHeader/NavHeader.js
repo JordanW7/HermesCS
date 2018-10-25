@@ -14,15 +14,15 @@ const publicPageList = [
   "/register"
 ];
 
-const NavHeader = ({
-  onSignin,
-  onSignout,
-  loginStatus,
-  onMobileNavClick,
-  mobileDropDownOpen,
-  location,
-  user
-}) => {
+const NavHeader = props => {
+  const {
+    onSignout,
+    loginStatus,
+    onMobileNavClick,
+    mobileDropDownOpen,
+    location,
+    user
+  } = props;
   return (
     <nav className="navheader-full">
       <Link to="/" className="navheader-title">
@@ -57,7 +57,7 @@ const NavHeader = ({
       {loginStatus.loginStatus &&
       !publicPageList.includes(location.pathname) ? (
         <div className="navheader-links">
-          <Notifications />
+          <Notifications {...props} />
           <div className="navheader-mobilelinks">
             <MobileNavMenu
               loginStatus={loginStatus}

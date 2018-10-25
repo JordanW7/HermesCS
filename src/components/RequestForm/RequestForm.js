@@ -852,7 +852,7 @@ class RequestForm extends Component {
                 </Row>
                 {this.state.requestSearchResultsData.map((result, i) => {
                   return (
-                    <Row>
+                    <Row key={`${i}_resultsList`}>
                       <Col
                         span={2}
                         key={`${i}_resultsID`}

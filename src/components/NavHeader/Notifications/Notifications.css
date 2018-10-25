@@ -7,3 +7,21 @@
 .notifications-badge {
   cursor: pointer;
 }
+
+.alert-info {
+  color: black;
+}
+.alert-highlight {
+  color: teal;
+  font-weight: 500;
+}
+
+.alert-high {
+  color: red;
+  font-weight: 500;
+}
+
+.alert-low {
+  color: green;
+  font-weight: 500;
+}
