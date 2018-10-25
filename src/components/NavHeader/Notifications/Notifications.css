@@ -25,3 +25,11 @@
   color: green;
   font-weight: 500;
 }
+
+.alert-checkbutton {
+  margin-right: 10px;
+}
+
+.notifications-data {
+  text-align: center;
+}

@@ -9,11 +9,12 @@ class Notifications extends Component {
   constructor() {
     super();
     this.state = {
-      notificationData: []
+      notificationData: [],
+      notificationTeamData: ""
     };
   }
   loadNotificationData = async () => {
-    const { account, firstname, lastname } = this.props.user.user;
+    const { account, firstname, lastname, team } = this.props.user.user;
     const notificationData = await apiBackEnd(
       `notifications/${account}/${firstname} ${lastname}`,
       "get"
@@ -22,6 +23,14 @@ class Notifications extends Component {
       return;
     }
     this.setState({ notificationData });
+    const notificationTeamData = await apiBackEnd(
+      `notifications-team/${account}/${team}`,
+      "get"
+    );
+    if (notificationTeamData === "error getting notifications") {
+      return;
+    }
+    this.setState({ notificationTeamData });
   };
   onNotificationCheck = async key => {
     const { account } = this.props.user.user;
@@ -40,42 +49,65 @@ class Notifications extends Component {
     this.loadNotificationData();
   }
   render() {
-    const notifications = this.state.notificationData;
+    const { notificationData, notificationTeamData } = this.state;
     let notificationMenu = (
       <Menu>
-        {notifications.length < 1 && (
+        {notificationTeamData && (
+          <Menu.Item className="notifications-data">
+            Unassigned Team Requests:{" "}
+            <span className="alert-highlight">
+              {notificationTeamData.total}
+            </span>{" "}
+            | Extreme:{" "}
+            <span className="alert-high">{notificationTeamData.extreme}</span> |
+            High:{" "}
+            <span className="alert-high">{notificationTeamData.high}</span> |
+            Medium:{" "}
+            <span className="alert-low">{notificationTeamData.medium}</span> |
+            Low: <span className="alert-low">{notificationTeamData.low}</span>
+          </Menu.Item>
+        )}
+        <Menu.Divider />
+        {notificationData.length < 1 && (
           <Menu.Item className="alert-info">No current notifications</Menu.Item>
         )}
-        {notifications &&
-          notifications.map((alert, i) => {
+        {notificationData &&
+          notificationData.map((alert, i) => {
             return (
-              <Menu.Item key={`${i}_alert`} className="alert-info">
-                {moment(alert.alert_time).format("MM/DD/YY h:mm:ss a")}:
-                <Link to={`/requests/${alert.reference}`}>
-                  New Assignment | Request:{" "}
-                  <span className="alert-highlight">{alert.reference}</span> |
-                  Priority:{" "}
-                  <span
-                    className={
-                      alert.priority === "extreme"
-                        ? "alert-high"
-                        : alert.priority === "high"
-                          ? "alert-high"
-                          : "alert-low"
-                    }
+              <Menu.Item key={`${i}_alert`}>
+                <div>
+                  <Button
+                    size="small"
+                    key={i}
+                    icon="check"
+                    className="alert-checkbutton"
+                    onClick={() => this.onNotificationCheck(i)}
+                  />
+                  <Link
+                    to={`/requests/${alert.reference}`}
+                    className="alert-info"
                   >
-                    {alert.priority}
-                  </span>{" "}
-                  | Type: <span className="alert-highlight">{alert.type}</span>{" "}
-                  | Topic:{" "}
-                  <span className="alert-highlight">{alert.topic}</span>
-                </Link>
-                <Button
-                  size="small"
-                  key={i}
-                  icon="check"
-                  onClick={() => this.onNotificationCheck(i)}
-                />
+                    {moment(alert.alert_time).format("MM/DD/YY h:mm:ss a")}: New
+                    Assignment | Request:{" "}
+                    <span className="alert-highlight">{alert.reference}</span> |
+                    Priority:{" "}
+                    <span
+                      className={
+                        alert.priority === "extreme"
+                          ? "alert-high"
+                          : alert.priority === "high"
+                            ? "alert-high"
+                            : "alert-low"
+                      }
+                    >
+                      {alert.priority}
+                    </span>{" "}
+                    | Type:{" "}
+                    <span className="alert-highlight">{alert.type}</span> |
+                    Topic:{" "}
+                    <span className="alert-highlight">{alert.topic}</span>
+                  </Link>
+                </div>
               </Menu.Item>
             );
           })}
@@ -83,7 +115,7 @@ class Notifications extends Component {
     );
     return (
       <Dropdown overlay={notificationMenu} placement="bottomRight">
-        <Badge count={notifications.length} className="notifications-badge">
+        <Badge count={notificationData.length} className="notifications-badge">
           <span className="notifications-header">NOTIFICATIONS</span>
         </Badge>
       </Dropdown>
