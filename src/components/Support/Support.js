@@ -2,6 +2,8 @@ import React from "react";
 import "./Support.css";
 import CheckAuth from "../CheckAuth/CheckAuth";
 
+//To redirect to Contact Page for now.
+
 const Support = props => {
   let auth = CheckAuth({ ...props });
   if (auth !== true) {
