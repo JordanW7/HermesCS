@@ -97,6 +97,11 @@ const Support = Loadable({
   loading: Loading
 });
 
+const Settings = Loadable({
+  loader: () => import("./components/Settings/Settings"),
+  loading: Loading
+});
+
 const getTokenData = async () => {
   const sessionToken = window.sessionStorage.getItem("token");
   const rememberToken = window.localStorage.getItem("token");
@@ -160,6 +165,11 @@ class App extends Component {
           exact
           path="/dashboard"
           render={() => <Dashboard {...this.props} />}
+        />
+        <Route
+          exact
+          path="/settings"
+          render={() => <Settings {...this.props} />}
         />
         <Route
           exact
