@@ -92,11 +92,6 @@ const Requests = Loadable({
   loading: Loading
 });
 
-const Support = Loadable({
-  loader: () => import("./components/Support/Support"),
-  loading: Loading
-});
-
 const Settings = Loadable({
   loader: () => import("./components/Settings/Settings"),
   loading: Loading
@@ -190,7 +185,7 @@ class App extends Component {
         <Route
           exact
           path="/support"
-          render={() => <Support {...this.props} />}
+          render={() => <Contact {...this.props} />}
         />
         <Route component={NoMatch} />
       </Switch>
