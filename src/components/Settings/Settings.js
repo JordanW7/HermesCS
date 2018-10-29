@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import CheckAuth from "../CheckAuth/CheckAuth";
 import NavHeader from "../NavHeader/NavHeader";
-import { Menu, Icon, Col, Row } from "antd";
+import { Menu, Icon, Col, Row, Form, Button, Input } from "antd";
 import "./Settings.css";
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
+const FormItem = Form.Item;
 
 class Settings extends Component {
   constructor() {
@@ -77,13 +78,37 @@ class Settings extends Component {
               </Col>
               {currentPage === "profile" && (
                 <Col span={18} className="settings-content-actions">
-                  Blah Blah BLah
-                  <input />
-                  <input />
-                  <input />
-                  BlahBlahblah
-                  <button>Submit</button>
+                  <div className="settings-content-title">Change Password</div>
+                  <Form layout="inline">
+                    <FormItem label="Current Password:">
+                      <Input
+                        onChange={this.onCurrentPasswordChange}
+                        type="password"
+                      />
+                    </FormItem>
+                    <FormItem label="New Password:">
+                      <Input
+                        onChange={this.onNewPasswordChange}
+                        type="password"
+                      />
+                    </FormItem>
+                    <Button type="primary" onClick={this.onProfileSave}>
+                      Save
+                    </Button>
+                  </Form>
                 </Col>
+              )}
+              {currentPage === "user-add" && (
+                <Col span={18} className="settings-content-actions" />
+              )}
+              {currentPage === "user-modify" && (
+                <Col span={18} className="settings-content-actions" />
+              )}
+              {currentPage === "team-add" && (
+                <Col span={18} className="settings-content-actions" />
+              )}
+              {currentPage === "team-modify" && (
+                <Col span={18} className="settings-content-actions" />
               )}
             </Row>
           </div>

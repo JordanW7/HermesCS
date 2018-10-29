@@ -18,7 +18,14 @@
   width: 100%;
 }
 
-.settings-contents {
+.settings-content-actions {
+  padding: 5px;
+}
+
+.settings-content-title {
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 20px;
 }
 
 .settings-box {
