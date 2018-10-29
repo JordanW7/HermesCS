@@ -1,0 +1,35 @@
+.settings-full {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: rgb(245, 245, 245);
+  background-image: url(../../images/balloon.jpg);
+}
+
+.settings {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.settings-contents {
+}
+
+.settings-box {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid silver;
+}
+
+.settings-title {
+  font-size: 50px;
+  font-weight: 500;
+  text-shadow: 0 0 5px black;
+  color: white;
+  text-align: center;
+}
