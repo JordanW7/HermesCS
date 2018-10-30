@@ -25,11 +25,16 @@ class UserSettingsModify extends Component {
   };
   onModUserNameChange = event => {
     this.setState({ userSettingsModName: event.target.value });
+    //load whether this accounts disabled or even editable by this user.
   };
   onModUserTeamChange = event => {
     this.setState({ userSettingsAddTeam: event.target.value });
   };
   onModUserSubmit = () => {
+    console.log("MAKE API CALL HERE");
+    message.success("API SENT");
+  };
+  onModUserStatusChange = () => {
     console.log("MAKE API CALL HERE");
     message.success("API SENT");
   };
@@ -69,10 +74,13 @@ class UserSettingsModify extends Component {
                 })}
             </Select>
           </FormItem>
-          <Button type="primary" onClick={this.onAddUserSubmit}>
+          <Button type="primary" onClick={this.onModUserSubmit}>
             Update
           </Button>
-          <Button type="primary" onClick={this.onAddUserSubmit}>
+          {
+            //could change this to a toggle button
+          }
+          <Button type="primary" onClick={this.onModUserStatusChange}>
             Disable/Renable Account
           </Button>
         </Form>
