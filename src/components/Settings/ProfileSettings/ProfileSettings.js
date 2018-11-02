@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Col, Form, Button, Input, message } from "antd";
+import apiBackEnd from "../../../api/api";
 import "./ProfileSettings.css";
 
 const FormItem = Form.Item;
@@ -12,15 +13,41 @@ class ProfileSettings extends Component {
       profileSettingsNewPassword: ""
     };
   }
-  onCurrentPasswordChange = value => {
-    this.setState({ profileSettingsCurrentPassword: value });
+  onCurrentPasswordChange = event => {
+    this.setState({ profileSettingsCurrentPassword: event.target.value });
   };
-  onNewPasswordChange = value => {
-    this.setState({ profileSettingsNewPassword: value });
+  onNewPasswordChange = event => {
+    this.setState({ profileSettingsNewPassword: event.target.value });
   };
-  onProfileSave = () => {
-    console.log("MAKE API CALL HERE");
-    message.success("API SENT");
+  onProfileSave = async () => {
+    const newPassword = this.state.profileSettingsNewPassword;
+    const currentPassword = this.state.profileSettingsCurrentPassword;
+    if (!newPassword || !currentPassword) {
+      return message.error("Please complete both fields");
+    }
+    if (newPassword === currentPassword) {
+      return message.error(
+        "The new password cannot be the same as the current password"
+      );
+    }
+    const { email, account } = this.props.user.user;
+    const response = await apiBackEnd("settings/updateprofile", "post", {
+      account,
+      email,
+      currentPassword,
+      newPassword
+    });
+    if (response === "invalid credentials") {
+      return message.error(
+        "Oops! The current password provided does not match."
+      );
+    }
+    if (response === "updated") {
+      return message.success("Your user profile has been updated.");
+    }
+    return message.error(
+      "Oops! Something happened. Please try again or contact support."
+    );
   };
   render() {
     return (
