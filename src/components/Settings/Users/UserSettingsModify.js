@@ -166,7 +166,10 @@ class UserSettingsModify extends Component {
           ) : (
             ""
           )}
-          <Button type="primary" onClick={this.onModUserStatusChange}>
+          <Button
+            type={status !== "active" && status !== "" ? "primary" : "danger"}
+            onClick={this.onModUserStatusChange}
+          >
             {status !== "active" && status !== ""
               ? "Enable Account"
               : "Disable Account"}
