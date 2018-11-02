@@ -75,8 +75,8 @@ class UserSettingsModify extends Component {
       return message.success("User has been updated");
     }
     if (response === "user is teamleader") {
-      return message.error(
-        "The user is the team leader of their current team, please assign a new teamleader first"
+      return message.success(
+        "User has been updated. Warning: User was team leader of previous team, please remember to assign someone new."
       );
     }
     return message.error(

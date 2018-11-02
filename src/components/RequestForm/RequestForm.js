@@ -42,7 +42,6 @@ class RequestForm extends Component {
       requestAssignmentTeam: "",
       requestTeamList: [],
       requestUserSelection: [],
-      requestTeamUserLists: {},
       newRequestAdded: "",
       requestSearchDateRange: "",
       requestSearchCreatedBy: "",
@@ -56,23 +55,35 @@ class RequestForm extends Component {
       this.setState({ requestAssignment: "%" });
     }
   }
+  loadRequestTeamUserData = async team => {
+    const { account } = this.props.user.user;
+    const request = await apiBackEnd(`users/${account}/${team}`, "get");
+    if (!request || request === "Not found") {
+      return this.setState({ requestUserSelection: [] });
+    }
+    const requestUserSelection = [];
+    for (let i = 0; i < request.length; i++) {
+      let { firstname, lastname } = request[i];
+      requestUserSelection.push([`${firstname} ${lastname}`]);
+    }
+    return this.setState({ requestUserSelection });
+  };
   loadRequestTeamData = async () => {
     const { account } = this.props.user.user;
     const { assign_team } = this.props;
     const request = await apiBackEnd(`teams/${account}`, "get");
-    if (!request) {
-      return;
+    if (!request || request === "Not found") {
+      return this.setState({ requestTeamList: [] });
     }
     const requestTeamList = [];
-    const requestTeamUserLists = {};
     for (let i = 0; i < request.length; i++) {
-      let { team, members } = request[i];
+      let { team } = request[i];
       requestTeamList.push([team]);
-      requestTeamUserLists[team] = members;
     }
     this.setState({ requestTeamList });
-    this.setState({ requestTeamUserLists });
-    this.setState({ requestUserSelection: requestTeamUserLists[assign_team] });
+    if (assign_team) {
+      this.loadRequestTeamUserData(assign_team);
+    }
   };
   onRequestFirstNameChange = event => {
     this.setState({ requestFirstName: event.target.value });
@@ -121,9 +132,7 @@ class RequestForm extends Component {
   };
   onRequestAssignmentTeamChange = value => {
     this.setState({ requestAssignmentTeam: value });
-    this.setState({
-      requestUserSelection: this.state.requestTeamUserLists[value]
-    });
+    this.loadRequestTeamUserData(value);
   };
   onRequestSearchDateChange = value => {
     this.setState({ requestSearchDateRange: value });
@@ -249,8 +258,7 @@ class RequestForm extends Component {
       requestStatus,
       requestPriority,
       requestAssignment,
-      requestAssignmentTeam,
-      requestTeamUserLists
+      requestAssignmentTeam
     } = this.state;
     if (
       !requestStatus &&
@@ -269,7 +277,7 @@ class RequestForm extends Component {
       return;
     }
     const { user } = this.props.user;
-    const teamMembers = requestTeamUserLists[requestAssignmentTeam];
+    const teamMembers = this.loadRequestTeamUserData(requestAssignmentTeam);
     if (requestAssignmentTeam) {
       if (
         requestAssignment &&
