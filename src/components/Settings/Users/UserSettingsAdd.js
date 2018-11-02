@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Col, Form, Button, Input, Select, message } from "antd";
+import apiBackEnd from "../../../api/api";
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -12,7 +13,7 @@ class UserSettingsAdd extends Component {
       userSettingsAddLastName: "",
       userSettingsAddEmail: "",
       userSettingsAddPassword: "",
-      userSettingsAddAccess: "",
+      userSettingsAddAccess: "agent",
       userSettingsAddTeam: "",
       userSettingsTeamList: ""
     };
@@ -20,28 +21,78 @@ class UserSettingsAdd extends Component {
   componentDidMount() {
     this.loadUserSettingsData();
   }
-  loadUserSettingsData = () => {
+  loadUserSettingsData = async () => {
     //Load list of teams for selection
-    return;
+    const { account } = this.props.user.user;
+    const request = await apiBackEnd(`teams/${account}`, "get");
+    if (!request) {
+      return;
+    }
+    const userSettingsTeamList = [];
+    for (let i = 0; i < request.length; i++) {
+      let { team } = request[i];
+      userSettingsTeamList.push([team]);
+    }
+    this.setState({ userSettingsTeamList });
   };
-  onNewUserFirstNameChange = value => {
-    this.setState({ userSettingsAddFirstName: value });
+  onNewUserFirstNameChange = event => {
+    this.setState({ userSettingsAddFirstName: event.target.value });
   };
-  onNewUserLastNameChange = value => {
-    this.setState({ userSettingsAddLastName: value });
+  onNewUserLastNameChange = event => {
+    this.setState({ userSettingsAddLastName: event.target.value });
   };
-  onNewUserEmailChange = value => {
-    this.setState({ userSettingsAddEmail: value });
+  onNewUserEmailChange = event => {
+    this.setState({ userSettingsAddEmail: event.target.value });
   };
-  onNewUserPasswordChange = value => {
-    this.setState({ userSettingsAddPassword: value });
+  onNewUserPasswordChange = event => {
+    this.setState({ userSettingsAddPassword: event.target.value });
   };
-  onNewUserTeamChange = event => {
-    this.setState({ userSettingsAddTeam: event.target.value });
+  onNewUserTeamChange = value => {
+    this.setState({ userSettingsAddTeam: value });
   };
-  onAddUserSubmit = () => {
-    console.log("MAKE API CALL HERE");
-    message.success("API SENT");
+  onAddUserSubmit = async () => {
+    const {
+      userSettingsAddTeam,
+      userSettingsAddFirstName,
+      userSettingsAddLastName,
+      userSettingsAddEmail,
+      userSettingsAddPassword,
+      userSettingsAddAccess
+    } = this.state;
+    if (
+      !userSettingsAddFirstName ||
+      !userSettingsAddLastName ||
+      !userSettingsAddEmail ||
+      !userSettingsAddPassword ||
+      !userSettingsAddAccess
+    ) {
+      return message.error("Please complete all fields");
+    }
+    const { email, account } = this.props.user.user;
+    const response = await apiBackEnd("settings/adduser", "post", {
+      account,
+      user: email,
+      newuserfirstname: userSettingsAddFirstName,
+      newuserlastname: userSettingsAddLastName,
+      team: userSettingsAddTeam,
+      email: userSettingsAddEmail,
+      password: userSettingsAddPassword,
+      access: userSettingsAddAccess
+    });
+    if (response === "already exists") {
+      return message.error("Oops! A user with this name already exists.");
+    }
+    if (response === "email already exists") {
+      return message.error(
+        "Oops! A user with this email address already exists."
+      );
+    }
+    if (response === "user added") {
+      return message.success("The new user has been added");
+    }
+    return message.error(
+      "Oops! Something happened. Please try again or contact support."
+    );
   };
   render() {
     return (
@@ -58,7 +109,7 @@ class UserSettingsAdd extends Component {
             <Input onChange={this.onNewUserEmailChange} />
           </FormItem>
           <FormItem label="Password:">
-            <Input onChange={this.onNewUserPasswordChange} />
+            <Input type="password" onChange={this.onNewUserPasswordChange} />
           </FormItem>
           <FormItem label="Team:">
             <Select

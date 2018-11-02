@@ -58,10 +58,7 @@ class Settings extends Component {
                   >
                     <Menu.Item key="profile">Change Password</Menu.Item>
                   </SubMenu>
-                  {
-                    //will need to change this on launch to admin, not agent
-                  }
-                  {access === "agent" && (
+                  {access === "owner" && (
                     <SubMenu
                       key="sub2"
                       title={
