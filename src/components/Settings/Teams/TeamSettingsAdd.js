@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Col, Form, Button, Input, Select, message } from "antd";
+import apiBackEnd from "../../../api/api";
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -10,25 +11,61 @@ class TeamSettingsAdd extends Component {
     this.state = {
       teamSettingsAddName: "",
       teamSettingsAddLeader: "",
-      teamSettingsUserList: ""
+      teamSettingsUserList: "",
+      teamSettingsUserData: ""
     };
   }
   componentDidMount() {
     this.loadTeamSettingsData();
   }
-  loadTeamSettingsData = () => {
-    //Load list of users for selection
-    return;
+  loadTeamSettingsData = async () => {
+    const { account } = this.props.user.user;
+    const userdata = await apiBackEnd(`users/${account}`, "get");
+    if (!userdata) {
+      return;
+    }
+    const teamSettingsUserList = [];
+    const teamSettingsUserData = {};
+    for (let i = 0; i < userdata.length; i++) {
+      let user = `${userdata[i].firstname} ${userdata[i].lastname}`;
+      teamSettingsUserData[user] = userdata[i];
+      teamSettingsUserList.push([user]);
+    }
+    this.setState({ teamSettingsUserList });
+    this.setState({ teamSettingsUserData });
   };
-  onNewTeamNameChange = value => {
-    this.setState({ teamSettingsAddName: value });
+  onNewTeamNameChange = event => {
+    this.setState({ teamSettingsAddName: event.target.value });
   };
-  onNewTeamLeaderChange = event => {
-    this.setState({ teamSettingsAddLeader: event.target.value });
+  onNewTeamLeaderChange = value => {
+    this.setState({ teamSettingsAddLeader: value });
   };
-  onAddTeamSubmit = () => {
-    console.log("MAKE API CALL HERE");
-    message.success("API SENT");
+  onAddTeamSubmit = async () => {
+    const {
+      teamSettingsAddName,
+      teamSettingsAddLeader,
+      teamSettingsUserData
+    } = this.state;
+    if (!teamSettingsAddName || !teamSettingsAddLeader) {
+      return message.error("Please complete all fields");
+    }
+    const { email, account } = this.props.user.user;
+    const response = await apiBackEnd("settings/addteam", "post", {
+      account,
+      user: email,
+      team: teamSettingsAddName,
+      leader: teamSettingsAddLeader,
+      leaderemail: teamSettingsUserData[teamSettingsAddLeader].email
+    });
+    if (response === "already exists") {
+      return message.error("Oops! A team with this name already exists.");
+    }
+    if (response === "team added") {
+      return message.success("The new team has been added");
+    }
+    return message.error(
+      "Oops! Something happened. Please try again or contact support."
+    );
   };
   render() {
     return (

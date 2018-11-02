@@ -22,7 +22,6 @@ class UserSettingsAdd extends Component {
     this.loadUserSettingsData();
   }
   loadUserSettingsData = async () => {
-    //Load list of teams for selection
     const { account } = this.props.user.user;
     const request = await apiBackEnd(`teams/${account}`, "get");
     if (!request) {

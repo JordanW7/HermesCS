@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Col, Form, Button, Select, message } from "antd";
+import apiBackEnd from "../../../api/api";
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -17,22 +18,23 @@ class TeamSettingsModify extends Component {
   componentDidMount() {
     this.loadTeamSettingsModData();
   }
-  loadTeamSettingsModData = () => {
+  loadTeamSettingsModData = async () => {
     //Load list of users for selection
     //load list of teams for selection
     return;
   };
-  onModTeamNameChange = event => {
-    this.setState({ teamSettingsModName: event.target.value });
+  onModTeamNameChange = value => {
+    this.setState({ teamSettingsModName: value });
   };
-  onModTeamLeaderChange = event => {
-    this.setState({ teamSettingsModLeader: event.target.value });
+  onModTeamLeaderChange = value => {
+    this.setState({ teamSettingsModLeader: value });
   };
-  onModTeamSubmit = () => {
+  onModTeamSubmit = async () => {
     console.log("MAKE API CALL HERE");
     message.success("API SENT");
   };
-  onModTeamDelete = () => {
+  onModTeamDelete = async () => {
+    //Warn or disallow if team is not empty.
     console.log("MAKE API CALL HERE");
     message.success("API SENT");
   };
