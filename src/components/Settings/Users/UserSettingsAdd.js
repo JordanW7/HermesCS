@@ -99,10 +99,10 @@ class UserSettingsAdd extends Component {
         <div className="settings-content-title">Add New User</div>
         <Form layout="inline">
           <FormItem label="First Name:">
-            <Input onChange={this.onNewUserLastNameChange} />
+            <Input onChange={this.onNewUserFirstNameChange} />
           </FormItem>
           <FormItem label="Last Name:">
-            <Input onChange={this.onNewUserFirstNameChange} />
+            <Input onChange={this.onNewUserLastNameChange} />
           </FormItem>
           <FormItem label="Email:">
             <Input onChange={this.onNewUserEmailChange} />

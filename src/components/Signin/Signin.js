@@ -45,21 +45,23 @@ class Signin extends Component {
       email: signInEmail,
       password: signInPassword
     });
+    if (data === "not active") {
+      return this.setState({ signInFailed: "not active" });
+    }
     if (data === "error" || !data.id) {
+      return this.setState({ signInFailed: true });
+    }
+    this.saveAuthToken(this.state.signInRememberMe, data.token);
+    const userdata = await apiBackEnd(
+      `profile/${data.account}/${data.id}`,
+      "get"
+    );
+    if (userdata === "error" || !userdata.id) {
       this.setState({ signInFailed: true });
     } else {
-      this.saveAuthToken(this.state.signInRememberMe, data.token);
-      const userdata = await apiBackEnd(
-        `profile/${data.account}/${data.id}`,
-        "get"
-      );
-      if (userdata === "error" || !userdata.id) {
-        this.setState({ signInFailed: true });
-      } else {
-        this.setState({ signInFailed: false });
-        this.props.onLoadUser(userdata);
-        this.props.onSignin();
-      }
+      this.setState({ signInFailed: false });
+      this.props.onLoadUser(userdata);
+      this.props.onSignin();
     }
   };
   render() {
@@ -136,6 +138,12 @@ class Signin extends Component {
               <span className="signin-failed">
                 Sorry, incorrect account name/email/password. Please
                 double-check and try again.
+              </span>
+            )}
+            {this.state.signInFailed === "not active" && (
+              <span className="signin-failed">
+                Sorry, this account has been disabled by your company's admin.
+                Please contact them if you believe this was in error.
               </span>
             )}
             <span className="signin-notuser">
