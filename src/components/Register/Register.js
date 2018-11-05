@@ -8,6 +8,7 @@ import apiBackEnd from "../../api/api";
 class Register extends Component {
   constructor() {
     super();
+    this.form = React.createRef();
     this.state = {
       registerAccount: "",
       registerFirstName: "",
@@ -33,6 +34,10 @@ class Register extends Component {
     this.setState({ registerPassword: event.target.value });
   };
   onRegisterSubmit = async () => {
+    const validform = this.form.current.reportValidity();
+    if (!validform) {
+      return;
+    }
     const {
       registerAccount,
       registerPassword,
@@ -82,7 +87,6 @@ class Register extends Component {
       this.setState({ registerSuccess: true });
       return message.success("Welcome to HermesCS!");
     } else {
-      console.log(request);
       return message.error("Oops, something went wrong. Please try again");
     }
   };
@@ -109,50 +113,70 @@ class Register extends Component {
               completing the below. If your Contact Centre is already setup with
               us, contact your admin to setup your user account.
             </p>
-            <label>
-              Company's Account Name:{" "}
-              <Tooltip title="This is what your team will sign into Hermes CS with">
-                <Icon type="info-circle-o" />
-              </Tooltip>
-            </label>
-            <Input
-              prefix={
-                <Icon type="login" style={{ color: "rgba(0,0,0,.25)" }} />
-              }
-              type="text"
-              onChange={this.onRegisterAccountChange}
-            />
-            <label>First Name:</label>
-            <Input
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-              type="text"
-              onChange={this.onRegisterFirstNameChange}
-            />
-            <label>Last Name:</label>
-            <Input
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-              type="text"
-              onChange={this.onRegisterLastNameChange}
-            />
-            <label>Email:</label>
-            <Input
-              prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
-              type="text"
-              onChange={this.onRegisterEmailChange}
-            />
-            <label>Password:</label>
-            <Input
-              prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
-              type="password"
-              onChange={this.onRegisterPasswordChange}
-            />
-            <Button
-              type="primary"
-              className="register-submit"
-              onClick={this.onRegisterSubmit}
-            >
-              Register & Get Started!
-            </Button>
+            <form ref={this.form}>
+              <label>
+                Company's Account Name:{" "}
+                <Tooltip title="This is what your team will sign into Hermes CS with">
+                  <Icon type="info-circle-o" />
+                </Tooltip>
+              </label>
+              <Input
+                prefix={
+                  <Icon type="login" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
+                type="text"
+                name="company"
+                onChange={this.onRegisterAccountChange}
+                required
+              />
+              <label>First Name:</label>
+              <Input
+                prefix={
+                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
+                type="text"
+                name="fname"
+                onChange={this.onRegisterFirstNameChange}
+                required
+              />
+              <label>Last Name:</label>
+              <Input
+                prefix={
+                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
+                type="text"
+                name="lname"
+                onChange={this.onRegisterLastNameChange}
+                required
+              />
+              <label>Email:</label>
+              <Input
+                prefix={
+                  <Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
+                type="email"
+                name="email"
+                onChange={this.onRegisterEmailChange}
+                required
+              />
+              <label>Password:</label>
+              <Input
+                prefix={
+                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
+                }
+                type="password"
+                name="password"
+                onChange={this.onRegisterPasswordChange}
+                required
+              />
+              <Button
+                type="primary"
+                className="register-button"
+                onClick={this.onRegisterSubmit}
+              >
+                Register & Get Started!
+              </Button>
+            </form>
           </div>
         </div>
       </div>

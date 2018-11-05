@@ -95,19 +95,25 @@ class Signin extends Component {
               }
               type="text"
               onChange={this.onAccountChange}
+              name="company"
+              required
             />
             <label>Email:</label>
             <br />
             <Input
               prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
-              type="text"
+              type="email"
               onChange={this.onEmailChange}
+              name="email"
+              required
             />
             <label>Password:</label>
             <br />
             <Input
               prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
               type="password"
+              name="password"
+              required
               onChange={this.onPasswordChange}
             />
             <div>

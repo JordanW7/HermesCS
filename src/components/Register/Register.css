@@ -46,3 +46,7 @@
   align-self: flex-start;
   text-shadow: 0 0 5px black;
 }
+
+.register-button {
+  margin-top: 10px;
+}

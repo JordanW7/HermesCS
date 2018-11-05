@@ -48,7 +48,7 @@ class Contact extends Component {
       );
     }
     return message.error(
-      "Oops! Something unexpected happened. Please double check your details and try again."
+      "Oops! Something unexpected happened. Please check you've provided a valid email address"
     );
   };
   onContactNameChange = event => {
@@ -88,6 +88,9 @@ class Contact extends Component {
                       onChange={this.onContactNameChange}
                       defaultValue={`${firstname} ${lastname}`}
                       disabled={loginStatus.loginStatus ? true : false}
+                      required
+                      type="text"
+                      name="fullname"
                     />
                   </FormItem>
                 </Col>
@@ -103,6 +106,9 @@ class Contact extends Component {
                       onChange={this.onContactAccountChange}
                       defaultValue={account}
                       disabled={loginStatus.loginStatus ? true : false}
+                      required
+                      type="text"
+                      name="company"
                     />
                   </FormItem>
                 </Col>
@@ -119,6 +125,9 @@ class Contact extends Component {
                       defaultValue={email}
                       style={{ width: 300 }}
                       disabled={loginStatus.loginStatus ? true : false}
+                      required
+                      type="email"
+                      name="email"
                     />
                   </FormItem>
                 </Col>
