@@ -74,12 +74,26 @@ class TeamSettingsAdd extends Component {
           <Col span={24} className="settings-content-title">
             Add New Team
           </Col>
-          <Col span={11} style={{ textAlign: "right" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="New Team Name:">
               <Input onChange={this.onNewTeamNameChange} />
             </FormItem>
           </Col>
-          <Col span={13} style={{ textAlign: "right" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="Assign Team Leader:">
               <Select
                 defaultValue="Please select"
@@ -95,6 +109,15 @@ class TeamSettingsAdd extends Component {
                   })}
               </Select>
             </FormItem>
+          </Col>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={24}
+            xl={24}
+            style={{ textAlign: "center" }}
+          >
             <Button type="primary" onClick={this.onAddTeamSubmit}>
               Add
             </Button>

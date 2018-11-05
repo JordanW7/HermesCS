@@ -36,10 +36,7 @@ class Settings extends Component {
           <div className="settings-title">Settings</div>
           <div className="settings-box">
             <Row>
-              {
-                //will need to change this on mobile so the menu is still visible//
-              }
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <Menu
                   onClick={this.onSettingsMenuChange}
                   defaultSelectedKeys={["1"]}
@@ -80,7 +77,14 @@ class Settings extends Component {
                   )}
                 </Menu>
               </Col>
-              <Col span={18} className="settings-content-actions">
+              <Col
+                xs={12}
+                sm={12}
+                md={12}
+                lg={18}
+                xl={18}
+                className="settings-content-actions"
+              >
                 {currentPage === "profile" && (
                   <ProfileSettings {...this.props} />
                 )}

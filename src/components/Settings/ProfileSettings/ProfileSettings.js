@@ -56,15 +56,38 @@ class ProfileSettings extends Component {
           <Col span={24} className="settings-content-title">
             Change Password
           </Col>
-          <Col span={11} style={{ textAlign: "right" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="Current Password:">
               <Input onChange={this.onCurrentPasswordChange} type="password" />
             </FormItem>
           </Col>
-          <Col span={13} style={{ textAlign: "right" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="New Password:">
               <Input onChange={this.onNewPasswordChange} type="password" />
             </FormItem>
+          </Col>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={24}
+            xl={24}
+            style={{ textAlign: "center" }}
+          >
             <Button type="primary" onClick={this.onProfileSave}>
               Save
             </Button>

@@ -100,27 +100,62 @@ class UserSettingsAdd extends Component {
           <Col span={24} className="settings-content-title">
             Add New User
           </Col>
-          <Col span={12} style={{ textAlign: "right" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="First Name:">
               <Input onChange={this.onNewUserFirstNameChange} />
             </FormItem>
           </Col>
-          <Col span={12} style={{ textAlign: "right" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="Last Name:">
               <Input onChange={this.onNewUserLastNameChange} />
             </FormItem>
           </Col>
-          <Col span={12} style={{ textAlign: "right" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="Email:">
               <Input onChange={this.onNewUserEmailChange} />
             </FormItem>
           </Col>
-          <Col span={12} style={{ textAlign: "right" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="Password:">
               <Input type="password" onChange={this.onNewUserPasswordChange} />
             </FormItem>
           </Col>
-          <Col span={12} style={{ textAlign: "right" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="Team:">
               <Select
                 defaultValue="Please select"
@@ -137,7 +172,14 @@ class UserSettingsAdd extends Component {
               </Select>
             </FormItem>
           </Col>
-          <Col span={24} style={{ textAlign: "center" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={24}
+            xl={24}
+            style={{ textAlign: "center" }}
+          >
             <Button type="primary" onClick={this.onAddUserSubmit}>
               Add
             </Button>

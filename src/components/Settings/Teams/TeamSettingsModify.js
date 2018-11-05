@@ -116,7 +116,14 @@ class TeamSettingsModify extends Component {
           <Col span={24} className="settings-content-title">
             Modify Team
           </Col>
-          <Col span={12} style={{ textAlign: "left" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="Team:">
               <Select
                 defaultValue="Please select"
@@ -133,7 +140,14 @@ class TeamSettingsModify extends Component {
               </Select>
             </FormItem>
           </Col>
-          <Col span={12} style={{ textAlign: "left" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={12}
+            xl={12}
+            style={{ textAlign: "right" }}
+          >
             <FormItem label="Assign Team Leader:">
               <Select
                 defaultValue={
@@ -154,7 +168,14 @@ class TeamSettingsModify extends Component {
               </Select>
             </FormItem>
           </Col>
-          <Col span={24} style={{ textAlign: "center" }}>
+          <Col
+            xs={24}
+            sm={24}
+            md={24}
+            lg={24}
+            xl={24}
+            style={{ textAlign: "center" }}
+          >
             <Button type="primary" onClick={this.onModTeamSubmit}>
               Update
             </Button>
