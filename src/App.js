@@ -123,14 +123,6 @@ class App extends Component {
       `profile/${data.account}/${data.id}`,
       "get"
     );
-    if (userdata === "Not active") {
-      window.sessionStorage.removeItem("token");
-      window.localStorage.removeItem("token");
-      if (loginStatus.loginStatus) {
-        onSignout();
-      }
-      return;
-    }
     if (userdata.id) {
       onLoadUser(userdata);
       onSignin();

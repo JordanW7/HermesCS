@@ -7,6 +7,10 @@ import { Provider } from "react-redux";
 
 const store = configureStore();
 
+test("Blank test", () => {
+  expect("3").toBe("3");
+});
+
 // it("renders without crashing", () => {
 //   const div = document.createElement("div");
 //   ReactDOM.render(
