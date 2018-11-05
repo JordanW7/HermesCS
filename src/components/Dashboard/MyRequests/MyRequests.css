@@ -9,14 +9,20 @@
 
 .myrequests-label {
   text-align: center;
-  border-bottom: 1px solid silver;
   font-weight: 500;
 }
 
 .myrequests-data {
   text-align: center;
-  border-bottom: 1px solid silver;
   font-size: 13px;
+}
+
+.myrequests-labeldiv {
+  border-bottom: 1px solid silver;
+}
+
+.myrequests-div {
+  border-bottom: 1px dashed silver;
 }
 
 .myrequests {

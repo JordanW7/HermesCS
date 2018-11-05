@@ -1,7 +1,7 @@
 .searchrequests {
   max-width: 1200px;
   margin: 0 auto;
-  width: 95%;
+  width: 98%;
 }
 
 .searchrequests-contents {
@@ -13,7 +13,7 @@
   margin: 0 auto;
   padding: 5px;
   text-align: center;
-  width: 95%;
+  width: 100%;
 }
 
 .searchrequests-title {

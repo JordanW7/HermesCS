@@ -9,14 +9,20 @@
 
 .assignedtoteam-label {
   text-align: center;
-  border-bottom: 1px solid silver;
   font-weight: 500;
 }
 
 .assignedtoteam-data {
   text-align: center;
-  border-bottom: 1px solid silver;
   font-size: 13px;
+}
+
+.assignedtoteam-labeldiv {
+  border-bottom: 1px solid silver;
+}
+
+.assignedtoteam-div {
+  border-bottom: 1px dashed silver;
 }
 
 .assignedtoteam {

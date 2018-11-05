@@ -54,11 +54,25 @@ class AssignedToTeam extends Component {
     return (
       <div className="assignedtoteam">
         <Row>
-          <Col span={20} className="assignedtoteam-title">
+          <Col
+            xs={16}
+            sm={16}
+            md={16}
+            lg={20}
+            xl={20}
+            className="assignedtoteam-title"
+          >
             ASSIGNED TO TEAM: ({totalresults}{" "}
             {totalresults === 1 ? "result" : "results"})
           </Col>
-          <Col span={4} className="assignedtoteam-selector">
+          <Col
+            xs={8}
+            sm={8}
+            md={8}
+            lg={4}
+            xl={4}
+            className="assignedtoteam-selector"
+          >
             <Select
               defaultValue="unassigned"
               style={{ width: 120 }}
@@ -95,6 +109,7 @@ class AssignedToTeam extends Component {
           <Col span={3} className="assignedtoteam-label">
             Priority:
           </Col>
+          <Col span={24} className="assignedtoteam-labeldiv" />
         </Row>
         <div className="assignedtoteam-databox">
           {this.state.dashboardTeamAssignmentData.map((result, i) => {
@@ -163,6 +178,7 @@ class AssignedToTeam extends Component {
                 >
                   {result["priority"]}
                 </Col>
+                <Col span={24} className="assignedtoteam-div" />
               </Row>
             );
           })}

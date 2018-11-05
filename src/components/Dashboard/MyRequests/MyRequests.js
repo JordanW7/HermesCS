@@ -51,11 +51,25 @@ class MyRequests extends Component {
     return (
       <div className="myrequests">
         <Row>
-          <Col span={20} className="myrequests-title">
+          <Col
+            xs={16}
+            sm={16}
+            md={16}
+            lg={20}
+            xl={20}
+            className="myrequests-title"
+          >
             MY CREATED REQUESTS: ({totalresults}{" "}
             {totalresults === 1 ? "result" : "results"})
           </Col>
-          <Col span={4} className="myrequests-selector">
+          <Col
+            xs={8}
+            sm={8}
+            md={8}
+            lg={4}
+            xl={4}
+            className="myrequests-selector"
+          >
             <Select
               defaultValue="today"
               style={{ width: 120 }}
@@ -92,6 +106,7 @@ class MyRequests extends Component {
           <Col span={3} className="myrequests-label">
             Priority:
           </Col>
+          <Col span={24} className="myrequests-labeldiv" />
         </Row>
         <div className="myrequests-databox">
           {this.state.dashboardMyRequestsData.map((result, i) => {
@@ -160,6 +175,7 @@ class MyRequests extends Component {
                 >
                   {result["priority"]}
                 </Col>
+                <Col span={24} className="myrequests-div" />
               </Row>
             );
           })}

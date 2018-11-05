@@ -10,26 +10,39 @@ const RequestCommentList = props => {
         return (
           <Row key={i}>
             <Col
-              span={3}
+              xs={6}
+              sm={6}
+              md={6}
+              lg={3}
+              xl={3}
               key={`${i}_time`}
               className="requestviewer-comments-data"
             >
               {moment(comment.created_at).format("DD-MM-YYYY hh:mm")}
             </Col>
             <Col
-              span={5}
+              xs={8}
+              sm={8}
+              md={8}
+              lg={5}
+              xl={5}
               key={`${i}_user`}
               className="requestviewer-comments-data"
             >
               {`${comment.created_by} (${comment.team})`}
             </Col>
             <Col
-              span={16}
+              xs={10}
+              sm={10}
+              md={10}
+              lg={16}
+              xl={16}
               key={`${i}_comment`}
               className="requestviewer-comments-data"
             >
               {comment.comments}
             </Col>
+            <Col span={24} className="requestviewer-div" />
           </Row>
         );
       })}

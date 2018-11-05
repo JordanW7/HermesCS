@@ -9,18 +9,20 @@
 
 .assignedtome-label {
   text-align: center;
-  border-bottom: 1px solid silver;
   font-weight: 500;
 }
 
 .assignedtome-data {
   text-align: center;
-  border-bottom: 1px solid silver;
   font-size: 13px;
 }
 
-.assignedtome-more {
-  text-align: center;
+.assignedtome-labeldiv {
+  border-bottom: 1px solid silver;
+}
+
+.assignedtome-div {
+  border-bottom: 1px dashed silver;
 }
 
 .assignedtome {

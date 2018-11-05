@@ -373,8 +373,15 @@ class RequestForm extends Component {
           <Form layout="inline">
             <Row style={{ textAlign: "right" }}>
               {path === "/requests" && (
-                <Col span={22} style={{ textAlign: "center" }}>
-                  <FormItem label=" Search Date/Time Range:">
+                <Col
+                  xs={24}
+                  sm={24}
+                  md={24}
+                  lg={22}
+                  xl={22}
+                  style={{ textAlign: "center" }}
+                >
+                  <FormItem label="Search Date/Time Range:">
                     <RangePicker
                       ranges={{
                         Today: [moment().startOf("day"), moment().endOf("day")],
@@ -407,7 +414,10 @@ class RequestForm extends Component {
                 </Col>
               )}
               {path === "/requests" && (
-                <Col span={2}>
+                <Col xs={12} sm={12} md={12} lg={0} xl={0} />
+              )}
+              {path === "/requests" && (
+                <Col xs={12} sm={12} md={12} lg={2} xl={2}>
                   <Button type="primary" onClick={this.onRequestSearchSubmit}>
                     Search
                   </Button>
@@ -421,7 +431,7 @@ class RequestForm extends Component {
                 </Col>
               )}
               {path === "/newrequest" && (
-                <Col span={22}>
+                <Col xs={12} sm={12} md={12} lg={22} xl={22}>
                   <FormItem label="Priority">
                     <Select
                       defaultValue={
@@ -439,7 +449,7 @@ class RequestForm extends Component {
                 </Col>
               )}
               {path === "/newrequest" && (
-                <Col span={2}>
+                <Col xs={12} sm={12} md={12} lg={2} xl={2}>
                   <Button type="primary" onClick={this.onRequestSaveSubmit}>
                     Save
                   </Button>
@@ -448,7 +458,7 @@ class RequestForm extends Component {
             </Row>
             <Row style={{ textAlign: "right" }}>
               {path !== "/newrequest" && (
-                <Col span={6}>
+                <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                   <FormItem label="Created by:">
                     <Input
                       prefix={
@@ -470,7 +480,7 @@ class RequestForm extends Component {
               )}
 
               {!["/newrequest", "/requests"].includes(path) && (
-                <Col span={6}>
+                <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                   <FormItem label="Date/Time:">
                     <DatePicker
                       showTime
@@ -481,9 +491,11 @@ class RequestForm extends Component {
                   </FormItem>
                 </Col>
               )}
-              {path === "/requests" && <Col span={6} />}
+              {path === "/requests" && (
+                <Col xs={0} sm={0} md={0} lg={6} xl={6} />
+              )}
               {path !== "/newrequest" && (
-                <Col span={6}>
+                <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                   <FormItem label="Priority">
                     <Select
                       defaultValue={
@@ -501,7 +513,10 @@ class RequestForm extends Component {
                 </Col>
               )}
               {path !== "/newrequest" && (
-                <Col span={6}>
+                <Col xs={12} sm={12} md={12} lg={0} xl={0} />
+              )}
+              {path !== "/newrequest" && (
+                <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                   <FormItem label="Status:">
                     <Select
                       defaultValue={status ? status : ""}
@@ -538,7 +553,7 @@ class RequestForm extends Component {
               <Col span={24} style={{ textAlign: "left" }}>
                 Person Details:
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="First Name">
                   <Input
                     prefix={
@@ -554,7 +569,7 @@ class RequestForm extends Component {
                   />
                 </FormItem>
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="Last Name">
                   <Input
                     prefix={
@@ -570,7 +585,7 @@ class RequestForm extends Component {
                   />
                 </FormItem>
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="Account#">
                   <Input
                     prefix={
@@ -589,7 +604,7 @@ class RequestForm extends Component {
                   />
                 </FormItem>
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="Request ID">
                   <Input
                     prefix={
@@ -603,7 +618,7 @@ class RequestForm extends Component {
                   />
                 </FormItem>
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="Mobile">
                   <Input
                     prefix={
@@ -622,7 +637,7 @@ class RequestForm extends Component {
                   />
                 </FormItem>
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="Home">
                   <Input
                     prefix={
@@ -638,7 +653,7 @@ class RequestForm extends Component {
                   />
                 </FormItem>
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="Twitter">
                   <Input
                     prefix={
@@ -657,7 +672,7 @@ class RequestForm extends Component {
                   />
                 </FormItem>
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="Facebook">
                   <Input
                     prefix={
@@ -676,7 +691,7 @@ class RequestForm extends Component {
                   />
                 </FormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                 <FormItem label="Email">
                   <Input
                     prefix={
@@ -684,7 +699,7 @@ class RequestForm extends Component {
                     }
                     onChange={this.onRequestEmailChange}
                     defaultValue={email}
-                    style={{ width: 485 }}
+                    style={{ width: 350 }}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
                         ? true
@@ -693,7 +708,7 @@ class RequestForm extends Component {
                   />
                 </FormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                 <FormItem label="Address">
                   <Input
                     prefix={
@@ -704,7 +719,7 @@ class RequestForm extends Component {
                     }
                     onChange={this.onRequestAddressChange}
                     defaultValue={address}
-                    style={{ width: 485 }}
+                    style={{ width: 350 }}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
                         ? true
@@ -716,13 +731,13 @@ class RequestForm extends Component {
               <Col span={24} style={{ textAlign: "left" }}>
                 Request Details:
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="Type">
                   <Select
                     defaultValue={
                       type ? type : path === "/requests" ? "all" : "misc"
                     }
-                    style={{ width: 190 }}
+                    style={{ minWidth: 150 }}
                     onChange={this.onRequestTypeChange}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
@@ -738,11 +753,10 @@ class RequestForm extends Component {
                   </Select>
                 </FormItem>
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="Topic">
                   <Input
                     defaultValue={topic}
-                    style={{ width: 190 }}
                     onChange={this.onRequestTopicChange}
                     disabled={
                       !["/newrequest", "/requests"].includes(path)
@@ -752,9 +766,10 @@ class RequestForm extends Component {
                   />
                 </FormItem>
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="For Team">
                   <Select
+                    style={{ minWidth: 150 }}
                     defaultValue={assign_team ? assign_team : ""}
                     onChange={this.onRequestAssignmentTeamChange}
                   >
@@ -775,9 +790,10 @@ class RequestForm extends Component {
                   </Select>
                 </FormItem>
               </Col>
-              <Col span={6}>
+              <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <FormItem label="For Person">
                   <Select
+                    style={{ minWidth: 150 }}
                     defaultValue={
                       assign_person
                         ? assign_person

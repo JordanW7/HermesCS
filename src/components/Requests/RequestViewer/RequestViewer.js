@@ -65,26 +65,62 @@ class RequestViewer extends Component {
           <div className="requestviewer-box">
             Comments/Actions:
             <Row>
-              <Col span={3} className="requestviewer-comments-label">
+              <Col
+                xs={6}
+                sm={6}
+                md={6}
+                lg={3}
+                xl={3}
+                className="requestviewer-comments-label"
+              >
                 Time/Date:
               </Col>
-              <Col span={5} className="requestviewer-comments-label">
+              <Col
+                xs={8}
+                sm={8}
+                md={8}
+                lg={5}
+                xl={5}
+                className="requestviewer-comments-label"
+              >
                 User:
               </Col>
-              <Col span={16} className="requestviewer-comments-label">
+              <Col
+                xs={10}
+                sm={10}
+                md={10}
+                lg={16}
+                xl={16}
+                className="requestviewer-comments-label"
+              >
                 Comments:
               </Col>
+              <Col span={24} className="requestviewer-labeldiv" />
             </Row>
             <RequestCommentList {...this.props} {...this.state.requestdata} />
             <br />
             <Row>
-              <Col span={2} style={{ textAlign: "center" }}>
+              <Col
+                xs={24}
+                sm={24}
+                md={24}
+                lg={2}
+                xl={2}
+                style={{ textAlign: "center" }}
+              >
                 <label>Comments:</label>
               </Col>
-              <Col span={20}>
+              <Col xs={24} sm={24} md={24} lg={20} xl={20}>
                 <TextArea placeholder="" onChange={this.onCommentChange} />
               </Col>
-              <Col span={2} style={{ textAlign: "center" }}>
+              <Col
+                xs={24}
+                sm={24}
+                md={24}
+                lg={2}
+                xl={2}
+                style={{ textAlign: "center" }}
+              >
                 <Button onClick={this.onCommentSubmit}>Submit</Button>
               </Col>
             </Row>
