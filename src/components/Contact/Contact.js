@@ -43,10 +43,12 @@ class Contact extends Component {
       details: contactDetails
     });
     if (request === "sent") {
-      return message.success("Sent!");
+      return message.success(
+        "Sent! We will be in contact with you as soon as possible."
+      );
     }
     return message.error(
-      "Oops! Something unexpected happened. Please try again."
+      "Oops! Something unexpected happened. Please double check your details and try again."
     );
   };
   onContactNameChange = event => {
