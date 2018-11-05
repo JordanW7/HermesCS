@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Form, Button, Select, message } from "antd";
+import { Row, Col, Form, Button, Select, message } from "antd";
 import apiBackEnd from "../../../api/api";
 
 const FormItem = Form.Item;
@@ -111,51 +111,59 @@ class TeamSettingsModify extends Component {
   };
   render() {
     return (
-      <Col span={18} className="settings-content-actions">
-        <div className="settings-content-title">Modify Team</div>
-        <Form layout="inline">
-          <FormItem label="Team:">
-            <Select
-              defaultValue="Please select"
-              onChange={this.onModTeamNameChange}
-            >
-              {this.state.teamSettingsTeamList &&
-                this.state.teamSettingsTeamList.map((team, i) => {
-                  return (
-                    <Option key={`${i}_team`} value={`${team}`}>
-                      {team}
-                    </Option>
-                  );
-                })}
-            </Select>
-          </FormItem>
-          <FormItem label="Assign Team Leader:">
-            <Select
-              defaultValue={
-                this.state.teamSettingsCurrentLeader
-                  ? this.state.teamSettingsCurrentLeader
-                  : "Please select"
-              }
-              onChange={this.onModTeamLeaderChange}
-            >
-              {this.state.teamSettingsUserList &&
-                this.state.teamSettingsUserList.map((person, i) => {
-                  return (
-                    <Option key={`${i}_person`} value={`${person}`}>
-                      {person}
-                    </Option>
-                  );
-                })}
-            </Select>
-          </FormItem>
-          <Button type="primary" onClick={this.onModTeamSubmit}>
-            Update
-          </Button>
-          <Button type="danger" onClick={this.onModTeamDelete}>
-            Delete
-          </Button>
-        </Form>
-      </Col>
+      <Form layout="inline">
+        <Row>
+          <Col span={24} className="settings-content-title">
+            Modify Team
+          </Col>
+          <Col span={12} style={{ textAlign: "left" }}>
+            <FormItem label="Team:">
+              <Select
+                defaultValue="Please select"
+                onChange={this.onModTeamNameChange}
+              >
+                {this.state.teamSettingsTeamList &&
+                  this.state.teamSettingsTeamList.map((team, i) => {
+                    return (
+                      <Option key={`${i}_team`} value={`${team}`}>
+                        {team}
+                      </Option>
+                    );
+                  })}
+              </Select>
+            </FormItem>
+          </Col>
+          <Col span={12} style={{ textAlign: "left" }}>
+            <FormItem label="Assign Team Leader:">
+              <Select
+                defaultValue={
+                  this.state.teamSettingsCurrentLeader
+                    ? this.state.teamSettingsCurrentLeader
+                    : "Please select"
+                }
+                onChange={this.onModTeamLeaderChange}
+              >
+                {this.state.teamSettingsUserList &&
+                  this.state.teamSettingsUserList.map((person, i) => {
+                    return (
+                      <Option key={`${i}_person`} value={`${person}`}>
+                        {person}
+                      </Option>
+                    );
+                  })}
+              </Select>
+            </FormItem>
+          </Col>
+          <Col span={24} style={{ textAlign: "center" }}>
+            <Button type="primary" onClick={this.onModTeamSubmit}>
+              Update
+            </Button>
+            <Button type="danger" onClick={this.onModTeamDelete}>
+              Delete
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     );
   }
 }

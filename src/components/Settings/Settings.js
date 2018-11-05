@@ -80,19 +80,23 @@ class Settings extends Component {
                   )}
                 </Menu>
               </Col>
-              {currentPage === "profile" && <ProfileSettings {...this.props} />}
-              {currentPage === "user-add" && (
-                <UserSettingsAdd {...this.props} />
-              )}
-              {currentPage === "user-modify" && (
-                <UserSettingsModify {...this.props} />
-              )}
-              {currentPage === "team-add" && (
-                <TeamSettingsAdd {...this.props} />
-              )}
-              {currentPage === "team-modify" && (
-                <TeamSettingsModify {...this.props} />
-              )}
+              <Col span={18} className="settings-content-actions">
+                {currentPage === "profile" && (
+                  <ProfileSettings {...this.props} />
+                )}
+                {currentPage === "user-add" && (
+                  <UserSettingsAdd {...this.props} />
+                )}
+                {currentPage === "user-modify" && (
+                  <UserSettingsModify {...this.props} />
+                )}
+                {currentPage === "team-add" && (
+                  <TeamSettingsAdd {...this.props} />
+                )}
+                {currentPage === "team-modify" && (
+                  <TeamSettingsModify {...this.props} />
+                )}
+              </Col>
             </Row>
           </div>
         </div>

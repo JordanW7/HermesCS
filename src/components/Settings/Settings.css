@@ -15,7 +15,7 @@
 .settings {
   max-width: 1000px;
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
 }
 
 .settings-content-actions {
@@ -40,4 +40,10 @@
   text-shadow: 0 0 5px black;
   color: white;
   text-align: center;
+}
+
+@media (pointer: coarse) {
+  .settings-full {
+    background-attachment: initial !important;
+  }
 }

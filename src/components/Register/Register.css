@@ -21,7 +21,7 @@
   padding-top: 50px;
   max-width: 400px;
   margin: 0 auto;
-  width: 100%;
+  width: 95%;
 }
 
 .register-text {
@@ -49,4 +49,10 @@
 
 .register-button {
   margin-top: 10px;
+}
+
+@media (pointer: coarse) {
+  .register-full {
+    background-attachment: initial !important;
+  }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Form, Button, Select, message } from "antd";
+import { Row, Col, Form, Button, Select, message } from "antd";
 import apiBackEnd from "../../../api/api";
 
 const FormItem = Form.Item;
@@ -125,57 +125,64 @@ class UserSettingsModify extends Component {
   render() {
     const status = this.state.userSettingsSelectionStatus;
     return (
-      <Col span={18} className="settings-content-actions">
-        <div className="settings-content-title">Modify User</div>
-        <Form layout="inline">
-          <FormItem label="User:">
-            <Select
-              defaultValue="Please select"
-              onChange={this.onModUserNameChange}
+      <Form layout="inline">
+        <Row>
+          <Col span={24} className="settings-content-title">
+            Modify User
+          </Col>
+          <Col span={12} style={{ textAlign: "right" }}>
+            <FormItem label="User:">
+              <Select
+                defaultValue="Please select"
+                onChange={this.onModUserNameChange}
+              >
+                {this.state.userSettingsUserList &&
+                  this.state.userSettingsUserList.map((user, i) => {
+                    return (
+                      <Option key={`${i}_user`} value={`${user}`}>
+                        {user}
+                      </Option>
+                    );
+                  })}
+              </Select>
+            </FormItem>
+          </Col>
+          <Col span={12} style={{ textAlign: "right" }}>
+            <FormItem label="New Team:">
+              <Select
+                defaultValue="Please select"
+                onChange={this.onModUserTeamChange}
+              >
+                {this.state.userSettingsTeamList &&
+                  this.state.userSettingsTeamList.map((team, i) => {
+                    return (
+                      <Option key={`${i}_team`} value={`${team}`}>
+                        {team}
+                      </Option>
+                    );
+                  })}
+              </Select>
+            </FormItem>
+          </Col>
+          <Col span={24} style={{ textAlign: "center" }}>
+            {status === "" || status === "active" ? (
+              <Button type="primary" onClick={this.onModUserSubmit}>
+                Update
+              </Button>
+            ) : (
+              ""
+            )}
+            <Button
+              type={status !== "active" && status !== "" ? "primary" : "danger"}
+              onClick={this.onModUserStatusChange}
             >
-              {this.state.userSettingsUserList &&
-                this.state.userSettingsUserList.map((user, i) => {
-                  return (
-                    <Option key={`${i}_user`} value={`${user}`}>
-                      {user}
-                    </Option>
-                  );
-                })}
-            </Select>
-          </FormItem>
-
-          <FormItem label="New Team:">
-            <Select
-              defaultValue="Please select"
-              onChange={this.onModUserTeamChange}
-            >
-              {this.state.userSettingsTeamList &&
-                this.state.userSettingsTeamList.map((team, i) => {
-                  return (
-                    <Option key={`${i}_team`} value={`${team}`}>
-                      {team}
-                    </Option>
-                  );
-                })}
-            </Select>
-          </FormItem>
-          {status === "" || status === "active" ? (
-            <Button type="primary" onClick={this.onModUserSubmit}>
-              Update
+              {status !== "active" && status !== ""
+                ? "Enable Account"
+                : "Disable Account"}
             </Button>
-          ) : (
-            ""
-          )}
-          <Button
-            type={status !== "active" && status !== "" ? "primary" : "danger"}
-            onClick={this.onModUserStatusChange}
-          >
-            {status !== "active" && status !== ""
-              ? "Enable Account"
-              : "Disable Account"}
-          </Button>
-        </Form>
-      </Col>
+          </Col>
+        </Row>
+      </Form>
     );
   }
 }

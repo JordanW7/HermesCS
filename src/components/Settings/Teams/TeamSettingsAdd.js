@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Form, Button, Input, Select, message } from "antd";
+import { Row, Col, Form, Button, Input, Select, message } from "antd";
 import apiBackEnd from "../../../api/api";
 
 const FormItem = Form.Item;
@@ -69,32 +69,38 @@ class TeamSettingsAdd extends Component {
   };
   render() {
     return (
-      <Col span={18} className="settings-content-actions">
-        <div className="settings-content-title">Add New Team</div>
-        <Form layout="inline">
-          <FormItem label="New Team Name:">
-            <Input onChange={this.onNewTeamNameChange} />
-          </FormItem>
-          <FormItem label="Assign Team Leader:">
-            <Select
-              defaultValue="Please select"
-              onChange={this.onNewTeamLeaderChange}
-            >
-              {this.state.teamSettingsUserList &&
-                this.state.teamSettingsUserList.map((person, i) => {
-                  return (
-                    <Option key={`${i}_person`} value={`${person}`}>
-                      {person}
-                    </Option>
-                  );
-                })}
-            </Select>
-          </FormItem>
-          <Button type="primary" onClick={this.onAddTeamSubmit}>
-            Add
-          </Button>
-        </Form>
-      </Col>
+      <Form layout="inline">
+        <Row>
+          <Col span={24} className="settings-content-title">
+            Add New Team
+          </Col>
+          <Col span={11} style={{ textAlign: "right" }}>
+            <FormItem label="New Team Name:">
+              <Input onChange={this.onNewTeamNameChange} />
+            </FormItem>
+          </Col>
+          <Col span={13} style={{ textAlign: "right" }}>
+            <FormItem label="Assign Team Leader:">
+              <Select
+                defaultValue="Please select"
+                onChange={this.onNewTeamLeaderChange}
+              >
+                {this.state.teamSettingsUserList &&
+                  this.state.teamSettingsUserList.map((person, i) => {
+                    return (
+                      <Option key={`${i}_person`} value={`${person}`}>
+                        {person}
+                      </Option>
+                    );
+                  })}
+              </Select>
+            </FormItem>
+            <Button type="primary" onClick={this.onAddTeamSubmit}>
+              Add
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     );
   }
 }

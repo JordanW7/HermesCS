@@ -11,3 +11,9 @@
   background-color: rgb(245, 245, 245);
   background-image: url(../../images/balloon.jpg);
 }
+
+@media (pointer: coarse) {
+  .requests-full {
+    background-attachment: initial !important;
+  }
+}

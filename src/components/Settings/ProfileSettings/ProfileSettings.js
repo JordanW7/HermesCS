@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Form, Button, Input, message } from "antd";
+import { Row, Col, Form, Button, Input, message } from "antd";
 import apiBackEnd from "../../../api/api";
 import "./ProfileSettings.css";
 
@@ -51,20 +51,26 @@ class ProfileSettings extends Component {
   };
   render() {
     return (
-      <Col span={18} className="settings-content-actions">
-        <div className="settings-content-title">Change Password</div>
-        <Form layout="inline">
-          <FormItem label="Current Password:">
-            <Input onChange={this.onCurrentPasswordChange} type="password" />
-          </FormItem>
-          <FormItem label="New Password:">
-            <Input onChange={this.onNewPasswordChange} type="password" />
-          </FormItem>
-          <Button type="primary" onClick={this.onProfileSave}>
-            Save
-          </Button>
-        </Form>
-      </Col>
+      <Form layout="inline">
+        <Row>
+          <Col span={24} className="settings-content-title">
+            Change Password
+          </Col>
+          <Col span={11} style={{ textAlign: "right" }}>
+            <FormItem label="Current Password:">
+              <Input onChange={this.onCurrentPasswordChange} type="password" />
+            </FormItem>
+          </Col>
+          <Col span={13} style={{ textAlign: "right" }}>
+            <FormItem label="New Password:">
+              <Input onChange={this.onNewPasswordChange} type="password" />
+            </FormItem>
+            <Button type="primary" onClick={this.onProfileSave}>
+              Save
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     );
   }
 }
