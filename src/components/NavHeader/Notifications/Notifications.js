@@ -54,17 +54,25 @@ class Notifications extends Component {
       <Menu>
         {notificationTeamData && (
           <Menu.Item className="notifications-data">
-            Unassigned Team Requests:{" "}
-            <span className="alert-highlight">
-              {notificationTeamData.total}
-            </span>{" "}
-            | Extreme:{" "}
-            <span className="alert-high">{notificationTeamData.extreme}</span> |
-            High:{" "}
-            <span className="alert-high">{notificationTeamData.high}</span> |
-            Medium:{" "}
-            <span className="alert-low">{notificationTeamData.medium}</span> |
-            Low: <span className="alert-low">{notificationTeamData.low}</span>
+            <div className="alert-info">
+              Unassigned Team Requests:{" "}
+              <span className="alert-highlight">
+                {notificationTeamData.total}
+              </span>{" "}
+              (Extreme:{" "}
+              <span className="alert-high">{notificationTeamData.extreme}</span>{" "}
+              | High:{" "}
+              <span className="alert-high">{notificationTeamData.high}</span>
+              <span className="mobilehide-always">
+                {" "}
+                | Medium:{" "}
+                <span className="alert-low">
+                  {notificationTeamData.medium}
+                </span>{" "}
+                | Low:{" "}
+                <span className="alert-low">{notificationTeamData.low}</span>
+              </span>)
+            </div>
           </Menu.Item>
         )}
         <Menu.Divider />
@@ -87,25 +95,28 @@ class Notifications extends Component {
                     to={`/requests/${alert.reference}`}
                     className="alert-info"
                   >
-                    {moment(alert.alert_time).format("MM/DD/YY h:mm:ss a")}: New
-                    Assignment | Request:{" "}
-                    <span className="alert-highlight">{alert.reference}</span> |
-                    Priority:{" "}
-                    <span
-                      className={
-                        alert.priority === "extreme"
-                          ? "alert-high"
-                          : alert.priority === "high"
+                    {moment(alert.alert_time).format("MM/DD/YY h:mma")}: New
+                    Assignment:{" "}
+                    <span className="alert-highlight">{alert.reference}</span>
+                    <span className="mobilehide-portrait">
+                      {" "}
+                      | Priority:{" "}
+                      <span
+                        className={
+                          alert.priority === "extreme"
                             ? "alert-high"
-                            : "alert-low"
-                      }
-                    >
-                      {alert.priority}
-                    </span>{" "}
-                    | Type:{" "}
-                    <span className="alert-highlight">{alert.type}</span> |
-                    Topic:{" "}
-                    <span className="alert-highlight">{alert.topic}</span>
+                            : alert.priority === "high"
+                              ? "alert-high"
+                              : "alert-low"
+                        }
+                      >
+                        {alert.priority}
+                      </span>{" "}
+                      | Type:{" "}
+                      <span className="alert-highlight">{alert.type}</span> |
+                      Topic:{" "}
+                      <span className="alert-highlight">{alert.topic}</span>
+                    </span>
                   </Link>
                 </div>
               </Menu.Item>
