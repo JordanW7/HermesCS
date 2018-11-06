@@ -18,7 +18,7 @@ const RequestCommentList = props => {
               key={`${i}_time`}
               className="requestviewer-comments-data"
             >
-              {moment(comment.created_at).format("DD-MM-YYYY hh:mm")}
+              {moment(comment.created_at).format("DD-MM-YYYY hh:mma")}
             </Col>
             <Col
               xs={8}

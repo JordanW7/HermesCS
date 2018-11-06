@@ -85,28 +85,84 @@ class AssignedToTeam extends Component {
               <Option value="last7">Last 7 Days</Option>
             </Select>
           </Col>
-          <Col span={2} className="assignedtoteam-label">
+          <Col
+            xs={4}
+            sm={4}
+            md={4}
+            lg={2}
+            xl={2}
+            className="assignedtoteam-label"
+          >
             Request#:
           </Col>
-          <Col span={4} className="assignedtoteam-label">
+          <Col
+            xs={7}
+            sm={6}
+            md={6}
+            lg={4}
+            xl={4}
+            className="assignedtoteam-label"
+          >
             Date:
           </Col>
-          <Col span={3} className="assignedtoteam-label">
+          <Col
+            xs={0}
+            sm={0}
+            md={0}
+            lg={3}
+            xl={3}
+            className="assignedtoteam-label mobilehide-always"
+          >
             Created by:
           </Col>
-          <Col span={3} className="assignedtoteam-label">
-            Customer Name:
+          <Col
+            xs={7}
+            sm={5}
+            md={5}
+            lg={3}
+            xl={3}
+            className="assignedtoteam-label"
+          >
+            Customer:
           </Col>
-          <Col span={3} className="assignedtoteam-label">
+          <Col
+            xs={0}
+            sm={3}
+            md={3}
+            lg={3}
+            xl={3}
+            className="assignedtoteam-label mobilehide-portrait"
+          >
             Topic:
           </Col>
-          <Col span={3} className="assignedtoteam-label">
+          <Col
+            xs={0}
+            sm={0}
+            md={0}
+            lg={3}
+            xl={3}
+            className="assignedtoteam-label mobilehide-always"
+          >
             For Team:
           </Col>
-          <Col span={3} className="assignedtoteam-label">
+          <Col
+            xs={3}
+            sm={3}
+            md={3}
+            lg={3}
+            xl={3}
+            className="assignedtoteam-label"
+          >
             Status:
           </Col>
-          <Col span={3} className="assignedtoteam-label">
+          <Col
+            xs={3}
+            sm={3}
+            md={3}
+            lg={3}
+            xl={3}
+            className="assignedtoteam-label"
+          >
             Priority:
           </Col>
           <Col span={24} className="assignedtoteam-labeldiv" />
@@ -116,7 +172,11 @@ class AssignedToTeam extends Component {
             return (
               <Row key={`${i}_MyRequest`}>
                 <Col
-                  span={2}
+                  xs={4}
+                  sm={4}
+                  md={4}
+                  lg={2}
+                  xl={2}
                   key={`${i}_MyRequestID`}
                   className="assignedtoteam-data"
                 >
@@ -130,49 +190,77 @@ class AssignedToTeam extends Component {
                   </a>
                 </Col>
                 <Col
-                  span={4}
+                  xs={7}
+                  sm={6}
+                  md={6}
+                  lg={4}
+                  xl={4}
                   key={`${i}_MyRequestDate`}
                   className="assignedtoteam-data"
                 >
-                  {moment(result["created_at"]).format("MM/DD/YY h:mm:ss a")}
+                  {moment(result["created_at"]).format("MM/DD/YY h:mma")}
                 </Col>
                 <Col
-                  span={3}
+                  xs={0}
+                  sm={0}
+                  md={0}
+                  lg={3}
+                  xl={3}
                   key={`${i}_MyRequestAuthor`}
-                  className="assignedtoteam-data"
+                  className="assignedtoteam-data mobilehide-always"
                 >
                   {result["created_by"]}
                 </Col>
                 <Col
-                  span={3}
+                  xs={7}
+                  sm={5}
+                  md={5}
+                  lg={3}
+                  xl={3}
                   key={`${i}_MyRequestName`}
                   className="assignedtoteam-data"
                 >
                   {`${result["firstname"]} ${result["lastname"]}`}
                 </Col>
                 <Col
-                  span={3}
+                  xs={0}
+                  sm={3}
+                  md={3}
+                  lg={3}
+                  xl={3}
                   key={`${i}_MyRequestTopic`}
-                  className="assignedtoteam-data"
+                  className="assignedtoteam-data mobilehide-portrait"
                 >
                   {result["topic"]}
                 </Col>
                 <Col
-                  span={3}
+                  xs={0}
+                  sm={0}
+                  md={0}
+                  lg={3}
+                  xl={3}
                   key={`${i}_MyRequestTeam`}
-                  className="assignedtoteam-data"
+                  className="assignedtoteam-data mobilehide-always"
                 >
                   {result["assign_team"]}
                 </Col>
                 <Col
-                  span={3}
+                  xs={3}
+                  sm={3}
+                  md={3}
+                  lg={3}
+                  xl={3}
                   key={`${i}_assignedtoteamtatus`}
                   className="assignedtoteam-data"
                 >
                   {result["status"]}
                 </Col>
                 <Col
-                  span={3}
+                  xs={3}
+                  sm={3}
+                  md={3}
+                  lg={3}
+                  xl={3}
                   key={`${i}_assignedtoteamPriority`}
                   className="assignedtoteam-data"
                 >

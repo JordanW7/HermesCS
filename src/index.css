@@ -14,3 +14,15 @@ a:focus {
   font-weight: 300;
   font-family: "Lato", sans-serif;
 }
+
+@media only screen and (max-width: 767px) {
+  .mobilehide-always {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .mobilehide-portrait {
+    display: none;
+  }
+}

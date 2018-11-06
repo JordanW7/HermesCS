@@ -59,7 +59,7 @@ class MyRequests extends Component {
             xl={20}
             className="myrequests-title"
           >
-            MY CREATED REQUESTS: ({totalresults}{" "}
+            CREATED REQUESTS: ({totalresults}{" "}
             {totalresults === 1 ? "result" : "results"})
           </Col>
           <Col
@@ -82,28 +82,49 @@ class MyRequests extends Component {
               <Option value="current">Current</Option>
             </Select>
           </Col>
-          <Col span={2} className="myrequests-label">
+          <Col xs={4} sm={4} md={4} lg={2} xl={2} className="myrequests-label">
             Request#:
           </Col>
-          <Col span={4} className="myrequests-label">
+          <Col xs={7} sm={6} md={6} lg={4} xl={4} className="myrequests-label">
             Date:
           </Col>
-          <Col span={3} className="myrequests-label">
+          <Col
+            xs={0}
+            sm={0}
+            md={0}
+            lg={3}
+            xl={3}
+            className="myrequests-label mobilehide-always"
+          >
             Created by:
           </Col>
-          <Col span={3} className="myrequests-label">
-            Customer Name:
+          <Col xs={7} sm={5} md={5} lg={3} xl={3} className="myrequests-label">
+            Customer:
           </Col>
-          <Col span={3} className="myrequests-label">
+          <Col
+            xs={0}
+            sm={3}
+            md={3}
+            lg={3}
+            xl={3}
+            className="myrequests-label mobilehide-portrait"
+          >
             Topic:
           </Col>
-          <Col span={3} className="myrequests-label">
+          <Col
+            xs={0}
+            sm={0}
+            md={0}
+            lg={3}
+            xl={3}
+            className="myrequests-label mobilehide-always"
+          >
             For Team:
           </Col>
-          <Col span={3} className="myrequests-label">
+          <Col xs={3} sm={3} md={3} lg={3} xl={3} className="myrequests-label">
             Status:
           </Col>
-          <Col span={3} className="myrequests-label">
+          <Col xs={3} sm={3} md={3} lg={3} xl={3} className="myrequests-label">
             Priority:
           </Col>
           <Col span={24} className="myrequests-labeldiv" />
@@ -113,7 +134,11 @@ class MyRequests extends Component {
             return (
               <Row key={`${i}_MyRequest`}>
                 <Col
-                  span={2}
+                  xs={4}
+                  sm={4}
+                  md={4}
+                  lg={2}
+                  xl={2}
                   key={`${i}_MyRequestID`}
                   className="myrequests-data"
                 >
@@ -127,49 +152,77 @@ class MyRequests extends Component {
                   </a>
                 </Col>
                 <Col
-                  span={4}
+                  xs={7}
+                  sm={6}
+                  md={6}
+                  lg={4}
+                  xl={4}
                   key={`${i}_MyRequestDate`}
                   className="myrequests-data"
                 >
-                  {moment(result["created_at"]).format("MM/DD/YY h:mm:ss a")}
+                  {moment(result["created_at"]).format("MM/DD/YY h:mma")}
                 </Col>
                 <Col
-                  span={3}
+                  xs={0}
+                  sm={0}
+                  md={0}
+                  lg={3}
+                  xl={3}
                   key={`${i}_MyRequestAuthor`}
-                  className="myrequests-data"
+                  className="myrequests-data mobilehide-always"
                 >
                   {result["created_by"]}
                 </Col>
                 <Col
-                  span={3}
+                  xs={7}
+                  sm={5}
+                  md={5}
+                  lg={3}
+                  xl={3}
                   key={`${i}_MyRequestName`}
                   className="myrequests-data"
                 >
                   {`${result["firstname"]} ${result["lastname"]}`}
                 </Col>
                 <Col
-                  span={3}
+                  xs={0}
+                  sm={3}
+                  md={3}
+                  lg={3}
+                  xl={3}
                   key={`${i}_MyRequestTopic`}
-                  className="myrequests-data"
+                  className="myrequests-data mobilehide-portrait"
                 >
                   {result["topic"]}
                 </Col>
                 <Col
-                  span={3}
+                  xs={0}
+                  sm={0}
+                  md={0}
+                  lg={3}
+                  xl={3}
                   key={`${i}_MyRequestTeam`}
-                  className="myrequests-data"
+                  className="myrequests-data mobilehide-always"
                 >
                   {result["assign_team"]}
                 </Col>
                 <Col
-                  span={3}
+                  xs={3}
+                  sm={3}
+                  md={3}
+                  lg={3}
+                  xl={3}
                   key={`${i}_MyRequestStatus`}
                   className="myrequests-data"
                 >
                   {result["status"]}
                 </Col>
                 <Col
-                  span={3}
+                  xs={3}
+                  sm={3}
+                  md={3}
+                  lg={3}
+                  xl={3}
                   key={`${i}_MyRequestPriority`}
                   className="myrequests-data"
                 >
