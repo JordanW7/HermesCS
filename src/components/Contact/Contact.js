@@ -70,87 +70,95 @@ class Contact extends Component {
       <div className="contact-full">
         <NavHeader {...this.props} />
         <div className="contact">
-          <span className="contact-page-title">
-            {loginStatus.loginStatus ? "Support" : "Contact Us"}
-          </span>
-          <div className="contact-box">
-            <Form layout="inline">
-              <Row style={{ textAlign: "right" }}>
-                <Col span={12} style={{ textAlign: "left" }}>
-                  <FormItem label="Name:">
-                    <Input
-                      prefix={
-                        <Icon
-                          type="user"
-                          style={{ color: "rgba(0,0,0,.25)" }}
-                        />
-                      }
-                      onChange={this.onContactNameChange}
-                      defaultValue={`${firstname} ${lastname}`}
-                      disabled={loginStatus.loginStatus ? true : false}
-                      required
-                      type="text"
-                      name="fullname"
+          <div className="contact-contents">
+            <span className="contact-company-title">Hermes CS</span>
+            <span className="contact-title">
+              <Icon type="mail" />{" "}
+              {loginStatus.loginStatus ? "Support" : "Contact Us"}
+            </span>
+            <div className="contact-box">
+              <Form layout="inline">
+                <Row style={{ textAlign: "right" }}>
+                  <Col span={24} className="contact-text">
+                    Hello! We can't wait to hear from you. Simply fill out this
+                    form and we will be in contact as soon as possible.
+                  </Col>
+                  <Col span={12} style={{ textAlign: "left" }}>
+                    <FormItem label="Name:">
+                      <Input
+                        prefix={
+                          <Icon
+                            type="user"
+                            style={{ color: "rgba(0,0,0,.25)" }}
+                          />
+                        }
+                        onChange={this.onContactNameChange}
+                        defaultValue={`${firstname} ${lastname}`}
+                        disabled={loginStatus.loginStatus ? true : false}
+                        required
+                        type="text"
+                        name="fullname"
+                      />
+                    </FormItem>
+                  </Col>
+                  <Col span={12} style={{ textAlign: "left" }}>
+                    <FormItem label="Account:">
+                      <Input
+                        prefix={
+                          <Icon
+                            type="user"
+                            style={{ color: "rgba(0,0,0,.25)" }}
+                          />
+                        }
+                        onChange={this.onContactAccountChange}
+                        defaultValue={account}
+                        disabled={loginStatus.loginStatus ? true : false}
+                        required
+                        type="text"
+                        name="company"
+                      />
+                    </FormItem>
+                  </Col>
+                  <Col span={24} style={{ textAlign: "left" }}>
+                    <FormItem label="Email:">
+                      <Input
+                        prefix={
+                          <Icon
+                            type="mail"
+                            style={{ color: "rgba(0,0,0,.25)" }}
+                          />
+                        }
+                        onChange={this.onContactEmailChange}
+                        defaultValue={email}
+                        style={{ width: 300 }}
+                        disabled={loginStatus.loginStatus ? true : false}
+                        required
+                        type="email"
+                        name="email"
+                      />
+                    </FormItem>
+                  </Col>
+                  <Col span={24} style={{ textAlign: "left" }}>
+                    Details:
+                  </Col>
+                  <Col span={24} style={{ textAlign: "left" }}>
+                    <TextArea
+                      autosize={{ minRows: 4, maxRows: 8 }}
+                      onChange={this.onContactDetailsChange}
                     />
-                  </FormItem>
-                </Col>
-                <Col span={12} style={{ textAlign: "left" }}>
-                  <FormItem label="Account:">
-                    <Input
-                      prefix={
-                        <Icon
-                          type="user"
-                          style={{ color: "rgba(0,0,0,.25)" }}
-                        />
-                      }
-                      onChange={this.onContactAccountChange}
-                      defaultValue={account}
-                      disabled={loginStatus.loginStatus ? true : false}
-                      required
-                      type="text"
-                      name="company"
-                    />
-                  </FormItem>
-                </Col>
-                <Col span={24} style={{ textAlign: "left" }}>
-                  <FormItem label="Email:">
-                    <Input
-                      prefix={
-                        <Icon
-                          type="mail"
-                          style={{ color: "rgba(0,0,0,.25)" }}
-                        />
-                      }
-                      onChange={this.onContactEmailChange}
-                      defaultValue={email}
-                      style={{ width: 300 }}
-                      disabled={loginStatus.loginStatus ? true : false}
-                      required
-                      type="email"
-                      name="email"
-                    />
-                  </FormItem>
-                </Col>
-                <Col span={24} style={{ textAlign: "left" }}>
-                  Details:
-                </Col>
-                <Col span={24} style={{ textAlign: "left" }}>
-                  <TextArea
-                    autosize={{ minRows: 4, maxRows: 8 }}
-                    onChange={this.onContactDetailsChange}
-                  />
-                </Col>
-                <Col span={24} style={{ textAlign: "right" }}>
-                  <Button
-                    type="primary"
-                    className="contact-button"
-                    onClick={this.onContactSubmit}
-                  >
-                    Send
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
+                  </Col>
+                  <Col span={24} style={{ textAlign: "right" }}>
+                    <Button
+                      type="primary"
+                      className="contact-button"
+                      onClick={this.onContactSubmit}
+                    >
+                      Send
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </div>
           </div>
         </div>
       </div>

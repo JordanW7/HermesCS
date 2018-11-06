@@ -12,6 +12,13 @@
   background-image: url(../../images/balloon.jpg);
 }
 
+.contact-text {
+  text-align: left;
+  font-weight: 300;
+  margin: 10px 0px;
+  color: black;
+}
+
 .contact {
   max-width: 900px;
   margin: 0 auto;
@@ -19,9 +26,24 @@
   text-align: center;
 }
 
-.contact-page-title {
+.contact-contents {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-company-title {
   font-size: 50px;
   font-weight: 500;
+  text-shadow: 0 0 5px black;
+  color: white;
+}
+
+.contact-title {
+  font-size: 30px;
+  align-self: flex-start;
   text-shadow: 0 0 5px black;
   color: white;
 }
