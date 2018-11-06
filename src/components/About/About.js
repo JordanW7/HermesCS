@@ -101,23 +101,37 @@ const About = props => {
                   immediately on their phone or tablet.
                 </p>
               </Col>
-              <Col span={6} />
-              <Col span={6} style={{ textAlign: "center" }}>
+              <Col xs={0} sm={0} md={0} lg={6} xl={6} />
+              <Col
+                xs={12}
+                sm={12}
+                md={12}
+                lg={6}
+                xl={6}
+                style={{ textAlign: "center" }}
+              >
                 <img
                   className="about-screenshot"
                   src="/images/screenshot_mobiledashboard.jpg"
                   alt="Mobile Dashboard"
                 />
               </Col>
-              <Col span={6} style={{ textAlign: "center" }}>
+              <Col
+                xs={12}
+                sm={12}
+                md={12}
+                lg={6}
+                xl={6}
+                style={{ textAlign: "center" }}
+              >
                 <img
                   className="about-screenshot"
                   src="/images/screenshot_mobileview.jpg"
                   alt="Viewing Requests on Mobile"
                 />
               </Col>
-              <Col span={6} />
-              <Col span={24} className="about-box-more">
+              <Col xs={0} sm={0} md={0} lg={6} xl={6} />
+              <Col span={24} className="about-box-title">
                 And New Features and Improvements are being regularly released!
               </Col>
             </Row>
