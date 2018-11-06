@@ -81,6 +81,7 @@ const NavHeader = props => {
           <div className="navheader-mobilelinks">
             <MobileNavMenu
               loginStatus={false}
+              loginStatus2={true}
               onMobileNavClick={onMobileNavClick}
               mobileDropDownOpen={mobileDropDownOpen}
               onSignout={onSignout}

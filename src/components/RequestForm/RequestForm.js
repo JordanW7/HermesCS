@@ -438,6 +438,7 @@ class RequestForm extends Component {
                         priority ? priority : path === "/requests" ? "" : "low"
                       }
                       onChange={this.onRequestPriorityChange}
+                      style={{ minWidth: 100 }}
                     >
                       <Option value="extreme">Extreme</Option>
                       <Option value="high">High</Option>
@@ -502,6 +503,7 @@ class RequestForm extends Component {
                         priority ? priority : path === "/requests" ? "" : "low"
                       }
                       onChange={this.onRequestPriorityChange}
+                      style={{ minWidth: 100 }}
                     >
                       <Option value="extreme">Extreme</Option>
                       <Option value="high">High</Option>
@@ -521,6 +523,7 @@ class RequestForm extends Component {
                     <Select
                       defaultValue={status ? status : ""}
                       onChange={this.onRequestStatusChange}
+                      style={{ minWidth: 100 }}
                     >
                       {path === "/requests" && <Option value="">All</Option>}
                       {(this.state.requestAssignment !== "unassigned" &&

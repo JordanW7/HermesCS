@@ -5,6 +5,7 @@ import { Menu, Dropdown, Icon } from "antd";
 
 const MobileNavMenu = ({
   loginStatus,
+  loginStatus2,
   onMobileNavClick,
   mobileDropDownOpen
 }) => {
@@ -63,20 +64,29 @@ const MobileNavMenu = ({
       </Menu.Item>
       <Menu.Item>
         <Link to="/contact">
-          <Icon type="mail" className="mobilenavmenu-icon" />Contact
+          <Icon type="mail" className="mobilenavmenu-icon" />
+          {loginStatus2 ? "Support" : "Contact"}
         </Link>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item>
-        <Link to="/signin">
-          <Icon type="login" className="mobilenavmenu-icon" />Signin
-        </Link>
+        {loginStatus2 ? (
+          <Link to="/dashboard">
+            <Icon type="login" className="mobilenavmenu-icon" />Go to App
+          </Link>
+        ) : (
+          <Link to="/signin">
+            <Icon type="login" className="mobilenavmenu-icon" />Signin
+          </Link>
+        )}
       </Menu.Item>
-      <Menu.Item>
-        <Link to="/register">
-          <Icon type="user-add" className="mobilenavmenu-icon" />Register
-        </Link>
-      </Menu.Item>
+      {!loginStatus2 && (
+        <Menu.Item>
+          <Link to="/register">
+            <Icon type="user-add" className="mobilenavmenu-icon" />Register
+          </Link>
+        </Menu.Item>
+      )}
     </Menu>
   );
   return (
