@@ -18,6 +18,17 @@
   width: 95%;
 }
 
+.about-screenshot {
+  width: 90%;
+  height: auto;
+  margin: 10px 0;
+  border: 5px solid white;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 8px dimgrey;
+  margin: 0 auto;
+  transition: box-shadow 0.5s linear;
+}
+
 .about-contents {
   margin-top: 50px;
   display: flex;
@@ -38,13 +49,22 @@
   margin-bottom: 20px;
   background-color: rgba(0, 0, 0, 0.6);
   border: 1px solid #fff;
-  padding: 0 10px;
+  padding: 10px 20px;
   color: white;
   text-align: justify;
   font-size: 18px;
 }
 
 .about-box-title {
+  font-size: 25px;
+  font-weight: 500;
+  text-shadow: 0 0 5px black;
+  color: white;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.about-box-more {
   font-size: 25px;
   font-weight: 500;
   text-shadow: 0 0 5px black;
@@ -80,6 +100,11 @@
   align-self: flex-start;
   text-shadow: 0 0 5px black;
   color: white;
+}
+
+.about-screenshot:hover {
+  box-shadow: 0 0 15px white;
+  transition: box-shadow 0.5s linear;
 }
 
 @media (pointer: coarse) {
