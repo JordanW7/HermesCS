@@ -33,7 +33,7 @@ class AssignedToMe extends Component {
             ? [week, today]
             : ""
     });
-    if (results === "search failed") {
+    if (results === "search failed" || results.errors) {
       this.setState({ dashboardMyAssignmentData: [] });
       return message.error(
         "Oops, something went wrong with the dashboard results"

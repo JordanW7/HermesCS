@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import RequestForm from "../../RequestForm/RequestForm";
 import apiBackEnd from "../../../api/api";
-import { Row, Col, Input, Button } from "antd";
+import { Row, Col, Input, Button, message } from "antd";
 import RequestCommentList from "./RequestCommentList";
 import "./RequestViewer.css";
 const { TextArea } = Input;
@@ -34,7 +34,9 @@ class RequestViewer extends Component {
   };
   onCommentSubmit = async () => {
     if (!this.state.commentBox) {
-      return;
+      return message.error(
+        "Please fill in the comment box to append a comment to the request."
+      );
     }
     const { firstname, lastname, account, team } = this.props.user.user;
     const response = await apiBackEnd("addrequestcomments", "post", {
@@ -44,8 +46,15 @@ class RequestViewer extends Component {
       user: `${firstname} ${lastname}`,
       team: team
     });
+    if (response.errors) {
+      return message.error(
+        "Please fill in the comment box to append a comment to the request."
+      );
+    }
     if (response === "error") {
-      return;
+      return message.error(
+        "Oops! Something unexpected happened, please try again."
+      );
     }
     return this.loadRequestData();
   };

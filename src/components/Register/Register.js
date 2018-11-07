@@ -61,6 +61,11 @@ class Register extends Component {
       firstname: registerFirstName,
       lastname: registerLastName
     });
+    if (request.errors) {
+      return message.error(
+        "Oops! Please check the fields have been completed correctly and try again. The password must be at least 8 characters and contain at least one letter and one number."
+      );
+    }
     if (request === "account exists") {
       return message.error("Oops, this account already exists.");
     }
@@ -71,24 +76,27 @@ class Register extends Component {
         email: registerEmail,
         password: registerPassword
       });
-      if (data === "error" || !data.id) {
-        return;
+      if (data === "error" || !data.id || data.errors) {
+        return message.error(
+          "Oops! There was an unexpected problem while signing in."
+        );
       }
       window.localStorage.setItem("token", data.token);
       const userdata = await apiBackEnd(
         `profile/${data.account}/${data.id}`,
         "get"
       );
-      if (userdata === "error" || !userdata.id) {
-        return;
+      if (userdata === "error" || !userdata.id || data.errors) {
+        return message.error(
+          "Oops! There was an unexpected problem while loading your profile"
+        );
       }
       this.props.onLoadUser(userdata);
       this.props.onSignin();
       this.setState({ registerSuccess: true });
       return message.success("Welcome to HermesCS!");
-    } else {
-      return message.error("Oops, something went wrong. Please try again");
     }
+    return message.error("Oops, something went wrong. Please try again");
   };
   render() {
     if (this.state.registerSuccess) {

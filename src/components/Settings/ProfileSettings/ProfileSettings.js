@@ -37,6 +37,11 @@ class ProfileSettings extends Component {
       currentPassword,
       newPassword
     });
+    if (response.errors) {
+      return message.error(
+        "Oops! Please check the fields have been completed correctly and try again. The password must be at least 8 characters and contain at least one letter and one number."
+      );
+    }
     if (response === "invalid credentials") {
       return message.error(
         "Oops! The current password provided does not match."
@@ -46,7 +51,7 @@ class ProfileSettings extends Component {
       return message.success("Your user profile has been updated.");
     }
     return message.error(
-      "Oops! Something happened. Please try again or contact support."
+      "Oops! Something unexpected happened. Please try again."
     );
   };
   render() {

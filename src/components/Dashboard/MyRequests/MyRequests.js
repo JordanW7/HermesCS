@@ -35,7 +35,7 @@ class MyRequests extends Component {
             ? [week, today]
             : []
     });
-    if (results === "search failed") {
+    if (results === "search failed" || results.errors) {
       this.setState({ dashboardMyRequestsData: [] });
       return message.error(
         "Oops, something went wrong with the dashboard results"

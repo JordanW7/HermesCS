@@ -58,7 +58,7 @@ class RequestForm extends Component {
   loadRequestTeamUserData = async team => {
     const { account } = this.props.user.user;
     const request = await apiBackEnd(`users/${account}/${team}`, "get");
-    if (!request || request === "Not found") {
+    if (!request || request === "Not found" || request.errors) {
       return this.setState({ requestUserSelection: [] });
     }
     const requestUserSelection = [];
@@ -72,7 +72,7 @@ class RequestForm extends Component {
     const { account } = this.props.user.user;
     const { assign_team } = this.props;
     const request = await apiBackEnd(`teams/${account}`, "get");
-    if (!request || request === "Not found") {
+    if (!request || request === "Not found" || request.errors) {
       return this.setState({ requestTeamList: [] });
     }
     const requestTeamList = [];
@@ -181,7 +181,7 @@ class RequestForm extends Component {
       created_by: requestSearchCreatedBy,
       date_range: requestSearchDateRange
     });
-    if (results === "search failed") {
+    if (results === "search failed" || results.errors) {
       return message.error(
         "Oops, something went wrong. Please try to search again"
       );
@@ -241,12 +241,14 @@ class RequestForm extends Component {
       status: requestStatus,
       created_by: `${firstname} ${lastname}`
     });
-    if (
-      response === "unable to add" ||
-      response === "incorrect form submission"
-    ) {
+    if (response === "unable to add") {
       return message.error(
-        "Oops! Something went wrong and the request was not submitted."
+        "Oops! Something unexpected happened, please try again."
+      );
+    }
+    if (response.errors) {
+      return message.error(
+        "The Request Topic, Details and which Team to assign the request to must be completed."
       );
     }
     message.success("Request successfully added.");

@@ -61,6 +61,11 @@ class Forgot extends Component {
       code: forgotCode,
       newpassword: forgotNewPassword
     });
+    if (response.errors) {
+      return message.error(
+        "Oops! Please check that the fields have been completed correctly."
+      );
+    }
     if (response === "changed") {
       message.success("Password changed. Redirecting to login page.");
       return this.setState({ forgotComplete: true });
@@ -88,7 +93,7 @@ class Forgot extends Component {
       return message.error("The verification code provided is not valid");
     }
     return message.error(
-      "Oops! Please check the fields are completed correctly and try again."
+      "Oops! Please check the fields have been completed correctly and try again."
     );
   };
   onSubmitForgot = async () => {
@@ -102,6 +107,11 @@ class Forgot extends Component {
       account: forgotAccount,
       email: forgotEmail
     });
+    if (response.errors) {
+      return message.error(
+        "Oops! Please check the fields have been completed correctly and try again."
+      );
+    }
     if (response === "complete") {
       this.setState({ forgotCodeBox: true });
       return message.success("We have emailed you a reset code.");

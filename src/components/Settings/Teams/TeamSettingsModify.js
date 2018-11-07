@@ -24,8 +24,8 @@ class TeamSettingsModify extends Component {
   loadTeamSettingsModData = async () => {
     const { account } = this.props.user.user;
     const teamdata = await apiBackEnd(`teams/${account}`, "get");
-    if (!teamdata) {
-      return;
+    if (!teamdata || teamdata.errors) {
+      return message.error("Oops! There was a problem loading the team data");
     }
     const teamSettingsTeamList = [];
     const teamSettingsTeamData = {};
@@ -37,8 +37,8 @@ class TeamSettingsModify extends Component {
     this.setState({ teamSettingsTeamList });
     this.setState({ teamSettingsTeamData });
     const userdata = await apiBackEnd(`users/${account}`, "get");
-    if (!userdata) {
-      return;
+    if (!userdata || userdata.errors) {
+      return message.error("Oops! There was a problem loading the user data");
     }
     const teamSettingsUserList = [];
     const teamSettingsUserData = {};
@@ -78,6 +78,11 @@ class TeamSettingsModify extends Component {
       user: email,
       team: teamSettingsModName
     });
+    if (response.errors) {
+      return message.error(
+        "Oops! Please check the fields have been completed correctly and try again."
+      );
+    }
     if (response === "team updated") {
       this.setState({ teamSettingsCurrentLeader: teamSettingsModLeader });
       return message.success("Team has been updated");
@@ -97,6 +102,11 @@ class TeamSettingsModify extends Component {
       user: email,
       team: teamSettingsModName
     });
+    if (response.errors) {
+      return message.error(
+        "Oops! Please check the team has been selected and try again."
+      );
+    }
     if (response === "team members still exist") {
       return message.error(
         "Please change all team members to another team or disable them before deleting the team"

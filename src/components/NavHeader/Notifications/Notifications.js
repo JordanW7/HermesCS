@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import "./Notifications.css";
 import { Link } from "react-router-dom";
-import { Badge, Menu, Dropdown, Button } from "antd";
+import { Badge, Menu, Dropdown, Button, message } from "antd";
 import apiBackEnd from "../../../api/api";
 
 class Notifications extends Component {
@@ -19,16 +19,26 @@ class Notifications extends Component {
       `notifications/${account}/${firstname} ${lastname}`,
       "get"
     );
-    if (notificationData === "error getting notifications") {
-      return;
+    if (
+      notificationData === "error getting notifications" ||
+      notificationData.errors
+    ) {
+      return message.error(
+        "Oops! There was an error retrieving your notifications"
+      );
     }
     this.setState({ notificationData });
     const notificationTeamData = await apiBackEnd(
       `notifications-team/${account}/${team}`,
       "get"
     );
-    if (notificationTeamData === "error getting notifications") {
-      return;
+    if (
+      notificationTeamData === "error getting notifications" ||
+      notificationData.errors
+    ) {
+      return message.error(
+        "Oops! There was an error retrieving your notifications"
+      );
     }
     this.setState({ notificationTeamData });
   };
@@ -41,7 +51,9 @@ class Notifications extends Component {
       id: notification["reference"]
     });
     if (results !== "removed") {
-      return;
+      return message.error(
+        "Oops! Something unexpected happened. Please try again."
+      );
     }
     this.loadNotificationData();
   };

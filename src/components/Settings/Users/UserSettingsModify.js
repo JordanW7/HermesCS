@@ -24,8 +24,8 @@ class UserSettingsModify extends Component {
   loadUserSettingsModData = async () => {
     const { account } = this.props.user.user;
     const teamdata = await apiBackEnd(`teams/${account}`, "get");
-    if (!teamdata) {
-      return;
+    if (!teamdata || teamdata.errors) {
+      return message.error("Oops! There was a problem loading the team data.");
     }
     const userSettingsTeamList = [];
     for (let i = 0; i < teamdata.length; i++) {
@@ -34,8 +34,8 @@ class UserSettingsModify extends Component {
     }
     this.setState({ userSettingsTeamList });
     const userdata = await apiBackEnd(`users/${account}`, "get");
-    if (!userdata) {
-      return;
+    if (!userdata || userdata.errors) {
+      return message.error("Oops! There was a problem loading the user data.");
     }
     const userSettingsUserList = [];
     const userSettingsUserData = {};
@@ -71,6 +71,11 @@ class UserSettingsModify extends Component {
       modifyuser,
       newteam: userSettingsModTeam
     });
+    if (response.errors) {
+      return message.error(
+        "Oops! Please check the fields have been completed correctly and try again."
+      );
+    }
     if (response === "user updated") {
       return message.success("User has been updated");
     }
@@ -80,7 +85,7 @@ class UserSettingsModify extends Component {
       );
     }
     return message.error(
-      "Oops! Something happened. Please try again or contact support."
+      "Oops! Something unexpected happened. Please try again."
     );
   };
   onModUserStatusChange = async () => {

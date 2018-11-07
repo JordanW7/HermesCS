@@ -45,11 +45,14 @@ class Signin extends Component {
       email: signInEmail,
       password: signInPassword
     });
+    if (data.errors) {
+      return this.setState({ signInFailed: "validation" });
+    }
     if (data === "not active") {
       return this.setState({ signInFailed: "not active" });
     }
     if (data === "error" || !data.id) {
-      return this.setState({ signInFailed: true });
+      return this.setState({ signInFailed: "failed" });
     }
     this.saveAuthToken(this.state.signInRememberMe, data.token);
     const userdata = await apiBackEnd(
@@ -140,10 +143,16 @@ class Signin extends Component {
                 try again.
               </span>
             )}
-            {this.state.signInFailed === true && (
+            {this.state.signInFailed === "failed" && (
               <span className="signin-failed">
                 Sorry, incorrect account name/email/password. Please
                 double-check and try again.
+              </span>
+            )}
+            {this.state.signInFailed === "validation" && (
+              <span className="signin-failed">
+                Oops! Please provide a valid email address, account name and
+                password.
               </span>
             )}
             {this.state.signInFailed === "not active" && (

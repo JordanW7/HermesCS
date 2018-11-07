@@ -21,8 +21,8 @@ class TeamSettingsAdd extends Component {
   loadTeamSettingsData = async () => {
     const { account } = this.props.user.user;
     const userdata = await apiBackEnd(`users/${account}`, "get");
-    if (!userdata) {
-      return;
+    if (!userdata || userdata.errors) {
+      return message.error("Oops! There was a problem loading the user data.");
     }
     const teamSettingsUserList = [];
     const teamSettingsUserData = {};
@@ -57,6 +57,11 @@ class TeamSettingsAdd extends Component {
       leader: teamSettingsAddLeader,
       leaderemail: teamSettingsUserData[teamSettingsAddLeader].email
     });
+    if (response.errors) {
+      return message.error(
+        "Oops! Please check the fields have been completed correctly and try again."
+      );
+    }
     if (response === "already exists") {
       return message.error("Oops! A team with this name already exists.");
     }
@@ -64,7 +69,7 @@ class TeamSettingsAdd extends Component {
       return message.success("The new team has been added");
     }
     return message.error(
-      "Oops! Something happened. Please try again or contact support."
+      "Oops! Something unexpected happened. Please try again."
     );
   };
   render() {

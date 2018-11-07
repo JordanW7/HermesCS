@@ -42,6 +42,11 @@ class Contact extends Component {
       name: firstname ? `${firstname} ${lastname}` : contactName,
       details: contactDetails
     });
+    if (request.errors) {
+      return message.error(
+        "Please fill in your name, a valid email address and the details section"
+      );
+    }
     if (request === "sent") {
       return message.success(
         "Sent! We will be in contact with you as soon as possible."

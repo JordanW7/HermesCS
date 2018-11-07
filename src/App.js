@@ -101,7 +101,7 @@ const getTokenData = async () => {
   const sessionToken = window.sessionStorage.getItem("token");
   const rememberToken = window.localStorage.getItem("token");
   if (rememberToken || sessionToken) {
-    const response = await apiBackEnd("signin", "POST", false);
+    const response = await apiBackEnd("auth", "POST", false);
     return response;
   }
   return "no token";
