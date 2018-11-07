@@ -315,6 +315,7 @@ class RequestForm extends Component {
               ? "current"
               : status;
     try {
+      const { account, firstname, lastname, team } = user;
       const response = await apiBackEnd("updaterequest", "POST", {
         status: newStatus,
         priority: requestPriority ? requestPriority : priority,
@@ -322,7 +323,10 @@ class RequestForm extends Component {
         assign_team: requestAssignmentTeam
           ? requestAssignmentTeam
           : assign_team,
-        user,
+        account,
+        userfirstname: firstname,
+        userlastname: lastname,
+        userteam: team,
         id
       });
       if (response === "Request Updated") {
