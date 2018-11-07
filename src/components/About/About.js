@@ -106,13 +106,28 @@ const About = props => {
                 xs={12}
                 sm={12}
                 md={12}
-                lg={6}
-                xl={6}
+                lg={8}
+                xl={8}
                 style={{ textAlign: "center" }}
               >
                 <img
                   className="about-screenshot"
-                  src="/images/screenshot_mobiledashboard.jpg"
+                  src="/images/screenshot_mobile1.jpg"
+                  alt="Mobile Web App"
+                />
+              </Col>
+              <Col xs={0} sm={0} md={0} lg={6} xl={6} />
+              <Col
+                xs={12}
+                sm={12}
+                md={12}
+                lg={8}
+                xl={8}
+                style={{ textAlign: "center" }}
+              >
+                <img
+                  className="about-screenshot"
+                  src="/images/screenshot_mobile2.jpg"
                   alt="Mobile Dashboard"
                 />
               </Col>
@@ -120,17 +135,16 @@ const About = props => {
                 xs={12}
                 sm={12}
                 md={12}
-                lg={6}
-                xl={6}
+                lg={8}
+                xl={8}
                 style={{ textAlign: "center" }}
               >
                 <img
                   className="about-screenshot"
-                  src="/images/screenshot_mobileview.jpg"
+                  src="/images/screenshot_mobile2.jpg"
                   alt="Viewing Requests on Mobile"
                 />
               </Col>
-              <Col xs={0} sm={0} md={0} lg={6} xl={6} />
               <Col span={24} className="about-box-title">
                 And New Features and Improvements are being regularly released!
               </Col>
