@@ -241,7 +241,7 @@ class RequestForm extends Component {
       status: requestStatus,
       created_by: `${firstname} ${lastname}`
     });
-    if (response === "unable to add") {
+    if (response === "unable to add" || response === "error") {
       return message.error(
         "Oops! Something unexpected happened, please try again."
       );
