@@ -101,11 +101,10 @@ const About = props => {
                   immediately on their phone or tablet.
                 </p>
               </Col>
-              <Col xs={0} sm={0} md={0} lg={6} xl={6} />
               <Col
-                xs={12}
-                sm={12}
-                md={12}
+                xs={8}
+                sm={8}
+                md={8}
                 lg={8}
                 xl={8}
                 style={{ textAlign: "center" }}
@@ -116,25 +115,24 @@ const About = props => {
                   alt="Mobile Web App"
                 />
               </Col>
-              <Col xs={0} sm={0} md={0} lg={6} xl={6} />
               <Col
-                xs={12}
-                sm={12}
-                md={12}
+                xs={8}
+                sm={8}
+                md={8}
                 lg={8}
                 xl={8}
                 style={{ textAlign: "center" }}
               >
                 <img
                   className="about-screenshot"
-                  src="/images/screenshot_mobile2.jpg"
+                  src="/images/screenshot_mobile3.jpg"
                   alt="Mobile Dashboard"
                 />
               </Col>
               <Col
-                xs={12}
-                sm={12}
-                md={12}
+                xs={8}
+                sm={8}
+                md={8}
                 lg={8}
                 xl={8}
                 style={{ textAlign: "center" }}
