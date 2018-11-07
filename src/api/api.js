@@ -1,4 +1,8 @@
-const linkBackEnd = "http://localhost:3000";
+//Testing
+// const linkBackEnd = "http://localhost:3000";
+
+//Live
+const linkBackEnd = "https://hermescs.herokuapp.com/";
 
 const apiBackEnd = async (request, method, bodyObject = false) => {
   try {
