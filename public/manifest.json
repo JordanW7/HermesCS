@@ -18,7 +18,7 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "./",
   "theme_color": "#2da6cd",
   "background_color": "#2da6cd",
   "display": "standalone"

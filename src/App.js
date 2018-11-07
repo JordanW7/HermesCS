@@ -138,11 +138,6 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" render={() => <Hero {...this.props} />} />
-        <Route
-          exact
-          path="/index.html"
-          render={() => <Hero {...this.props} />}
-        />
         <Route exact path="/about" render={() => <About {...this.props} />} />
         <Route
           exact
