@@ -69,7 +69,9 @@ class RequestViewer extends Component {
     return (
       <div className="requestviewer">
         <div className="requestviewer-contents">
-          <div className="requestviewer-title">Request: {this.props.id}</div>
+          <div className="requestviewer-title">
+            Request Reference #: {this.props.id}
+          </div>
           <RequestForm {...this.props} {...this.state.requestdata} />
           <div className="requestviewer-box">
             Comments/Actions:
