@@ -83,7 +83,8 @@ class Notifications extends Component {
                 </span>{" "}
                 | Low:{" "}
                 <span className="alert-low">{notificationTeamData.low}</span>
-              </span>)
+              </span>
+              )
             </div>
           </Menu.Item>
         )}
@@ -118,8 +119,8 @@ class Notifications extends Component {
                           alert.priority === "extreme"
                             ? "alert-high"
                             : alert.priority === "high"
-                              ? "alert-high"
-                              : "alert-low"
+                            ? "alert-high"
+                            : "alert-low"
                         }
                       >
                         {alert.priority}
@@ -137,7 +138,11 @@ class Notifications extends Component {
       </Menu>
     );
     return (
-      <Dropdown overlay={notificationMenu} placement="bottomRight">
+      <Dropdown
+        overlay={notificationMenu}
+        trigger={["click", "hover"]}
+        placement="bottomRight"
+      >
         <Badge count={notificationData.length} className="notifications-badge">
           <span className="notifications-header">NOTIFICATIONS</span>
         </Badge>
