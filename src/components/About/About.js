@@ -26,6 +26,11 @@ const About = props => {
                   JordanFWilson.com
                 </a>
               </Col>
+              <Col span={24}>
+                HermesCS is a ticketing tool for operating a Contact Centre.
+                HermesCS helps manage customer info and record, manage and
+                complete customer service requests in a fast and modern way.
+              </Col>
               <Col span={24} className="about-box-title">
                 Creating New Requests
               </Col>
