@@ -9,7 +9,37 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-color: #464646;
-  background-image: url(../../images/bg.jpg);
+}
+
+@media only screen and (max-width: 1024px) and (max-resolution: 191dpi) {
+  .nomatch-full {
+    background-image: url(../../images/bg-1024.jpg);
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-resolution: 192dpi) {
+  .nomatch-full {
+    background-image: url(../../images/bg-1920.jpg);
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1600px) and (max-resolution: 191dpi) {
+  .nomatch-full {
+    background-image: url(../../images/bg-1600.jpg);
+  }
+}
+
+@media only screen and (min-width: 1601px) and (max-width: 1920px) and (max-resolution: 191dpi) {
+  .nomatch-full {
+    background-image: url(../../images/bg-1920.jpg);
+  }
+}
+
+@media only screen and (min-width: 1025px) and (min-resolution: 192dpi),
+  screen and (min-width: 1921px) {
+  .nomatch-full {
+    background-image: url(../../images/bg-3200.jpg);
+  }
 }
 
 @media (pointer: coarse) {
