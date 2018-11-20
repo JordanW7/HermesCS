@@ -32,8 +32,8 @@ class AssignedToTeam extends Component {
         search === "today"
           ? [yesterday, today]
           : search === "last7"
-            ? [week, today]
-            : []
+          ? [week, today]
+          : []
     });
     if (results === "search failed" || results.errors) {
       this.setState({ dashboardTeamAssignmentData: [] });
@@ -52,7 +52,7 @@ class AssignedToTeam extends Component {
   render() {
     const totalresults = this.state.dashboardTeamAssignmentData.length;
     return (
-      <div className="assignedtoteam">
+      <section className="assignedtoteam">
         <Row>
           <Col
             xs={16}
@@ -271,7 +271,7 @@ class AssignedToTeam extends Component {
             );
           })}
         </div>
-      </div>
+      </section>
     );
   }
 }

@@ -32,8 +32,8 @@ class MyRequests extends Component {
         search === "today"
           ? [yesterday, today]
           : search === "last7"
-            ? [week, today]
-            : []
+          ? [week, today]
+          : []
     });
     if (results === "search failed" || results.errors) {
       this.setState({ dashboardMyRequestsData: [] });
@@ -49,7 +49,7 @@ class MyRequests extends Component {
   render() {
     const totalresults = this.state.dashboardMyRequestsData.length;
     return (
-      <div className="myrequests">
+      <section className="myrequests">
         <Row>
           <Col
             xs={16}
@@ -233,7 +233,7 @@ class MyRequests extends Component {
             );
           })}
         </div>
-      </div>
+      </section>
     );
   }
 }

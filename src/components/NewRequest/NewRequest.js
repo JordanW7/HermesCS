@@ -14,10 +14,10 @@ const NewRequest = props => {
     <div className="newrequest-full">
       <NavHeader {...props} />
       <div className="newrequest">
-        <div className="newrequest-contents">
-          <div className="newrequest-title">New Request</div>
+        <main className="newrequest-contents">
+          <header className="newrequest-title">New Request</header>
           <RequestForm {...props} />
-        </div>
+        </main>
       </div>
     </div>
   );

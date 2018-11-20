@@ -30,8 +30,8 @@ class AssignedToMe extends Component {
         search === "today"
           ? [yesterday, today]
           : search === "last7"
-            ? [week, today]
-            : ""
+          ? [week, today]
+          : ""
     });
     if (results === "search failed" || results.errors) {
       this.setState({ dashboardMyAssignmentData: [] });
@@ -50,7 +50,7 @@ class AssignedToMe extends Component {
   render() {
     const totalresults = this.state.dashboardMyAssignmentData.length;
     return (
-      <div className="assignedtome">
+      <section className="assignedtome">
         <Row>
           <Col
             xs={16}
@@ -268,7 +268,7 @@ class AssignedToMe extends Component {
             );
           })}
         </div>
-      </div>
+      </section>
     );
   }
 }

@@ -7,19 +7,6 @@ import { Provider } from "react-redux";
 
 const store = configureStore();
 
-test("Blank test", () => {
+test("Blank unit test", () => {
   expect("3").toBe("3");
 });
-
-// it("renders without crashing", () => {
-//   const div = document.createElement("div");
-//   ReactDOM.render(
-//     <Provider store={store}>
-//       <BrowserRouter>
-//         <App />
-//       </BrowserRouter>
-//     </Provider>,
-//     div
-//   );
-//   ReactDOM.unmountComponentAtNode(div);
-// });

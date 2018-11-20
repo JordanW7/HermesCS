@@ -27,17 +27,17 @@ const Dashboard = props => {
     <div className="dashboard-full">
       <NavHeader {...props} />
       <div className="dashboard">
-        <div className="dashboard-contents">
-          <div className="dashboard-greeting">
+        <main className="dashboard-contents">
+          <header className="dashboard-greeting">
             {dashboardGreeting()} {props.user.user.firstname}
-          </div>
-          <div className="dashboard-greeting-company">
+          </header>
+          <header className="dashboard-greeting-company">
             {` (${props.user.user.displayname})`}
-          </div>
+          </header>
           <AssignedToMe {...props} />
           <AssignedToTeam {...props} />
           <MyRequests {...props} />
-        </div>
+        </main>
       </div>
     </div>
   );

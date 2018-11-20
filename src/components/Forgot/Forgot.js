@@ -146,12 +146,12 @@ class Forgot extends Component {
     return (
       <div className="forgot-full">
         <NavHeader {...this.props} />
-        <div className="forgot">
-          <span className="forgot-title">
+        <main className="forgot">
+          <header className="forgot-title">
             <Icon type="lock" /> Forgot Password
-          </span>
+          </header>
           {!forgotCodeChecked && (
-            <div className="forgot-box">
+            <section className="forgot-box">
               <label>Account:</label>
               <br />
               <Input
@@ -197,10 +197,10 @@ class Forgot extends Component {
               >
                 {forgotCodeBox ? "Request new emailed code" : "Reset Password"}
               </Button>
-            </div>
+            </section>
           )}
           {forgotCodeChecked && (
-            <div className="forgot-box">
+            <section className="forgot-box">
               <label>New Password:</label>
               <br />
               <Input
@@ -226,9 +226,9 @@ class Forgot extends Component {
               >
                 Change Password
               </Button>
-            </div>
+            </section>
           )}
-        </div>
+        </main>
       </div>
     );
   }

@@ -86,10 +86,10 @@ class Signin extends Component {
               Oops! You're not signed in.
             </span>
           )}
-          <span className="signin-title">
+          <header className="signin-title">
             <Icon type="lock" /> Signin
-          </span>
-          <div className="signin-box">
+          </header>
+          <main className="signin-box">
             <label>Account:</label>
             <br />
             <Input
@@ -168,7 +168,7 @@ class Signin extends Component {
                 register a new Contact Centre.
               </Link>
             </span>
-          </div>
+          </main>
         </div>
       </div>
     );

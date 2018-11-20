@@ -112,10 +112,10 @@ class Register extends Component {
       <div className="register-full">
         <NavHeader {...this.props} />
         <div className="register">
-          <span className="register-title">
+          <header className="register-title">
             <Icon type="rocket" /> Register
-          </span>
-          <div className="register-box">
+          </header>
+          <main className="register-box">
             <p className="register-text">
               Register your Contact Centre to be able to start using HermesCS by
               completing the below. If your Contact Centre is already setup with
@@ -185,7 +185,7 @@ class Register extends Component {
                 Register & Get Started!
               </Button>
             </form>
-          </div>
+          </main>
         </div>
       </div>
     );

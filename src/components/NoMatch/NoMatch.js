@@ -4,12 +4,12 @@ import "./NoMatch.css";
 
 const NoMatch = () => {
   return (
-    <div className="nomatch-full">
-      <p className="nomatch-text">Oops! This page doesn't exist.</p>
+    <main className="nomatch-full">
+      <header className="nomatch-text">Oops! This page doesn't exist.</header>
       <Link className="nomatch-return" to="/">
         BACK TO HOMEPAGE
       </Link>
-    </div>
+    </main>
   );
 };
 

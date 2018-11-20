@@ -68,12 +68,12 @@ class RequestViewer extends Component {
     }
     return (
       <div className="requestviewer">
-        <div className="requestviewer-contents">
-          <div className="requestviewer-title">
+        <main className="requestviewer-contents">
+          <header className="requestviewer-title">
             Request Reference #: {this.props.id}
-          </div>
+          </header>
           <RequestForm {...this.props} {...this.state.requestdata} />
-          <div className="requestviewer-box">
+          <section className="requestviewer-box">
             Comments/Actions:
             <Row>
               <Col
@@ -135,8 +135,8 @@ class RequestViewer extends Component {
                 <Button onClick={this.onCommentSubmit}>Submit</Button>
               </Col>
             </Row>
-          </div>
-        </div>
+          </section>
+        </main>
       </div>
     );
   }

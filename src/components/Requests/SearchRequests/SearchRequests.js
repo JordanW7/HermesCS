@@ -35,9 +35,9 @@ class SearchRequests extends Component {
     }
     return (
       <div className="searchrequests">
-        <div className="searchrequests-contents">
-          <div className="searchrequests-title">Let's Search</div>
-          <div className="searchrequests-requestidbox">
+        <main className="searchrequests-contents">
+          <header className="searchrequests-title">Let's Search</header>
+          <section className="searchrequests-requestidbox">
             <Form layout="inline">
               <Row>
                 <Col span={24}>
@@ -55,9 +55,9 @@ class SearchRequests extends Component {
                 </Col>
               </Row>
             </Form>
-          </div>
+          </section>
           <RequestForm {...this.props} />
-        </div>
+        </main>
       </div>
     );
   }

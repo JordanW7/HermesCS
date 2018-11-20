@@ -75,13 +75,13 @@ class Contact extends Component {
       <div className="contact-full">
         <NavHeader {...this.props} />
         <div className="contact">
-          <div className="contact-contents">
-            <span className="contact-company-title">Hermes CS</span>
-            <span className="contact-title">
+          <main className="contact-contents">
+            <header className="contact-company-title">Hermes CS</header>
+            <header className="contact-title">
               <Icon type="mail" />{" "}
               {loginStatus.loginStatus ? "Support" : "Contact Us"}
-            </span>
-            <div className="contact-box">
+            </header>
+            <article className="contact-box">
               <Form layout="inline">
                 <Row style={{ textAlign: "right" }}>
                   <Col span={24} className="contact-text">
@@ -163,8 +163,8 @@ class Contact extends Component {
                   </Col>
                 </Row>
               </Form>
-            </div>
-          </div>
+            </article>
+          </main>
         </div>
       </div>
     );

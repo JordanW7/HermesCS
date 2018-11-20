@@ -31,9 +31,9 @@ const mapDispatchToProps = dispatch => {
 const Loading = props => {
   if (props.error) {
     return (
-      <div>
+      <main>
         Error! <button onClick={props.retry}>Retry</button>
-      </div>
+      </main>
     );
   } else if (props.pastDelay) {
     return <LoadingPage />;

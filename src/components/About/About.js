@@ -8,12 +8,12 @@ const About = props => {
     <div className="about-full">
       <NavHeader {...props} />
       <div className="about">
-        <div className="about-contents">
-          <span className="about-company-title">Hermes CS</span>
-          <span className="about-title">
+        <main className="about-contents">
+          <header className="about-company-title">Hermes CS</header>
+          <header className="about-title">
             <Icon type="info-circle-o" /> About
-          </span>
-          <div className="about-box">
+          </header>
+          <article className="about-box">
             <Row>
               <Col span={24} className="about-box-headerphrase">
                 A Web App built for first-class Customer Service by{" "}
@@ -152,8 +152,8 @@ const About = props => {
                 And New Features and Improvements are being regularly released!
               </Col>
             </Row>
-          </div>
-        </div>
+          </article>
+        </main>
       </div>
     </div>
   );

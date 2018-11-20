@@ -13,15 +13,15 @@ class Hero extends Component {
     return (
       <div className="hero-full">
         <NavHeader {...this.props} />
-        <div className="hero-contents">
-          <span className="hero-title">Hermes CS</span>
+        <main className="hero-contents">
+          <header className="hero-title">Hermes CS</header>
           <p className="hero-subtitle">
             Assisting Contact Centres to provide excellent customer service.
           </p>
           <Link to="/about" className="hero-infobutton">
             FIND OUT MORE
           </Link>
-        </div>
+        </main>
       </div>
     );
   }

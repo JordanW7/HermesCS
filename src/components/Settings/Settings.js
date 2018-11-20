@@ -33,8 +33,8 @@ class Settings extends Component {
       <div className="settings-full">
         <NavHeader {...this.props} />
         <div className="settings">
-          <div className="settings-title">Settings</div>
-          <div className="settings-box">
+          <header className="settings-title">Settings</header>
+          <main className="settings-box">
             <Row>
               <Col xs={12} sm={12} md={12} lg={6} xl={6}>
                 <Menu
@@ -102,7 +102,7 @@ class Settings extends Component {
                 )}
               </Col>
             </Row>
-          </div>
+          </main>
         </div>
       </div>
     );
