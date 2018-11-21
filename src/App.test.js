@@ -9,8 +9,6 @@ global.shallow = shallow;
 global.render = render;
 global.mount = mount;
 
-const store = configureStore();
-
 test("Blank unit test", () => {
   expect("3").toBe("3");
 });
